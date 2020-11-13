@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form id="ReparationSinistreListForm">
+
+        <p:panel header="#{myBundle.ListReparationSinistreTitle}">
+        	<p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+			<br />
+			<br />
+            <p:dataTable id="datalist"
+                         value="#{reparationSinistreController.all}"
+                         lazy="false"
+                         rowKey="#{item.id}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{reparationSinistreController.selected}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{reparationSinistreController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.id}"  <<< Remove this line
+                -->
+
+
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReparationSinistreTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dateDeportReparation}" filterBy="#{item.dateDeportReparation}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReparationSinistreTitle_dateDeportReparation}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateDeportReparation}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.prestataire}" filterBy="#{item.prestataire}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReparationSinistreTitle_prestataire}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.prestataire}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.montantReparationReel}" filterBy="#{item.montantReparationReel}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReparationSinistreTitle_montantReparationReel}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.montantReparationReel}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.descriptionTravaux}" filterBy="#{item.descriptionTravaux}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReparationSinistreTitle_descriptionTravaux}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.descriptionTravaux}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.datePrevueRecuperationVehicule}" filterBy="#{item.datePrevueRecuperationVehicule}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReparationSinistreTitle_datePrevueRecuperationVehicule}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.datePrevueRecuperationVehicule}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <!--
+                                    <p:column sortBy="#{item.dateRelleRecuperationVehicule}" filterBy="#{item.dateRelleRecuperationVehicule}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReparationSinistreTitle_dateRelleRecuperationVehicule}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dateRelleRecuperationVehicule}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.nbreJoursImmobilisations}" filterBy="#{item.nbreJoursImmobilisations}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReparationSinistreTitle_nbreJoursImmobilisations}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nbreJoursImmobilisations}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.referenceFacturePrestataire}" filterBy="#{item.referenceFacturePrestataire}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReparationSinistreTitle_referenceFacturePrestataire}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.referenceFacturePrestataire}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.montant}" filterBy="#{item.montant}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReparationSinistreTitle_montant}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.montant}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.dateReglement}" filterBy="#{item.dateReglement}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReparationSinistreTitle_dateReglement}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dateReglement}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.observation}" filterBy="#{item.observation}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReparationSinistreTitle_observation}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.observation}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.status}" filterBy="#{item.status}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReparationSinistreTitle_status}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.status}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.idSociete}" filterBy="#{item.idSociete}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReparationSinistreTitle_idSociete}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSociete}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.idSinistre.id}" filterBy="#{item.idSinistre.id}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReparationSinistreTitle_idSinistre}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSinistre.id}"/>
+                                    </p:column>
+                -->
+
+            </p:dataTable>
+
+        </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

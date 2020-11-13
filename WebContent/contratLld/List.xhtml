@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+    <h:form id="ContratLldListForm">
+
+        <p:panel header="#{myBundle.ListContratLldTitle}">
+           
+           	           <br />
+						<p:commandButton id="addButton" icon="ui-icon-disk"
+							action="Create.xhtml" value="Nouveau" />
+						<br />
+						<br />
+            <p:dataTable id="datalist"
+                         value="#{contratLldController.all}"
+                         var="item"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         >
+
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContratLldTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.numeroContrat}" filterBy="#{item.numeroContrat}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContratLldTitle_numeroContrat}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numeroContrat}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dateContrat}" filterBy="#{item.dateContrat}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContratLldTitle_dateContrat}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateContrat}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.lieuLivraison}" filterBy="#{item.lieuLivraison}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContratLldTitle_lieuLivraison}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.lieuLivraison}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.date1ereMensualite}" filterBy="#{item.date1ereMensualite}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContratLldTitle_date1ereMensualite}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.date1ereMensualite}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+<!--                 <p:column sortBy="#{item.nbreMensualite}" filterBy="#{item.nbreMensualite}"> -->
+<!--                     <f:facet name="header"> -->
+<!--                         <h:outputText value="#{myBundle.ListContratLldTitle_nbreMensualite}"/> -->
+<!--                     </f:facet> -->
+<!--                     <h:outputText value="#{item.nbreMensualite}"/> -->
+<!--                 </p:column> -->
+
+                <!--
+                                    <p:column sortBy="#{item.mntMensualite}" filterBy="#{item.mntMensualite}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListContratLldTitle_mntMensualite}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.mntMensualite}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.idSociete}" filterBy="#{item.idSociete}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListContratLldTitle_idSociete}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSociete}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.idLocataire.id}" filterBy="#{item.idLocataire.id}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListContratLldTitle_idLocataire}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idLocataire.id}"/>
+                                    </p:column>
+                -->
+                
+                                    <p:column sortBy="#{item.idVehicule.numeroOrdre}" filterBy="#{item.idVehicule.numeroOrdre}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListContratLldTitle_idVehicule}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idVehicule.numeroOrdre}"/>
+                                    </p:column>
+                
+                <!--
+                                    <p:column sortBy="#{item.idContact.id}" filterBy="#{item.idContact.id}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListContratLldTitle_idContact}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idContact.id}"/>
+                                    </p:column>
+                -->
+							
+                <p:column>
+					<p:commandButton id="deleteButton" icon="ui-icon-search" action="#{contratLldController.toShow()}" >
+                		<f:setPropertyActionListener target="#{contratLldController.selected}" value="#{item}"/>
+            		</p:commandButton>
+					<p:commandButton id="editButton" icon="ui-icon-pencil" action="#{contratLldController.toEdit()}" >
+                		<f:setPropertyActionListener target="#{contratLldController.selected}" value="#{item}"/>
+            		</p:commandButton>
+               </p:column>
+							 		
+            </p:dataTable>
+			
+        </p:panel>
+        
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

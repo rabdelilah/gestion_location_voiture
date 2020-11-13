@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+    <h:form id="ContratLcdProlongationListForm">
+
+        <p:panel header="#{myBundle.ListContratLcdProlongationTitle}">
+            <br />
+						<p:commandButton id="addButton" icon="ui-icon-disk"
+							action="Create.xhtml" value="Nouveau" />
+						<br />
+						<br />
+            <p:dataTable id="datalist"
+                         value="#{contratLcdProlongationController.all}"
+                         var="item"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         >
+
+
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContratLcdProlongationTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.ordre}" filterBy="#{item.ordre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContratLcdProlongationTitle_ordre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ordre}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nombreJours}" filterBy="#{item.nombreJours}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContratLcdProlongationTitle_nombreJours}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombreJours}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idContrat.numeroContrat}" filterBy="#{item.idContrat.numeroContrat}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListContratLcdProlongationTitle_idContrat}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idContrat.numeroContrat}"/>
+                </p:column>
+				
+                <p:column>
+					<p:commandButton id="deleteButton" icon="ui-icon-search" action="#{contratLcdProlongationController.toShow()}" >
+                		<f:setPropertyActionListener target="#{contratLcdProlongationController.selected}" value="#{item}"/>
+            		</p:commandButton>
+					<p:commandButton id="editButton" icon="ui-icon-pencil" action="#{contratLcdProlongationController.toEdit()}" >
+                		<f:setPropertyActionListener target="#{contratLcdProlongationController.selected}" value="#{item}"/>
+            		</p:commandButton>
+               </p:column>
+			</p:dataTable>
+
+
+        </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

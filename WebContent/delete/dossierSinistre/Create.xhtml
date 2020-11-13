@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+
+		<p:panel header="Ajout Dossier Sinistre">
+
+			<p:panelGrid columns="2" columnClasses="column">
+				<p:outputLabel value="Sinistre" for="idSinistre" />
+                         <p:selectOneMenu id="idSinistre" value="#{dossierSinistreController.nouveau.sinistre}" converter="#{sinistreConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="l" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{sinistreController.all}" var="idSinistreItem" itemValue="#{idSinistreItem}" itemLabel="#{idSinistreItem.id}" />
+					<p:column>
+						#{l.id}
+					</p:column>
+					<p:column>
+						#{l.declarationSinistre}
+					</p:column>
+				</p:selectOneMenu>
+				<h:outputLabel value="Réference dossier"
+					for="referenceDossier" />
+				<p:inputText id="referenceDossier"
+					value="#{dossierSinistreController.nouveau.referenceDossier}"
+					title="referenceDossier" size="50"
+					maxlength="50" />
+				
+				<p:outputLabel value="Date dépot" for="date depot" />
+                 <p:calendar id="dateDepot" pattern="dd/MM/yyyy" value="#{dossierSinistreController.nouveau.dateDepot}" title="date Dépot"  showOn="button"/>
+
+
+				<h:outputLabel value="Désignation expert 1"/>
+				<p:inputText id="designationExpert1"
+					value="#{dossierSinistreController.nouveau.designationExpert1}"
+					title="designationExpert1" size="50"
+					maxlength="100" />
+				
+				
+				<p:outputLabel value="Date visite expert 1"  />
+               <p:calendar id="dateVisiteExpert1" pattern="dd/MM/yyyy" value="#{dossierSinistreController.nouveau.dateVisiteExpert1}" title="dateVisiteExpert1"  showOn="button"/>
+				
+				<p:outputLabel value="Date remmise rapport expert 1"  />
+               <p:calendar id="dateRemiseRapportExpert1" pattern="dd/MM/yyyy" value="#{dossierSinistreController.nouveau.dateRemiseRapportExpert1}" title="dateRemiseRapportExpert1"  showOn="button"/>
+
+								
+				<h:outputLabel value="Désignation expert 2"/>
+				<p:inputText id="designationExpert2"
+					value="#{dossierSinistreController.nouveau.designationExpert2}"
+					title="designationExpert2" size="50"
+					maxlength="100" />
+				
+				<p:outputLabel value="Date visite expert 2"  />
+               <p:calendar id="dateVisiteExpert2" pattern="dd/MM/yyyy" value="#{dossierSinistreController.nouveau.dateVisiteExpert2}" title="dateVisiteExpert2"  showOn="button"/>
+
+				<p:outputLabel value="Date remmise rapport expert 2"  />
+               <p:calendar id="dateRemiseRapportExpert2" pattern="dd/MM/yyyy" value="#{dossierSinistreController.nouveau.dateRemiseRapportExpert2}" title="dateRemiseRapportExpert2"  showOn="button"/>
+				
+			<h:outputLabel value="Réfence devis réparation"/>
+				<p:inputText id="referenceDevisReparation"
+					value="#{dossierSinistreController.nouveau.referenceDevisReparation}"
+					title="referenceDevisReparation" size="50"
+					maxlength="50" />
+			<h:outputLabel value="Réfence devis réparation"/>
+				<p:inputText id="referenceDevisReparation"
+					value="#{dossierSinistreController.nouveau.referenceDevisReparation}"
+					title="referenceDevisReparation" size="50"
+					maxlength="50" />		
+				<p:commandButton action="#{dossierSinistreController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+				<p:commandButton action="#{dossierSinistreController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+			</p:panelGrid>
+
+		</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

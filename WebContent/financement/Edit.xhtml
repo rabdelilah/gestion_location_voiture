@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+
+		<h:panelGroup id="display">
+			<p:panelGrid columns="2" >
+
+				<h:outputLabel value="#{myBundle.EditFinancementLabel_id}" for="id" />
+				<h:outputText id="id" value="#{financementController.selected.id}" />
+
+				<h:outputLabel
+					value="#{myBundle.EditFinancementLabel_organismeLeasing}"
+					for="organismeLeasing" />
+				<p:inputText id="organismeLeasing"
+					value="#{financementController.selected.organismeLeasing}"
+					title="#{myBundle.EditFinancementTitle_organismeLeasing}" size="50"
+					maxlength="50" />
+
+				<h:outputLabel
+					value="#{myBundle.EditFinancementLabel_date1ereMensualite}"
+					for="date1ereMensualite" />
+				<p:calendar id="date1ereMensualite" pattern="MM/dd/yyyy"
+					value="#{financementController.selected.date1ereMensualite}"
+					title="#{myBundle.EditFinancementTitle_date1ereMensualite}"
+					showOn="button" />
+
+				<h:outputLabel
+					value="#{myBundle.EditFinancementLabel_nbreMensualite}"
+					for="nbreMensualite" />
+				<p:inputText id="nbreMensualite"
+					value="#{financementController.selected.nbreMensualite}"
+					title="#{myBundle.EditFinancementTitle_nbreMensualite}" />
+
+				<h:outputLabel
+					value="#{myBundle.EditFinancementLabel_mntMensualite}"
+					for="mntMensualite" />
+				<p:inputText id="mntMensualite"
+					value="#{financementController.selected.mntMensualite}"
+					title="#{myBundle.EditFinancementTitle_mntMensualite}" />
+
+				<h:outputLabel
+					value="#{myBundle.EditFinancementLabel_valeurResiduelle}"
+					for="valeurResiduelle" />
+				<p:inputText id="valeurResiduelle"
+					value="#{financementController.selected.valeurResiduelle}"
+					title="#{myBundle.EditFinancementTitle_valeurResiduelle}" />
+
+				<h:outputLabel value="#{myBundle.EditFinancementLabel_idVehicule}"
+					for="idVehicule" />
+				<p:selectOneMenu id="idVehicule" value="#{financementController.selected.idVehicule}" converter="#{vehiculeConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+						<f:selectItems value="#{vehiculeController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.numeroOrdre}" />
+							<p:column>
+								#{m.numeroOrdre}
+							</p:column>
+							<p:column>
+								#{m.matricule}
+							</p:column>
+							<p:column>
+								#{m.numeroWw}
+							</p:column>
+					</p:selectOneMenu>
+			</p:panelGrid>
+			<p:commandButton action="#{financementController.edit}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+			<p:commandButton value="#{myBundle.Cancel}" icon="ui-icon-" action="#{financementController.toList}" />
+		</h:panelGroup>
+
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

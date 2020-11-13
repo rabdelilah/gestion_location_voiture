@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form id="SinistreListForm">
+
+        <p:panel header="#{myBundle.ListSinistreTitle}">
+           <p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+			<br />
+			<br />
+            <p:dataTable id="datalist"
+                         value="#{sinistreController.all}"
+                         lazy="false"
+                         rowKey="#{item.id}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{sinistreController.selected}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{sinistreController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.id}"  <<< Remove this line
+                -->
+
+
+                
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListSinistreTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idContrat}" filterBy="#{item.idContrat}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListSinistreTitle_idContrat}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idContrat}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dateSinistre}" filterBy="#{item.dateSinistre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListSinistreTitle_dateSinistre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateSinistre}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.heureSinistre}" filterBy="#{item.heureSinistre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListSinistreTitle_heureSinistre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.heureSinistre}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.lieuSinistre}" filterBy="#{item.lieuSinistre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListSinistreTitle_lieuSinistre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.lieuSinistre}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.degats}" filterBy="#{item.degats}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListSinistreTitle_degats}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.degats}"/>
+                </p:column>
+
+                <!--
+                                    <p:column sortBy="#{item.vehiculeFautif}" filterBy="#{item.vehiculeFautif}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListSinistreTitle_vehiculeFautif}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.vehiculeFautif}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.declarationSinistre}" filterBy="#{item.declarationSinistre}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListSinistreTitle_declarationSinistre}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.declarationSinistre}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.repercussionFraisClient}" filterBy="#{item.repercussionFraisClient}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListSinistreTitle_repercussionFraisClient}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.repercussionFraisClient}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.repercussionFraisAdverse}" filterBy="#{item.repercussionFraisAdverse}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListSinistreTitle_repercussionFraisAdverse}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.repercussionFraisAdverse}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.priseEnChargeAdverse}" filterBy="#{item.priseEnChargeAdverse}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListSinistreTitle_priseEnChargeAdverse}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.priseEnChargeAdverse}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.observation}" filterBy="#{item.observation}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListSinistreTitle_observation}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.observation}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.typeContrat}" filterBy="#{item.typeContrat}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListSinistreTitle_typeContrat}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.typeContrat}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.status}" filterBy="#{item.status}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListSinistreTitle_status}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.status}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.idSociete}" filterBy="#{item.idSociete}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListSinistreTitle_idSociete}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSociete}"/>
+                                    </p:column>
+                -->
+				<p:column>
+					<p:commandButton id="showButton"
+						icon="ui-icon-search" action="#{sinistreController.toShow()}" >
+						<f:setPropertyActionListener target="#{sinistreController.selected}" value="#{item}" />
+					</p:commandButton>
+					<p:commandButton id="editButton"
+						icon="ui-icon-pencil" action="#{sinistreController.toEdit()}" >
+						<f:setPropertyActionListener target="#{sinistreController.selected}" value="#{item}" />
+					</p:commandButton>
+					
+				</p:column>
+            </p:dataTable>
+
+           
+
+        </p:panel>
+     
+    </h:form>
+</ui:define>
+
+</ui:composition>
+</html>

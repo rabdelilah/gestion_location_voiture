@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+		<h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_id}" for="id" />
+                    <h:outputLabel id="id" value="#{compagnieAssuranceController.selected.id}" title="#{bundle.EditCompagnieAssuranceTitle_id}" required="true" requiredMessage="#{bundle.EditCompagnieAssuranceRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_raisonsociale}" for="raisonsociale" />
+                    <p:inputText id="raisonsociale" value="#{compagnieAssuranceController.selected.raisonsociale}" title="#{bundle.EditCompagnieAssuranceTitle_raisonsociale}" />
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_adresse}" for="adresse" />
+                    <p:inputText id="adresse" value="#{compagnieAssuranceController.selected.adresse}" title="#{bundle.EditCompagnieAssuranceTitle_adresse}" />
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_tel}" for="tel" />
+                    <p:inputText id="tel" value="#{compagnieAssuranceController.selected.tel}" title="#{bundle.EditCompagnieAssuranceTitle_tel}" />
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_fax}" for="fax" />
+                    <p:inputText id="fax" value="#{compagnieAssuranceController.selected.fax}" title="#{bundle.EditCompagnieAssuranceTitle_fax}" />
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_email}" for="email" />
+                    <p:inputText id="email" value="#{compagnieAssuranceController.selected.email}" title="#{bundle.EditCompagnieAssuranceTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_identifiantFiscal}" for="identifiantFiscal" />
+                    <p:inputText id="identifiantFiscal" value="#{compagnieAssuranceController.selected.identifiantFiscal}" title="#{bundle.EditCompagnieAssuranceTitle_identifiantFiscal}" />
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_registreCommerce}" for="registreCommerce" />
+                    <p:inputText id="registreCommerce" value="#{compagnieAssuranceController.selected.registreCommerce}" title="#{bundle.EditCompagnieAssuranceTitle_registreCommerce}" />
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_ncnss}" for="ncnss" />
+                    <p:inputText id="ncnss" value="#{compagnieAssuranceController.selected.ncnss}" title="#{bundle.EditCompagnieAssuranceTitle_ncnss}" />
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_patente}" for="patente" />
+                    <p:inputText id="patente" value="#{compagnieAssuranceController.selected.patente}" title="#{bundle.EditCompagnieAssuranceTitle_patente}" />
+                    <h:outputLabel value="#{bundle.EditCompagnieAssuranceLabel_contact}" for="contact" />
+                    <p:inputText id="contact" value="#{compagnieAssuranceController.selected.contact}" title="#{bundle.EditCompagnieAssuranceTitle_contact}" />
+                </h:panelGrid>
+                <p:commandButton action="#{compagnieAssuranceController.edit()}" icon="ui-icon-disk" value="#{bundle.EditCompagnieAssuranceSaveLink}"/>
+                <p:commandButton action="#{compagnieAssuranceController.toList()}" icon="ui-icon-" value="#{bundle.Cancel}"/>
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

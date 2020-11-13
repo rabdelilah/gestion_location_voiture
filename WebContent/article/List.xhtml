@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+	 <p:panel header="Liste Articles">
+			<p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+			<br />
+			<br />
+			<p:dataTable id="datalist" value="#{articleController.all}" var="m"
+				rowKey="#{m.id}" paginator="true" rows="10"
+				rowsPerPageTemplate="10,20,30,40,50">
+
+				<p:column sortBy="#{m.id}" filterBy="#{m.id}">
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+					<h:outputText value="#{m.id}" />
+				</p:column>
+
+				<p:column sortBy="#{m.designation}" filterBy="#{m.designation}">
+					<f:facet name="header">
+						<h:outputText value="Désignation" />
+					</f:facet>
+					<h:outputText value="#{m.designation}" />
+				</p:column>
+				<p:column sortBy="#{m.produit.designation}" filterBy="#{m.produit.designation}">
+					<f:facet name="header">
+						<h:outputText value="Produit" />
+					</f:facet>
+					<h:outputText value="#{m.produit.designation}" />
+				</p:column>
+				<p:column sortBy="#{m.prixUnitaire}" filterBy="#{m.prixUnitaire}">
+					<f:facet name="header">
+						<h:outputText value="Prix unitaire" />
+					</f:facet>
+					<h:outputText value="#{m.prixUnitaire}" />
+				</p:column>
+				<p:column sortBy="#{m.tauxTva}" filterBy="#{m.tauxTva}">
+					<f:facet name="header">
+						<h:outputText value="Taux tva" />
+					</f:facet>
+					<h:outputText value="#{m.tauxTva}" />
+				</p:column>
+				<p:column>
+					<p:commandButton id="showButton"
+						icon="ui-icon-search" action="#{articleController.toShow()}" >
+						<f:setPropertyActionListener target="#{articleController.selected}" value="#{m}" />
+					</p:commandButton>
+					<p:commandButton id="editButton"
+						icon="ui-icon-pencil" action="#{articleController.toEdit()}" >
+						<f:setPropertyActionListener target="#{articleController.selected}" value="#{m}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+	</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

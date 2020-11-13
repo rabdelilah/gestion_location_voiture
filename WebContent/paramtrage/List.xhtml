@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" >
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form id="MarqueListForm">
+
+        <p:panel header="Parametrage">
+           <p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+           <br/><br/>
+            <p:dataTable id="datalist"
+                         value="#{parametrageController.all}"
+                         var="p"
+                         rowKey="#{p.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50">
+
+                <p:column sortBy="#{p.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="id"/>
+                    </f:facet>
+                    <h:outputText value="#{p.id}"/>
+                </p:column>
+
+                <p:column sortBy="#{p.varName}" filterBy="#{item.var_name}">
+                    <f:facet name="header">
+                        <h:outputText value="var_name"/>
+                    </f:facet>
+                    <h:outputText value="#{p.varName}"/>
+                </p:column>
+               
+                <p:column sortBy="#{p.designation}" filterBy="#{item.designation}">
+                    <f:facet name="header">
+                        <h:outputText value="designation"/>
+                    </f:facet>
+                    <h:outputText value="#{p.designation}"/>
+                </p:column>
+				
+				<p:column sortBy="#{p.commantaire}" filterBy="#{item.commentaire}">
+                    <f:facet name="header">
+                        <h:outputText value="commentaire"/>
+                    </f:facet>
+                    <h:outputText value="#{p.commantaire}"/>
+                </p:column>
+                
+				<p:column>
+					<p:commandButton id="deleteButton" icon="ui-icon-search" action="#{parametrageController.toShow()}" update="datalist" >
+                		<f:setPropertyActionListener target="#{parametrageController.selected}" value="#{p}"/>
+            		</p:commandButton>
+            		<p:commandButton id="editButton" icon="ui-icon-pencil" action="#{parametrageController.toEdit()}" update="datalist" >
+                		<f:setPropertyActionListener target="#{parametrageController.selected}" value="#{p}"/>
+            		</p:commandButton>
+				</p:column>
+
+            </p:dataTable>
+
+        </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

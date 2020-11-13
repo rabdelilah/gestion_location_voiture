@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+
+		<p:panel header="Contact Fournisseur">
+
+			<p:panelGrid columns="2" columnClasses="column">
+			 <p:outputLabel value="Fournisseur :" for="idFrs" />
+                        <p:selectOneMenu id="idFrs" value="#{contactFrController.nouveau.fournisseur}" converter="#{fournisseurConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="f" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{fournisseurController.all}" var="idFrsItem" itemValue="#{idFrsItem}" itemLabel="#{idFrsItem.raisonSocial}" />
+					<p:column>
+						#{f.id}
+					</p:column>
+					<p:column>
+						#{f.raisonSocial}
+					</p:column>
+					</p:selectOneMenu>
+				<h:outputLabel value="Nom :"
+					for="nom" />
+				<p:inputText id="nom"
+					value="#{contactFrController.nouveau.nom}"
+					title="Nom" size="50"
+					maxlength="50" />
+				<h:outputLabel value="Prénom :"
+					for="prenom" />
+				<p:inputText id="prenom"
+					value="#{contactFrController.nouveau.prenom}"
+					title="Prénom" size="50"
+					maxlength="50" />
+						<h:outputLabel value="Fonction :"
+					for="fonction" />
+				<p:inputText id="fonction"
+					value="#{contactFrController.nouveau.fonction}"
+					title="Fonction" size="50"
+					maxlength="50" />
+						<h:outputLabel value="Gsm :"
+					for="gsm" />
+				<p:inputText id="gsm"
+					value="#{contactFrController.nouveau.gsm}"
+					title="Gsm" size="50"
+					maxlength="50" />
+						<h:outputLabel value="Email :"
+					for="email" />
+				<p:inputText id="email"
+					value="#{contactFrController.nouveau.email}"
+					title="Email" size="50"
+					maxlength="50" />
+						<h:outputLabel value="Observation :"
+					for="observation" />
+				
+					 <p:inputTextarea rows="4" cols="30" id="observation" value="#{contactFrController.nouveau.observation}"  />
+					 
+				<p:commandButton action="#{contactFrController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+				<p:commandButton action="#{contactFrController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+			</p:panelGrid>
+
+		</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="PersonnelViewForm">
+
+                <p:panel header="#{myBundle.ViewPersonnelTitle}">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{personnelController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewPersonnelLabel_id}"/>
+                        <h:outputText value="#{personnelController.selected.id}" title="#{myBundle.ViewPersonnelTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonnelLabel_nom}"/>
+                        <h:outputText value="#{personnelController.selected.nom}" title="#{myBundle.ViewPersonnelTitle_nom}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonnelLabel_prenom}"/>
+                        <h:outputText value="#{personnelController.selected.prenom}" title="#{myBundle.ViewPersonnelTitle_prenom}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonnelLabel_matricule}"/>
+                        <h:outputText value="#{personnelController.selected.matricule}" title="#{myBundle.ViewPersonnelTitle_matricule}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonnelLabel_fonction}"/>
+                        <h:outputText value="#{personnelController.selected.fonction}" title="#{myBundle.ViewPersonnelTitle_fonction}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonnelLabel_status}"/>
+                        <h:outputText value="#{personnelController.selected.status}" title="#{myBundle.ViewPersonnelTitle_status}"/>
+
+                        <h:outputText value="#{myBundle.ViewPersonnelLabel_idSociete}"/>
+                        <h:outputText value="#{personnelController.selected.idSociete}" title="#{myBundle.ViewPersonnelTitle_idSociete}"/>
+                    </p:panelGrid>
+                    <p:commandButton action="#{personnelController.remove()}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+                    <p:commandButton action="#{personnelController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                    
+                </p:panel>
+
+
+            </h:form>
+
+       </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+		<h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTermeGarantieAssuranceLabel_idAssurance}" for="idAssurance" />
+                    <p:selectOneMenu id="idAssurance" value="#{termeGarantieAssuranceController.selected.idAssurance}" converter="#{assuranceConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+							<f:selectItems value="#{assuranceController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.numeroPolice}" />
+								<p:column>
+									#{m.numeroPolice}
+								</p:column>
+								<p:column>
+									#{m.numeroOrdre}
+								</p:column>
+						</p:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateTermeGarantieAssuranceLabel_idTypeGarantie}" for="idTypeGarantie" />
+                    <p:selectOneMenu id="idTypeGarantie" value="#{termeGarantieAssuranceController.selected.idTypeGarantie}" converter="#{typeGarantieConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+							<f:selectItems value="#{typeGarantieController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.designation}" />
+								<p:column>
+									#{m.designation}
+								</p:column>
+						</p:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.EditTermeGarantieAssuranceLabel_franchise}" for="franchise" />
+                    <h:inputText id="franchise" value="#{termeGarantieAssuranceController.selected.franchise}" title="#{bundle.EditTermeGarantieAssuranceTitle_franchise}" />
+                    
+                    <h:outputLabel value="#{bundle.EditTermeGarantieAssuranceLabel_observations}" for="observations" />
+                    <h:inputText id="observations" value="#{termeGarantieAssuranceController.selected.observations}" title="#{bundle.EditTermeGarantieAssuranceTitle_observations}" />
+                </h:panelGrid>
+                <p:commandButton action="#{termeGarantieAssuranceController.edit}" icon="ui-icon-disk" value="#{bundle.EditTermeGarantieAssuranceSaveLink}"/>
+                <p:commandButton action="#{termeGarantieAssuranceController.toList()}" icon="ui-icon-" value="#{bundle.Cancel}"/>
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

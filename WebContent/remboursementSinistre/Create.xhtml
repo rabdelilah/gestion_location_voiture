@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	
+            <h:form id="RemboursementSinistreCreateForm">
+				<p:panel header="Remboursement Sinistre">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateRemboursementSinistreLabel_dateDepotDossierRemb}" for="dateDepotDossierRemb" />
+                        <p:calendar id="dateDepotDossierRemb" pattern="dd/MM/yyyy" value="#{remboursementSinistreController.nouveau.dateDepotDossierRemb}" title="#{myBundle.CreateRemboursementSinistreTitle_dateDepotDossierRemb}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateRemboursementSinistreLabel_montantAccorde}" for="montantAccorde" />
+                        <p:inputText id="montantAccorde" value="#{remboursementSinistreController.nouveau.montantAccorde}" title="#{myBundle.CreateRemboursementSinistreTitle_montantAccorde}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateRemboursementSinistreLabel_dateRemboursementSinistre}" for="dateRemboursementSinistre" />
+                        <p:calendar id="dateRemboursementSinistre" pattern="dd/MM/yyyy" value="#{remboursementSinistreController.nouveau.dateRemboursementSinistre}" title="#{myBundle.CreateRemboursementSinistreTitle_dateRemboursementSinistre}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateRemboursementSinistreLabel_montantRembourse}" for="montantRembourse" />
+                        <p:inputText id="montantRembourse" value="#{remboursementSinistreController.nouveau.montantRembourse}" title="#{myBundle.CreateRemboursementSinistreTitle_montantRembourse}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateRemboursementSinistreLabel_ecartFrais}" for="ecartFrais" />
+                        <p:inputText id="ecartFrais" value="#{remboursementSinistreController.nouveau.ecartFrais}" title="#{myBundle.CreateRemboursementSinistreTitle_ecartFrais}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateRemboursementSinistreLabel_delaiRemboursement}" for="delaiRemboursement" />
+                        <p:inputText id="delaiRemboursement" value="#{remboursementSinistreController.nouveau.delaiRemboursement}" title="#{myBundle.CreateRemboursementSinistreTitle_delaiRemboursement}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateRemboursementSinistreLabel_dateCloture}" for="dateCloture" />
+                        <p:calendar id="dateCloture" pattern="dd/MM/yyyy" value="#{remboursementSinistreController.nouveau.dateCloture}" title="#{myBundle.CreateRemboursementSinistreTitle_dateCloture}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateRemboursementSinistreLabel_observation}" for="observation" />
+                        <p:inputTextarea rows="4" cols="30" id="observation" value="#{remboursementSinistreController.nouveau.observation}" title="#{myBundle.CreateRemboursementSinistreTitle_observation}" />
+
+                        <p:outputLabel value="#{myBundle.CreateRemboursementSinistreLabel_idSinistre}" for="idSinistre" />
+                        <p:selectOneMenu id="idSinistre" value="#{remboursementSinistreController.nouveau.sinistre.id}"  converter="#{sinistreConverter}">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{sinistreController.all}"
+                                           var="idSinistreItem"
+                                           itemValue="#{idSinistreItem}"
+                                           itemLabel="#{idSinistreItem.id}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    
+                    <p:commandButton action="#{remboursementSinistreController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+					<p:commandButton action="#{remboursementSinistreController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+				</p:panel>
+            </h:form>
+
+	</ui:define>
+</ui:composition>
+
+</html>

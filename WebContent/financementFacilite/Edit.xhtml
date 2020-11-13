@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+
+		<p:panelGrid columns="2">
+
+			<h:outputLabel value="#{myBundle.EditFinancementFaciliteLabel_id}"
+				for="id" />
+			<h:outputText id="id"
+				value="#{financementFaciliteController.selected.id}" />
+
+			<h:outputLabel
+				value="#{myBundle.EditFinancementFaciliteLabel_montantFacilite}"
+				for="montantFacilite" />
+			<p:inputText id="montantFacilite"
+				value="#{financementFaciliteController.selected.montantFacilite}"
+				title="#{myBundle.EditFinancementFaciliteTitle_montantFacilite}" />
+
+			<h:outputLabel
+				value="#{myBundle.EditFinancementFaciliteLabel_nbreEcheanceFacilite}"
+				for="nbreEcheanceFacilite" />
+			<p:inputText id="nbreEcheanceFacilite"
+				value="#{financementFaciliteController.selected.nbreEcheanceFacilite}"
+				title="#{myBundle.EditFinancementFaciliteTitle_nbreEcheanceFacilite}" />
+
+			<h:outputLabel
+				value="#{myBundle.EditFinancementFaciliteLabel_date1ereEcheanceFacilite}"
+				for="date1ereEcheanceFacilite" />
+			<p:calendar id="date1ereEcheanceFacilite" pattern="MM/dd/yyyy"
+				value="#{financementFaciliteController.selected.date1ereEcheanceFacilite}"
+				title="#{myBundle.EditFinancementFaciliteTitle_date1ereEcheanceFacilite}"
+				showOn="button" />
+
+			<h:outputLabel
+				value="#{myBundle.EditFinancementFaciliteLabel_idVehicule}"
+				for="idVehicule" />
+			<p:selectOneMenu id="idVehicule" value="#{financementFaciliteController.selected.idVehicule}" converter="#{vehiculeConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+						<f:selectItems value="#{vehiculeController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.numeroOrdre}" />
+							<p:column>
+								#{m.numeroOrdre}
+							</p:column>
+							<p:column>
+								#{m.matricule}
+							</p:column>
+							<p:column>
+								#{m.numeroWw}
+							</p:column>
+					</p:selectOneMenu>
+		</p:panelGrid>
+		<p:commandButton icon="ui-icon-disk" action="#{financementFaciliteController.edit()}"
+			value="#{myBundle.Save}" />
+		<p:commandButton icon="ui-icon-" value="#{myBundle.Cancel}"
+			action="#{financementFaciliteController.toList()}" />
+
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

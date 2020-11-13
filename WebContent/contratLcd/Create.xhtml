@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="ContratLcdCreateForm">
+
+               <p:panel header="#{myBundle.CreateContratLcdTitle}">
+                    <p:tabView id="ContratLcdTabView">
+
+                        <p:tab id="ContratLcdTab1" title="#{myBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="4" columnClasses="column">
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_numeroContrat}" for="numeroContrat" />
+                                <p:inputText id="numeroContrat" value="#{contratLcdController.nouveau.numeroContrat}" title="#{myBundle.CreateContratLcdTitle_numeroContrat}"   />
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_dateContrat}" for="dateContrat" />
+                                <p:calendar id="dateContrat" pattern="dd/MM/yyyy" value="#{contratLcdController.nouveau.dateContrat}" title="#{myBundle.CreateContratLcdTitle_dateContrat}"  showOn="button"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_tauxJournalier}" for="tauxJournalier" />
+                                <p:inputText id="tauxJournalier" value="#{contratLcdController.nouveau.tauxJournalier}" title="#{myBundle.CreateContratLcdTitle_tauxJournalier}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_dureeLocation}" for="dureeLocation" />
+                                <p:inputText id="dureeLocation" value="#{contratLcdController.nouveau.dureeLocation}" title="#{myBundle.CreateContratLcdTitle_dureeLocation}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_franchise}" for="franchise" />
+                                <p:inputText id="franchise" value="#{contratLcdController.nouveau.franchise}" title="#{myBundle.CreateContratLcdTitle_franchise}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_avance}" for="avance" />
+                                <p:inputText id="avance" value="#{contratLcdController.nouveau.avance}" title="#{myBundle.CreateContratLcdTitle_avance}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_dateDepart}" for="dateDepart" />
+                                <p:calendar id="dateDepart" pattern="dd/MM/yyyy" value="#{contratLcdController.nouveau.dateDepart}" title="#{myBundle.CreateContratLcdTitle_dateDepart}"  showOn="button"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_heureDepart}" for="heureDepart" />
+                                <p:inputText id="heureDepart" value="#{contratLcdController.nouveau.heureDepart}" title="#{myBundle.CreateContratLcdTitle_heureDepart}"   />
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_kmDepart}" for="kmDepart" />
+                                <p:inputText id="kmDepart" value="#{contratLcdController.nouveau.kmDepart}" title="#{myBundle.CreateContratLcdTitle_kmDepart}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_lieuLivraison}" for="lieuLivraison" />
+                                <p:inputText id="lieuLivraison" value="#{contratLcdController.nouveau.lieuLivraison}" title="#{myBundle.CreateContratLcdTitle_lieuLivraison}"   />
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_datePrevueRetour}" for="datePrevueRetour" />
+                                <p:calendar id="datePrevueRetour" pattern="dd/MM/yyyy" value="#{contratLcdController.nouveau.datePrevueRetour}" title="#{myBundle.CreateContratLcdTitle_datePrevueRetour}"  showOn="button"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_dateRetour}" for="dateRetour" />
+                                <p:calendar id="dateRetour" pattern="dd/MM/yyyy" value="#{contratLcdController.nouveau.dateRetour}" title="#{myBundle.CreateContratLcdTitle_dateRetour}"  showOn="button"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_heureRetour}" for="heureRetour" />
+                                <p:inputText id="heureRetour" value="#{contratLcdController.nouveau.heureRetour}" title="#{myBundle.CreateContratLcdTitle_heureRetour}"   />
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_kmRetour}" for="kmRetour" />
+                                <p:inputText id="kmRetour" value="#{contratLcdController.nouveau.kmRetour}" title="#{myBundle.CreateContratLcdTitle_kmRetour}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_niveauReservoirDepart}" for="niveauReservoirDepart" />
+                                <p:inputText id="niveauReservoirDepart" value="#{contratLcdController.nouveau.niveauReservoirDepart}" title="#{myBundle.CreateContratLcdTitle_niveauReservoirDepart}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_niveauReservoirRetour}" for="niveauReservoirRetour" />
+                                <p:inputText id="niveauReservoirRetour" value="#{contratLcdController.nouveau.niveauReservoirRetour}" title="#{myBundle.CreateContratLcdTitle_niveauReservoirRetour}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_idSociete}" for="idSociete" />
+                                <p:inputText id="idSociete" value="#{contratLcdController.nouveau.idSociete}" title="#{myBundle.CreateContratLcdTitle_idSociete}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_idVehicule}" for="idVehicule" />
+                                 <p:selectOneMenu id="idVehicule" value="#{contratLcdController.nouveau.idVehicule}" converter="#{vehiculeConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="v" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{vehiculeController.all}" var="idVehiculeItem" itemValue="#{idVehiculeItem}" itemLabel="#{idVehiculeItem.numeroOrdre}" />
+					<p:column>
+						#{v.id}
+					</p:column>
+					<p:column>
+						#{v.numeroOrdre}
+					</p:column>
+				</p:selectOneMenu>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_idContact}" for="idContact" />
+                                 <p:selectOneMenu id="idContact" value="#{contratLcdController.nouveau.idContact}" converter="#{contactConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactController.all}" var="idContactItem" itemValue="#{idContactItem}" itemLabel="#{idContactItem.cin}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.cin}
+					</p:column>
+				</p:selectOneMenu>
+
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_idConducteur}" for="idConducteur" />
+   <p:selectOneMenu id="idConducteur" value="#{contratLcdController.nouveau.idConducteur}" converter="#{contactConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactController.all}" var="idConducteurItem" itemValue="#{idConducteurItem}" itemLabel="#{idConducteurItem.cin}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.cin}
+					</p:column>
+				</p:selectOneMenu>
+                                <p:outputLabel value="#{myBundle.CreateContratLcdLabel_idLocataire}" for="idLocataire" />
+                                 <p:selectOneMenu id="idLocataire" value="#{contratLcdController.nouveau.idLocataire}" converter="#{contactConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="l" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactController.all}" var="idLocataireItem" itemValue="#{idLocataireItem}" itemLabel="#{idLocataireItem.cin}" />
+					<p:column>
+						#{l.id}
+					</p:column>
+					<p:column>
+						#{l.cin}
+					</p:column>
+				</p:selectOneMenu>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    
+                     <p:commandButton action="#{contratLcdController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+                    <p:commandButton action="#{contratLcdController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                </p:panel>
+
+            </h:form>
+
+	</ui:define>
+    </ui:composition>
+    </html>

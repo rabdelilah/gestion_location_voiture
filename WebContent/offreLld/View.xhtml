@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="OffreLldViewForm">
+
+                 <p:panel header="#{myBundle.ViewOffreLldTitle}">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{offreLldController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewOffreLldLabel_id}"/>
+                        <h:outputText value="#{offreLldController.selected.id}" title="#{myBundle.ViewOffreLldTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewOffreLldLabel_numeroOffre}"/>
+                        <h:outputText value="#{offreLldController.selected.numeroOffre}" title="#{myBundle.ViewOffreLldTitle_numeroOffre}"/>
+
+                        <h:outputText value="#{myBundle.ViewOffreLldLabel_dateOffre}"/>
+                        <h:outputText value="#{offreLldController.selected.dateOffre}" title="#{myBundle.ViewOffreLldTitle_dateOffre}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewOffreLldLabel_dateRemise}"/>
+                        <h:outputText value="#{offreLldController.selected.dateRemise}" title="#{myBundle.ViewOffreLldTitle_dateRemise}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewOffreLldLabel_franchise}"/>
+                        <h:outputText value="#{offreLldController.selected.franchise}" title="#{myBundle.ViewOffreLldTitle_franchise}"/>
+
+                        <h:outputText value="#{myBundle.ViewOffreLldLabel_idSociete}"/>
+                        <h:outputText value="#{offreLldController.selected.idSociete}" title="#{myBundle.ViewOffreLldTitle_idSociete}"/>
+
+                        <h:outputText value="#{myBundle.ViewOffreLldLabel_idTypeMarque}"/>
+                        <h:outputText value="#{offreLldController.selected.idTypeMarque.id}"/>
+
+                        <h:outputText value="#{myBundle.ViewOffreLldLabel_idPersonnel}"/>
+                        <h:outputText value="#{offreLldController.selected.idPersonnel.id}"/>
+
+                        <h:outputText value="#{myBundle.ViewOffreLldLabel_idContact}"/>
+                        <h:outputText value="#{offreLldController.selected.idContact.id}"/>
+                    </p:panelGrid>
+                   <p:commandButton action="#{offreLldController.remove()}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+                    <p:commandButton action="#{offreLldController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                    
+</p:panel>
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,32 @@
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+
+
+			<span class="brand"></span>
+
+			<!-- theme selector starts -->
+			<div class="btn-group pull-right theme-container"></div>
+			<!-- theme selector ends -->
+
+			<!-- user dropdown starts -->
+			<div class="btn-group pull-right">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+					<i class="icon-user"></i><span class="hidden-phone">#{utilisateurController.selected.login}</span> <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Profile</a></li>
+					<li class="divider"></li>
+					<li><a href="login.html">Logout</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- topbar ends -->
+</html>

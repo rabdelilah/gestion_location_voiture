@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+
+        <p:panel header="#{myBundle.ListPaiementVehiculeTitle}">
+           <p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau" />
+			<br/><br/>
+            <p:dataTable id="datalist"
+                         value="#{paiementVehiculeController.all}"
+                         var="item"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         >
+
+               <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPaiementVehiculeTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.naturePaiement}" filterBy="#{item.naturePaiement}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPaiementVehiculeTitle_naturePaiement}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.naturePaiement}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.montant}" filterBy="#{item.montant}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPaiementVehiculeTitle_montant}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.montant}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.numeroCheque}" filterBy="#{item.numeroCheque}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPaiementVehiculeTitle_numeroCheque}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numeroCheque}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.banque}" filterBy="#{item.banque}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPaiementVehiculeTitle_banque}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.banque}"/>
+                </p:column>
+
+				<!--
+                <p:column sortBy="#{item.dateCheque}" filterBy="#{item.dateCheque}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPaiementVehiculeTitle_dateCheque}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateCheque}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                
+                                    <p:column sortBy="#{item.idSociete}" filterBy="#{item.idSociete}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListPaiementVehiculeTitle_idSociete}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSociete}"/>
+                                    </p:column>
+                -->
+                
+                                    <p:column sortBy="#{item.idVehicule.numeroOrdre}" filterBy="#{item.idVehicule.numeroOrdre}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListPaiementVehiculeTitle_idVehicule}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idVehicule.numeroOrdre}"/>
+                                    </p:column>
+                 <p:column>
+					<p:commandButton id="deleteButton" icon="ui-icon-search" action="#{paiementVehiculeController.toShow()}" >
+                		<f:setPropertyActionListener target="#{paiementVehiculeController.selected}" value="#{item}"/>
+            		</p:commandButton>
+            		<p:commandButton id="editButton" icon="ui-icon-pencil" action="#{paiementVehiculeController.toEdit()}" >
+                		<f:setPropertyActionListener target="#{paiementVehiculeController.selected}" value="#{item}"/>
+            		</p:commandButton>
+               </p:column>
+            </p:dataTable>
+
+            
+
+        </p:panel>
+     
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

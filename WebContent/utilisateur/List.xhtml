@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" >
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form>
+
+        <p:panel header="Utilisateur">
+           <p:panelGrid columns="2" columnClasses="column">
+            	<p:outputLabel value="login" for="login" />
+            	<p:inputText id="login" value="#{utilisateurController.nouveau.login}" title="login" size="100" maxlength="100"/>
+           	
+                <p:outputLabel value="pwd" for="pwd" />
+            	<p:inputText id="pwd" value="#{utilisateurController.nouveau.pwd}" title="pwd" size="100" maxlength="100"/>
+           	
+           		<h:outputLabel value="Societe" for="ste" />
+				<p:selectOneMenu id="ste" value="#{utilisateurController.nouveau.societe}" converter="#{societeConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{societeController.all}" var="item" itemValue="#{item}" itemLabel="#{item.raison_sociale}" />
+					<p:column>
+						#{m.id}
+					</p:column>
+					<p:column>
+						#{m.raison_sociale}
+					</p:column>
+				</p:selectOneMenu>
+           		
+           		<p:commandButton action="#{utilisateurController.add}" icon="ui-icon-disk" value="Enregistrer" update="datalist" />
+				<h:inputHidden value="hidden" />            
+            </p:panelGrid>
+           <br/><br/>
+            <p:dataTable id="datalist"
+                         value="#{utilisateurController.all}"
+                         var="p"
+                         rowKey="#{p.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50">
+
+                <p:column sortBy="#{p.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="id"/>
+                    </f:facet>
+                    <h:outputText value="#{p.id}"/>
+                </p:column>
+
+                <p:column sortBy="#{p.login}" filterBy="#{p.login}">
+                    <f:facet name="header">
+                        <h:outputText value="Login"/>
+                    </f:facet>
+                    <h:outputText value="#{p.login}"/>
+                </p:column>
+               
+                <p:column sortBy="#{p.pwd}" filterBy="#{p.pwd}">
+                    <f:facet name="header">
+                        <h:outputText value="Mot de passe"/>
+                    </f:facet>
+                    <h:outputText value="#{p.pwd}"/>
+                </p:column>
+				
+				<p:column>
+					<p:commandButton id="deleteButton" icon="ui-icon-trash" action="#{utilisateurController.remove()}" update="datalist" >
+                		<f:setPropertyActionListener target="#{utilisateurController.selected}" value="#{p}"/>
+            		</p:commandButton>
+				</p:column>
+
+            </p:dataTable>
+
+        </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

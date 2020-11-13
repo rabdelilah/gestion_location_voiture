@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form >
+
+       <p:panel header="Commande">
+
+			<p:panelGrid columns="2" columnClasses="column">
+				<h:outputLabel value="Numéro de commande :"
+					for="numCmd" />
+				<p:inputText id="numCmd"
+					value="#{commandeFrController.selected.numCmd}"
+					title="Numéro de commande" size="50"
+					maxlength="50" />
+					 <p:outputLabel value="Fournisseur :" for="idFrs" />
+                        <p:selectOneMenu id="idFrs" value="#{commandeFrController.selected.fournisseur}" converter="#{fournisseurConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="f" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{fournisseurController.all}" var="idFrsItem" itemValue="#{idFrsItem}" itemLabel="#{idFrsItem.raisonSocial}" />
+					<p:column>
+						#{f.id}
+					</p:column>
+					<p:column>
+						#{f.raisonSocial}
+					</p:column>
+					</p:selectOneMenu>
+					<p:outputLabel value="Contact fournisseur :" for="idContactFrs" />
+                        <p:selectOneMenu id="idContactFrs" value="#{commandeFrController.selected.contactFr}" converter="#{contactFrController}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactFrController.all}" var="idContactFrsItem" itemValue="#{idContactFrsItem}" itemLabel="#{idContactFrsItem.nom}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.nom} #{c.prenom}
+					</p:column>
+					</p:selectOneMenu>
+					<p:outputLabel value="Date Commande :" for="dateCmd" />
+                    <p:calendar id="dateCmd" pattern="dd/MM/yyyy" value="#{commandeFrController.selected.dateCmd}" title="Date Commande"  showOn="button"/>
+					<p:outputLabel value="Date prévue livraison :" for="datePrevueLivr" />
+                    <p:calendar id="datePrevueLivr" pattern="dd/MM/yyyy" value="#{commandeFrController.selected.datePrevueLivr}" title="Date Prevue Livraison"  showOn="button"/>
+					
+				<h:outputLabel value="Modalité de paiement :"
+					for="modalitesPaiements" />
+				<p:inputText id="modalitesPaiements"
+					value="#{commandeFrController.selected.modalitesPaiements}"
+					title="Modalité de paiement" size="50"
+					maxlength="50" />
+					<h:outputLabel value=">Observation :"
+					for="observation" />
+				<p:inputText id="observation"
+					value="#{commandeFrController.selected.observation}"
+					title="Observation" size="50"
+					 />
+				
+           		<p:commandButton action="#{commandeFrController.edit}" icon="ui-icon-disk" value="#{myBundle.Save}"/>
+           		<p:commandButton action="#{commandeFrController.toList}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+           		
+            </p:panelGrid>
+            
+        </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

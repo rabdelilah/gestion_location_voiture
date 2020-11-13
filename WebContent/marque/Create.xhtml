@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+
+		<p:panel header="#{myBundle.ListMarqueTitle}">
+
+			<p:panelGrid columns="2" columnClasses="column">
+				<h:outputLabel value="#{myBundle.CreateMarqueLabel_designation}"
+					for="designation" />
+				<p:inputText id="designation"
+					value="#{marqueController.nouveau.designation}"
+					title="#{myBundle.CreateMarqueTitle_designation}" size="50"
+					maxlength="50" />
+
+				<p:commandButton action="#{marqueController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+				<p:commandButton action="#{marqueController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+			</p:panelGrid>
+
+		</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

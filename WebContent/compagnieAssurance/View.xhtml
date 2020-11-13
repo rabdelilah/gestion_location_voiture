@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+		<h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_id}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.id}" title="#{bundle.ViewCompagnieAssuranceTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_raisonsociale}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.raisonsociale}" title="#{bundle.ViewCompagnieAssuranceTitle_raisonsociale}"/>
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_adresse}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.adresse}" title="#{bundle.ViewCompagnieAssuranceTitle_adresse}"/>
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_tel}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.tel}" title="#{bundle.ViewCompagnieAssuranceTitle_tel}"/>
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_fax}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.fax}" title="#{bundle.ViewCompagnieAssuranceTitle_fax}"/>
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_email}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.email}" title="#{bundle.ViewCompagnieAssuranceTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_identifiantFiscal}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.identifiantFiscal}" title="#{bundle.ViewCompagnieAssuranceTitle_identifiantFiscal}"/>
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_registreCommerce}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.registreCommerce}" title="#{bundle.ViewCompagnieAssuranceTitle_registreCommerce}"/>
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_ncnss}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.ncnss}" title="#{bundle.ViewCompagnieAssuranceTitle_ncnss}"/>
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_patente}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.patente}" title="#{bundle.ViewCompagnieAssuranceTitle_patente}"/>
+                    <h:outputText value="#{bundle.ViewCompagnieAssuranceLabel_contact}"/>
+                    <h:outputText value="#{compagnieAssuranceController.selected.contact}" title="#{bundle.ViewCompagnieAssuranceTitle_contact}"/>
+                </h:panelGrid>
+                <p:commandButton action="#{compagnieAssuranceController.remove()}" icon="ui-icon-trash" value="#{bundle.Delete}" />
+           		<p:commandButton action="#{compagnieAssuranceController.toList()}" icon="ui-icon-" value="#{bundle.Cancel}" />
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

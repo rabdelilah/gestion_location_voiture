@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+           
+           <p:panel header="Commande">
+
+			<p:panelGrid columns="2" columnClasses="column">
+				<h:outputLabel value="Numéro de commande :"
+					for="numCmd" />
+				<h:outputLabel  id="numCmd"
+					value="#{commandeFrController.selected.numCmd}"
+					title="Numéro de commande" size="50"
+					maxlength="50" />
+					 <p:outputLabel value="Fournisseur :" for="idFrs" />
+					 
+                        <p:outputLabel id="Fournisseur" value="#{commandeFrController.selected.fournisseur.raisonSocial}"  >
+				             </p:outputLabel>    
+					<p:outputLabel value="Contact fournisseur :" for="idContactFrs" />
+                        <p:outputLabel title="Contact fournisseur" value="#{commandeFrController.selected.contactFr.nom} #{commandeFrController.selected.contactFr.prenom}">
+                        </p:outputLabel> 
+				                 
+					<p:outputLabel value="Date Commande :" for="dateCmd" />
+                    <p:outputLabel  value="#{commandeFrController.selected.dateCmd}" title="Date Commande" >
+                      <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:outputLabel>
+					<p:outputLabel value="Date prévue livraison :" for="datePrevueLivr" />
+                    <p:outputLabel value="#{commandeFrController.selected.datePrevueLivr}" title="Date Prevue Livraison" >
+					  <f:convertDateTime pattern="MM/dd/yyyy" />
+					</p:outputLabel>
+				<h:outputLabel value="Modalité de paiement :"
+					for="modalitesPaiements" />
+				<h:outputLabel  id="modalitesPaiements"
+					value="#{commandeFrController.selected.modalitesPaiements}"
+					title="Modalité de paiement" size="50"
+					maxlength="50" />
+					<h:outputLabel value=">Observation :"
+					for="observation" />
+				<h:outputLabel  id="observation"
+					value="#{commandeFrController.selected.observation}"
+					title="Observation" size="50"
+					 />
+           		<p:commandButton action="#{commandeFrController.remove}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+           		<p:commandButton action="#{commandeFrController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+           		
+            </p:panelGrid>
+            </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

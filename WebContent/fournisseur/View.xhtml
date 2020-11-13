@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+           
+            <p:panel header="Fournisseur">
+
+			<p:panelGrid columns="2" columnClasses="column">
+				<h:outputLabel value="Raison sociale :"
+					for="Raison sociale" />
+				<h:outputLabel id="raisonSocial"
+					value="#{fournisseurController.selected.raisonSocial}"
+					title="Raison sociale" size="50"
+					maxlength="50" />
+				<h:outputLabel value="Identifiant fiscale :"
+					for="Identifiant fiscale" />
+				<h:outputLabel id="identifiantFiscal"
+					value="#{fournisseurController.selected.identifiantFiscal}"
+					title="Identifiant fiscale" size="50"
+					maxlength="50" />
+				<h:outputLabel value="Patente :"
+					for="Patente" />
+				<h:outputLabel id="patente"
+					value="#{fournisseurController.selected.patente}"
+					title="Patente" size="50"
+					maxlength="50" />	
+				<h:outputLabel value="Cnss :"
+					for="Cnns" />
+				<h:outputLabel id="cnss"
+					value="#{fournisseurController.selected.cnss}"
+					title="Cnss" size="50"
+					maxlength="50" />	
+				<h:outputLabel value="Télépohone :"
+					for="Téléphone" />
+				<h:outputLabel id="tel"
+					value="#{fournisseurController.selected.tel}"
+					title="Tel" size="50"
+					maxlength="50" />	
+			   <h:outputLabel value="Fax :"
+					for="Fax" />
+				<h:outputLabel id="fax"
+					value="#{fournisseurController.selected.fax}"
+					title="Fax" size="50"
+					maxlength="50" />	
+				<h:outputLabel value="Email :"
+					for="Email" />
+				<h:outputLabel id="email"
+					value="#{fournisseurController.selected.email}"
+					title="Email" size="50"
+					maxlength="50" />
+				<h:outputLabel value="Adresse :"
+					for="adresse" />
+				<h:outputLabel id="adresse"
+					value="#{fournisseurController.selected.adresse}"
+					title="Adresse" size="50"
+					maxlength="50" />	
+				<h:outputLabel value="Type :"
+					for="Type" />
+				<h:outputLabel id="type"
+					value="#{fournisseurController.selected.type}"
+					title="Type" size="50"
+					maxlength="50" />	
+           		<p:commandButton action="#{fournisseurController.remove}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+           		<p:commandButton action="#{fournisseurController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+           		
+            </p:panelGrid>
+            </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

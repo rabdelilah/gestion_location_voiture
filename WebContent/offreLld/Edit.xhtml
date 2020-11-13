@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="OffreLldEditForm">
+
+                 <p:panel header="#{myBundle.EditOffreLldTitle}">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{offreLldController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditOffreLldLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{offreLldController.selected.id}" />
+
+                        <p:outputLabel value="#{myBundle.EditOffreLldLabel_numeroOffre}" for="numeroOffre" />
+                        <p:inputText id="numeroOffre" value="#{offreLldController.selected.numeroOffre}" title="#{myBundle.EditOffreLldTitle_numeroOffre}"/>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLldLabel_dateOffre}" for="dateOffre" />
+                        <p:calendar id="dateOffre" pattern="MM/dd/yyyy" value="#{offreLldController.selected.dateOffre}" title="#{myBundle.EditOffreLldTitle_dateOffre}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLldLabel_dateRemise}" for="dateRemise" />
+                        <p:calendar id="dateRemise" pattern="MM/dd/yyyy" value="#{offreLldController.selected.dateRemise}" title="#{myBundle.EditOffreLldTitle_dateRemise}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLldLabel_franchise}" for="franchise" />
+                        <p:inputText id="franchise" value="#{offreLldController.selected.franchise}" title="#{myBundle.EditOffreLldTitle_franchise}" size="50" maxlength="50"/>
+
+                       
+                        <p:outputLabel value="#{myBundle.EditOffreLldLabel_idTypeMarque}" for="idTypeMarque" />
+                        <p:selectOneMenu id="idTypeMarque" value="#{offreLldController.selected.idTypeMarque}" converter="#{typeMarqueConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{typeMarqueController.all}" var="idTypeMarqueItem" itemValue="#{idTypeMarqueItem}" itemLabel="#{idTypeMarqueItem.designation}" />
+					<p:column>
+						#{t.id}
+					</p:column>
+					<p:column>
+						#{t.designation}
+					</p:column>
+				</p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLldLabel_idPersonnel}" for="idPersonnel" />
+                        <p:selectOneMenu id="idPersonnel" value="#{offreLldController.selected.idPersonnel}" converter="#{personnelConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="p" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{personnelController.all}" var="idPersonnelItem" itemValue="#{idPersonnelItem}" itemLabel="#{idPersonnelItem.matricule}" />
+					<p:column>
+						#{p.id}
+					</p:column>
+					<p:column>
+						#{p.matricule}
+					</p:column>
+				</p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLldLabel_idContact}" for="idContact" />
+                        <p:selectOneMenu id="idContact" value="#{offreLldController.selected.idContact}" converter="#{contactConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactController.all}" var="idContactItem" itemValue="#{idContactItem}" itemLabel="#{idContactItem.cin}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.cin}
+					</p:column>
+				</p:selectOneMenu>
+                    </p:panelGrid>
+                   <p:commandButton action="#{offreLldController.edit()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+                    <p:commandButton action="#{offreLldController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+               </p:panel>    
+
+            </h:form>
+
+      </ui:define>
+
+    </ui:composition>
+
+</html>

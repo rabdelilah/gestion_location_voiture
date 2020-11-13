@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+	 <p:panel header="Liste Fournisseurs">
+			<p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+			<br />
+			<br />
+			<p:dataTable id="datalist" value="#{fournisseurController.all}" var="f"
+				rowKey="#{f.id}" paginator="true" rows="10"
+				rowsPerPageTemplate="10,20,30,40,50">
+
+				<p:column sortBy="#{f.id}" filterBy="#{item.id}">
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+					<h:outputText value="#{f.id}" />
+				</p:column>
+
+				<p:column sortBy="#{f.raisonSocial}" filterBy="#{f.raisonSocial}">
+					<f:facet name="header">
+						<h:outputText value="Raison sociale" />
+					</f:facet>
+					<h:outputText value="#{f.raisonSocial}" />
+				</p:column>
+				<p:column sortBy="#{f.identifiantFiscal}" filterBy="#{f.identifiantFiscal}">
+					<f:facet name="header">
+						<h:outputText value="Identifiant fiscal" />
+					</f:facet>
+					<h:outputText value="#{f.identifiantFiscal}" />
+				</p:column>
+				<p:column sortBy="#{f.patente}" filterBy="#{f.patente}">
+					<f:facet name="header">
+						<h:outputText value="Patente" />
+					</f:facet>
+					<h:outputText value="#{f.patente}" />
+				</p:column>
+				<p:column sortBy="#{f.cnss}" filterBy="#{f.cnss}">
+					<f:facet name="header">
+						<h:outputText value="Cnss" />
+					</f:facet>
+					<h:outputText value="#{f.cnss}" />
+				</p:column>
+				<p:column sortBy="#{f.tel}" filterBy="#{f.tel}">
+					<f:facet name="header">
+						<h:outputText value="Téléphone" />
+					</f:facet>
+					<h:outputText value="#{f.tel}" />
+				</p:column>
+<!-- 				<p:column sortBy="#{f.fax}" filterBy="#{f.fax}"> -->
+<!-- 					<f:facet name="header"> -->
+<!-- 						<h:outputText value="Fax" /> -->
+<!-- 					</f:facet> -->
+<!-- 					<h:outputText value="#{f.fax}" /> -->
+<!-- 				</p:column> -->
+<!-- 				<p:column sortBy="#{f.email}" filterBy="#{f.email}"> -->
+<!-- 					<f:facet name="header"> -->
+<!-- 						<h:outputText value="Email" /> -->
+<!-- 					</f:facet> -->
+<!-- 					<h:outputText value="#{f.email}" /> -->
+<!-- 				</p:column> -->
+<!-- 				<p:column sortBy="#{f.adresse}" filterBy="#{f.adresse}"> -->
+<!-- 					<f:facet name="header"> -->
+<!-- 						<h:outputText value="Adresse" /> -->
+<!-- 					</f:facet> -->
+<!-- 					<h:outputText value="#{f.adresse}" /> -->
+<!-- 				</p:column> -->
+				<p:column>
+					<p:commandButton id="showButton"
+						icon="ui-icon-search" action="#{fournisseurController.toShow()}" >
+						<f:setPropertyActionListener target="#{fournisseurController.selected}" value="#{f}" />
+					</p:commandButton>
+					<p:commandButton id="editButton"
+						icon="ui-icon-pencil" action="#{fournisseurController.toEdit()}" >
+						<f:setPropertyActionListener target="#{fournisseurController.selected}" value="#{f}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+		<h:form id="ContactEditForm">
+
+			<p:panel header="#{myBundle.EditContactTitle}">
+
+				<p:panelGrid columns="4" columnClasses="column">
+					<p:outputLabel value="#{myBundle.CreateContactLabel_cin}" for="cin" />
+					<p:inputText id="cin" value="#{contactController.selected.cin}"
+						title="#{myBundle.CreateContactTitle_cin}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_raisonsociale}"
+						for="raisonsociale" />
+					<p:inputText id="raisonsociale"
+						value="#{contactController.selected.raisonsociale}"
+						title="#{myBundle.CreateContactTitle_raisonsociale}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_nom}" for="nom" />
+					<p:inputText id="nom" value="#{contactController.selected.nom}"
+						title="#{myBundle.CreateContactTitle_nom}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_prenom}"
+						for="prenom" />
+					<p:inputText id="prenom"
+						value="#{contactController.selected.prenom}"
+						title="#{myBundle.CreateContactTitle_prenom}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel
+						value="#{myBundle.CreateContactLabel_numpermispasseport}"
+						for="numpermispasseport" />
+					<p:inputText id="numpermispasseport"
+						value="#{contactController.selected.numpermispasseport}"
+						title="#{myBundle.CreateContactTitle_numpermispasseport}"
+						size="50" maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_typeContact}"
+						for="typeContact" />
+					<p:inputText id="typeContact"
+						value="#{contactController.selected.typeContact}"
+						title="#{myBundle.CreateContactTitle_typeContact}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_typePiece}"
+						for="typePiece" />
+					<p:inputText id="typePiece"
+						value="#{contactController.selected.typePiece}"
+						title="#{myBundle.CreateContactTitle_typePiece}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_adresse}"
+						for="adresse" />
+					<p:inputText id="adresse"
+						value="#{contactController.selected.adresse}"
+						title="#{myBundle.CreateContactTitle_adresse}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_nationalite}"
+						for="nationalite" />
+					<p:inputText id="nationalite"
+						value="#{contactController.selected.nationalite}"
+						title="#{myBundle.CreateContactTitle_nationalite}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_rc}" for="rc" />
+					<p:inputText id="rc" value="#{contactController.selected.rc}"
+						title="#{myBundle.CreateContactTitle_rc}" size="50" maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_ncnss}"
+						for="ncnss" />
+					<p:inputText id="ncnss" value="#{contactController.selected.ncnss}"
+						title="#{myBundle.CreateContactTitle_ncnss}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_patente}"
+						for="patente" />
+					<p:inputText id="patente"
+						value="#{contactController.selected.patente}"
+						title="#{myBundle.CreateContactTitle_patente}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_contact}"
+						for="contact" />
+					<p:inputText id="contact"
+						value="#{contactController.selected.contact}"
+						title="#{myBundle.CreateContactTitle_contact}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_tel}" for="tel" />
+					<p:inputText id="tel" value="#{contactController.selected.tel}"
+						title="#{myBundle.CreateContactTitle_tel}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_email}"
+						for="email" />
+					<p:inputText id="email" value="#{contactController.selected.email}"
+						title="#{myBundle.CreateContactTitle_email}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_fax}" for="fax" />
+					<p:inputText id="fax" value="#{contactController.selected.fax}"
+						title="#{myBundle.CreateContactTitle_fax}" size="50"
+						maxlength="50" />
+
+
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_etat}"
+						for="etat" />
+					<p:inputText id="etat" value="#{contactController.selected.etat}"
+						title="#{myBundle.CreateContactTitle_etat}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_type}"
+						for="type" />
+					<p:inputText id="type" value="#{contactController.selected.type}"
+						title="#{myBundle.CreateContactTitle_type}" size="50"
+						maxlength="50" />
+
+					<p:outputLabel value="#{myBundle.CreateContactLabel_idPersonnel}"
+						for="idPersonnel" />
+
+					<p:selectOneMenu id="idPersonnel"
+						value="#{contactController.selected.idPersonnel}"
+						converter="#{personnelConverter}" panelStyle="width:180px"
+						effect="fade" var="c" style="width:160px" filter="true"
+						filterMatchMode="startsWith">
+						<f:selectItems value="#{personnelController.all}"
+							var="idPersonnelItem" itemValue="#{idPersonnelItem}"
+							itemLabel="#{idPersonnelItem.nom} - #{idPersonnelItem.prenom}" />
+						<p:column>
+						#{c.id}
+					</p:column>
+						<p:column>
+						#{c.nom} #{c.prenom}
+					</p:column>
+					</p:selectOneMenu>
+					<h:inputHidden value="hidden" />
+					<h:inputHidden value="hidden" />
+				</p:panelGrid>
+
+				<p:commandButton action="#{contactController.edit()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+				<p:commandButton action="#{contactController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+
+			</p:panel>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>

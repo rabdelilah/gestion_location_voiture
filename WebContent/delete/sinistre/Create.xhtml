@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+
+		<p:panel header="Ajout Sinistre">
+
+			<p:panelGrid columns="2" columnClasses="column">
+			
+			<p:outputLabel value="Contrat" for="idContact" />
+                                 <p:selectOneMenu id="idContact" value="#{contratLcdController.nouveau.idContact}" converter="#{contactConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactController.all}" var="idContactItem" itemValue="#{idContactItem}" itemLabel="#{idContactItem.cin}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.cin}
+					</p:column>
+				</p:selectOneMenu>
+			
+			<p:outputLabel value="Date Sinistre" for="dateSinistre" />
+            <p:calendar id="dateContrat" pattern="dd/MM/yyyy" value="#{sinistreController.nouveau.dateSinistre}" title="date Sinistre"  showOn="button"/>
+			
+			<h:outputLabel value="Heure Sinistre :" for="heure sinistre" />
+			<p:inputText id="heureSinistre"
+				value="#{sinistreController.nouveau.heureSinistre}"
+				title="heureSinistre" size="50"
+				maxlength="50" />
+			
+			<h:outputLabel value="Lieu Sinistre :" for="lieuSinistre" />
+			<p:inputText id="lieuSinistre"
+				value="#{sinistreController.nouveau.lieuSinistre}"
+				title="lieu sinistre" size="50"
+				maxlength="100" />
+
+			<p:commandButton action="#{sinistreController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+			<p:commandButton action="#{sinistreController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+			</p:panelGrid>
+
+		</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

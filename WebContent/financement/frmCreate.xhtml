@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+
+		<h:panelGroup>
+			<p:panelGrid columns="2">
+
+				<h:outputLabel
+					value="#{myBundle.CreateFinancementLabel_organismeLeasing}"
+					for="organismeLeasing" />
+				<p:inputText id="organismeLeasing"
+					value="#{financementController.nouveau.organismeLeasing}"
+					title="#{myBundle.CreateFinancementTitle_organismeLeasing}"
+					/>
+
+				<h:outputLabel
+					value="#{myBundle.CreateFinancementLabel_date1ereMensualite}"
+					for="date1ereMensualite" />
+				<p:calendar id="date1ereMensualite" pattern="dd/MM/yyyy"
+					value="#{financementController.nouveau.date1ereMensualite}"
+					title="#{myBundle.CreateFinancementTitle_date1ereMensualite}"
+					showOn="button" />
+
+				<h:outputLabel
+					value="#{myBundle.CreateFinancementLabel_nbreMensualite}"
+					for="nbreMensualite" />
+				<p:inputText id="nbreMensualite"
+					value="#{financementController.nouveau.nbreMensualite}"
+					title="#{myBundle.CreateFinancementTitle_nbreMensualite}" />
+
+				<h:outputLabel
+					value="#{myBundle.CreateFinancementLabel_mntMensualite}"
+					for="mntMensualite" />
+				<p:inputText id="mntMensualite"
+					value="#{financementController.nouveau.mntMensualite}"
+					title="#{myBundle.CreateFinancementTitle_mntMensualite}" />
+
+				<h:outputLabel
+					value="#{myBundle.CreateFinancementLabel_valeurResiduelle}"
+					for="valeurResiduelle" />
+				<p:inputText id="valeurResiduelle"
+					value="#{financementController.nouveau.valeurResiduelle}"
+					title="#{myBundle.CreateFinancementTitle_valeurResiduelle}" />
+
+
+				<h:outputLabel value="#{myBundle.CreateFinancementLabel_idVehicule}"
+					for="idVehicule" />
+				<p:selectOneMenu id="idVehicule" value="#{financementController.nouveau.idVehicule}" converter="#{vehiculeConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+						<f:selectItems value="#{vehiculeController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.numeroOrdre}" />
+							<p:column>
+								#{m.numeroOrdre}
+							</p:column>
+							<p:column>
+								#{m.matricule}
+							</p:column>
+							<p:column>
+								#{m.numeroWw}
+							</p:column>
+					</p:selectOneMenu>
+			</p:panelGrid>
+			<p:commandButton action="#{financementController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+			<p:commandButton action="#{financementController.toList()}" value="#{myBundle.Cancel}" icon="ui-icon-"/>
+		</h:panelGroup>
+
+	</h:form>
+</html>

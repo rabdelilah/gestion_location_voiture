@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+
+		<p:panelGrid columns="2">
+
+			<h:outputLabel
+				value="#{myBundle.CreateFinancementFaciliteLabel_montantFacilite}"
+				for="montantFacilite" />
+			<p:inputText id="montantFacilite"
+				value="#{financementFaciliteController.nouveau.montantFacilite}"
+				title="#{myBundle.CreateFinancementFaciliteTitle_montantFacilite}" />
+
+			<h:outputLabel
+				value="#{myBundle.CreateFinancementFaciliteLabel_nbreEcheanceFacilite}"
+				for="nbreEcheanceFacilite" />
+			<p:inputText id="nbreEcheanceFacilite"
+				value="#{financementFaciliteController.nouveau.nbreEcheanceFacilite}"
+				title="#{myBundle.CreateFinancementFaciliteTitle_nbreEcheanceFacilite}" />
+
+			<h:outputLabel
+				value="#{myBundle.CreateFinancementFaciliteLabel_date1ereEcheanceFacilite}"
+				for="date1ereEcheanceFacilite" />
+			<p:calendar id="date1ereEcheanceFacilite" pattern="dd/MM/yyyy"
+				value="#{financementFaciliteController.nouveau.date1ereEcheanceFacilite}"
+				title="#{myBundle.CreateFinancementFaciliteTitle_date1ereEcheanceFacilite}"
+				showOn="button" />
+
+
+			<h:outputLabel
+				value="#{myBundle.CreateFinancementFaciliteLabel_idVehicule}"
+				for="idVehicule" />
+			<p:selectOneMenu id="idVehicule" value="#{financementFaciliteController.nouveau.idVehicule}" converter="#{vehiculeConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+						<f:selectItems value="#{vehiculeController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.numeroOrdre}" />
+							<p:column>
+								#{m.numeroOrdre}
+							</p:column>
+							<p:column>
+								#{m.matricule}
+							</p:column>
+							<p:column>
+								#{m.numeroWw}
+							</p:column>
+					</p:selectOneMenu>
+		</p:panelGrid>
+		
+		<p:commandButton icon="iu-icon-disk" action="#{financementFaciliteController.add()}"
+			value="#{myBundle.Save}" />
+		<p:commandButton icon="iu-icon-" value="#{myBundle.Cancel}"
+			action="#{financementFaciliteController.toList()}" />
+	</h:form>
+</html>

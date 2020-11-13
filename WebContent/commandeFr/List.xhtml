@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+	 <p:panel header="Liste Commandes">
+			<p:commandButton id="addButton" icon="ui-icon-disk" action="#{commandeFrController.toAdd()}" value="Nouveau"/>
+			<br />
+			<br />
+			<p:dataTable id="datalist" value="#{commandeFrController.all}" var="c"
+				rowKey="#{c.id}" paginator="true" rows="10"
+				rowsPerPageTemplate="10,20,30,40,50">
+
+				<p:column sortBy="#{c.id}" filterBy="#{c.id}">
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+					<h:outputText value="#{c.id}" />
+				</p:column>
+
+				<p:column sortBy="#{c.numCmd}" filterBy="#{c.numCmd}">
+					<f:facet name="header">
+						<h:outputText value="Numéro commande" />
+					</f:facet>
+					<h:outputText value="#{c.numCmd}" />
+				</p:column>
+
+				<p:column sortBy="#{c.fournisseur.raisonSocial}" filterBy="#{c.fournisseur.raisonSocial}">
+					<f:facet name="header">
+						<h:outputText value="Fournisseur" />
+					</f:facet>
+					<h:outputText value="#{c.fournisseur.raisonSocial}" />
+				</p:column>
+				<p:column sortBy="#{c.contactFr.nom}" filterBy="#{c.contactFr.nom}">
+					<f:facet name="header">
+						<h:outputText value="Contact Fournisseur" />
+					</f:facet>
+					<h:outputText value="#{c.contactFr.nom} #{c.contactFr.prenom}" />
+				</p:column>
+				<p:column sortBy="#{c.dateCmd}" filterBy="#{c.dateCmd}">
+					<f:facet name="header">
+						<h:outputText value="Date ommande" />
+					</f:facet>
+					<h:outputText value="#{c.dateCmd}" />
+				</p:column>
+				<p:column sortBy="#{c.datePrevueLivr}" filterBy="#{c.datePrevueLivr}">
+					<f:facet name="header">
+						<h:outputText value="Date prévue Liv" />
+					</f:facet>
+					<h:outputText value="#{c.datePrevueLivr}" />
+				</p:column>
+<!-- 				<p:column sortBy="#{c.modalitesPaiements}" filterBy="#{c.modalitesPaiements}"> -->
+<!-- 					<f:facet name="header"> -->
+<!-- 						<h:outputText value="Modalité paiement" /> -->
+<!-- 					</f:facet> -->
+<!-- 					<h:outputText value="#{c.modalitesPaiements}" /> -->
+<!-- 				</p:column> -->
+<!-- 				<p:column sortBy="#{c.observation}" filterBy="#{c.observation}"> -->
+<!-- 					<f:facet name="header"> -->
+<!-- 						<h:outputText value="Obsérvation" /> -->
+<!-- 					</f:facet> -->
+<!-- 					<h:outputText value="#{c.observation}" /> -->
+<!-- 				</p:column> -->
+				
+				<p:column>
+					<p:commandButton id="editButton" icon="ui-icon-pencil" action="#{commandeFrController.toEdit()}" >
+						<f:setPropertyActionListener target="#{commandeFrController.selected}" value="#{c}" />
+						<f:setPropertyActionListener target="#{commandeFrController.entete}" value="#{c}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

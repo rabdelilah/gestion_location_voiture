@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+				template="/template.xhtml">
+	<ui:define name="title">
+        <h:outputText value="#{myBundle.GedTitle}"/>
+    </ui:define>
+
+    <ui:define name="body">
+    <h:form id="GedListForm">
+
+        <p:panel header="#{myBundle.ListGedTitle}">
+           <br/><a href="Create.xhtml">Nouveau</a>
+			<br/><br/>
+            <p:dataTable id="datalist"
+                         value="#{gedController.all}"
+                         var="item"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         >
+
+                
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListGedTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.chemin}" filterBy="#{item.chemin}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListGedTitle_chemin}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.chemin}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.type}" filterBy="#{item.type}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListGedTitle_type}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.type}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idCleEtrangere}" filterBy="#{item.idCleEtrangere}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListGedTitle_idCleEtrangere}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idCleEtrangere}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nomTable}" filterBy="#{item.nomTable}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListGedTitle_nomTable}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nomTable}"/>
+                </p:column>
+
+                <p:column>
+					<p:commandButton id="deleteButton"  icon="ui-icon-trash" action="#{gedController.remove()}" update="datalist" >
+                		<f:setPropertyActionListener target="#{gedController.selected}" value="#{item}"/>
+            		</p:commandButton>
+               </p:column>
+            </p:dataTable>
+
+
+        </p:panel>
+        
+    </h:form>
+</ui:define>
+</ui:composition>

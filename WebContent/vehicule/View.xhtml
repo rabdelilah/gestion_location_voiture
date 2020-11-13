@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+		
+	    
+		
+		<table>
+			<tr>
+			<td valign="top">
+			<p:menu>
+	        <p:submenu label="Options Vehicule">
+	            <p:menuitem value="Visite Technique" action="#" onclick="vtDialog.show();" icon="ui-icon-disk"/>
+	            <p:menuitem value="Paiement" action="#" onclick="pDialog.show();" icon="ui-icon-disk"/>
+	            <p:menuitem value="Financement" action="#" onclick="fDialog.show();" icon="ui-icon-disk"/>
+	            <p:menuitem value="Facilité Financement" action="#" onclick="ffDialog.show();" icon="ui-icon-disk"/>
+	        </p:submenu>
+	    	</p:menu>
+	    	</td>
+			<td>
+			<p:tabView style="width:500px;height:450px;">
+
+				<p:tab title="Caractéristique" >
+					<p:panelGrid columns="2" columnClasses="column" style="width:90%;height:90%;">
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_numeroOrdre}"
+							for="numeroOrdre" />
+						<h:outputLabel id="numeroOrdre"
+							value="#{vehiculeController.selected.numeroOrdre}"
+							title="#{myBundle.CreateVehiculeTitle_numeroOrdre}" />
+
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_numeroSerie}"
+							for="numeroSerie" />
+						<h:outputLabel id="numeroSerie"
+							value="#{vehiculeController.selected.numeroSerie}"
+							title="#{myBundle.CreateVehiculeTitle_numeroSerie}" />
+
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_matricule}"
+							for="matricule" />
+						<h:outputLabel id="matricule"
+							value="#{vehiculeController.selected.matricule}"
+							title="#{myBundle.CreateVehiculeTitle_matricule}" />
+
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_couleur}"
+							for="couleur" />
+						<h:outputLabel id="couleur"
+						
+							value="#{vehiculeController.selected.couleur}"
+							title="#{myBundle.CreateVehiculeTitle_couleur}" 
+							style="background-color: ##{vehiculeController.selected.couleur}" />
+
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_numeroWw}"
+							for="numeroWw" />
+						<h:outputLabel id="numeroWw"
+							value="#{vehiculeController.selected.numeroWw}"
+							title="#{myBundle.CreateVehiculeTitle_numeroWw}" />
+
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_dimension}"
+							for="dimension" />
+						<h:outputLabel id="dimension"
+							value="#{vehiculeController.selected.dimension}"
+							title="#{myBundle.CreateVehiculeTitle_dimension}" />
+
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_chargeMax}"
+							for="chargeMax" />
+						<h:outputLabel id="chargeMax"
+							value="#{vehiculeController.selected.chargeMax}"
+							title="#{myBundle.CreateVehiculeTitle_chargeMax}" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_consommationMixte}"
+							for="consommationMixte" />
+						<h:outputLabel id="consommationMixte"
+							value="#{vehiculeController.selected.consommationMixte}"
+							title="#{myBundle.CreateVehiculeTitle_consommationMixte}" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_carburantUtilise}"
+							for="carburantUtilise" />
+						<h:outputLabel id="carburantUtilise"
+							value="#{vehiculeController.selected.carburantUtilise}"
+							title="#{myBundle.CreateVehiculeTitle_carburantUtilise}" />
+
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_idTypeMarque}"
+							for="idTypeMarque" />
+						<h:outputLabel id="idTypeMarque"
+							value="#{vehiculeController.selected.idTypeMarque}"
+							converter="#{typeMarqueConverter}" />
+
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_status}"
+							for="status" />
+						<h:outputLabel id="status"
+							value="#{vehiculeController.selected.status}"
+							title="#{myBundle.CreateVehiculeTitle_status}" />
+
+					</p:panelGrid>
+				</p:tab>
+				<p:tab title="Acquisition" >
+					<p:panelGrid columns="2" columnClasses="column" style="width:90%;height:90%;">
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateMiseEnCirculation}"
+							for="dateMiseEnCirculation" />
+						<h:outputLabel id="dateMiseEnCirculation" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.selected.dateMiseEnCirculation}"
+							title="#{myBundle.CreateVehiculeTitle_dateMiseEnCirculation}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateAcquisition}"
+							for="dateAcquisition" />
+						<h:outputLabel id="dateAcquisition" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.selected.dateAcquisition}"
+							title="#{myBundle.CreateVehiculeTitle_dateAcquisition}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateReception}"
+							for="dateReception" />
+						<h:outputLabel id="dateReception" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.selected.dateReception}"
+							title="#{myBundle.CreateVehiculeTitle_dateReception}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_montantVignette}"
+							for="montantVignette" />
+						<h:outputLabel id="montantVignette"
+							value="#{vehiculeController.selected.montantVignette}"
+							title="#{myBundle.CreateVehiculeTitle_montantVignette}" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateDebutAutorisationCirculation}"
+							for="dateDebutAutorisationCirculation" />
+						<h:outputLabel id="dateDebutAutorisationCirculation"
+							pattern="dd/MM/yyyy"
+							value="#{vehiculeController.selected.dateDebutAutorisationCirculation}"
+							title="#{myBundle.CreateVehiculeTitle_dateDebutAutorisationCirculation}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateFinAutorisationCirculation}"
+							for="dateFinAutorisationCirculation" />
+						<h:outputLabel id="dateFinAutorisationCirculation"
+							pattern="dd/MM/yyyy"
+							value="#{vehiculeController.selected.dateFinAutorisationCirculation}"
+							title="#{myBundle.CreateVehiculeTitle_dateFinAutorisationCirculation}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_idPersonnelReception}"
+							for="idPersonnelReception" />
+						<h:outputLabel id="idPersonnelReception"
+							value="#{vehiculeController.selected.idPersonnelReception}"
+							/>
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateDepotDossierImmatriculation}"
+							for="dateDepotDossierImmatriculation" />
+						<h:outputLabel id="dateDepotDossierImmatriculation"
+							pattern="dd/MM/yyyy"
+							value="#{vehiculeController.selected.dateDepotDossierImmatriculation}"
+							title="#{myBundle.CreateVehiculeTitle_dateDepotDossierImmatriculation}"
+							showOn="button" />
+
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateCarteGriseProvisoire}"
+							for="dateCarteGriseProvisoire" />
+						<h:outputLabel id="dateCarteGriseProvisoire" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.selected.dateCarteGriseProvisoire}"
+							title="#{myBundle.CreateVehiculeTitle_dateCarteGriseProvisoire}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateCarteGriseDefinitive}"
+							for="dateCarteGriseDefinitive" />
+						<h:outputLabel id="dateCarteGriseDefinitive" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.selected.dateCarteGriseDefinitive}"
+							title="#{myBundle.CreateVehiculeTitle_dateCarteGriseDefinitive}"
+							showOn="button" />
+					</p:panelGrid>
+				</p:tab>
+				<p:tab title="scession">
+					<p:panelGrid columns="2" columnClasses="column" style="width:90%;height:90%;">
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateScession}"
+							for="dateScession" />
+						<h:outputLabel id="dateScession" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.selected.dateScession}"
+							title="#{myBundle.CreateVehiculeTitle_dateScession}"
+							showOn="button" readonly="true"/>
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_montantScession}"
+							for="montantScession" />
+						<h:outputLabel id="montantScession"
+							value="#{vehiculeController.selected.montantScession}"
+							title="#{myBundle.CreateVehiculeTitle_montantScession}" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_cinBenificaireScession}"
+							for="cinBenificaireScession" />
+						<h:outputLabel id="cinBenificaireScession"
+							value="#{vehiculeController.selected.cinBenificaireScession}"
+							title="#{myBundle.CreateVehiculeTitle_cinBenificaireScession}" />
+
+
+					</p:panelGrid>
+				</p:tab>
+				
+			</p:tabView>
+			<p:panel>
+				<p:commandButton action="#{vehiculeController.remove}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+				<p:commandButton action="#{vehiculeController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+			</p:panel>
+			</td>
+			
+	    	</tr>
+		</table>	    
+		
+	</h:form>
+	<p:dialog header="Visite Technique" widgetVar="vtDialog" resizable="false" id="vt" showEffect="fade" hideEffect="explode" modal="true" height="350px" width="700px" position="250,150">  
+		<ui:include src="/visiteTechnique/frmCreate.xhtml"/>
+	</p:dialog>
+	<p:dialog header="Assurance" widgetVar="vtDialog" resizable="false" id="a" showEffect="fade" hideEffect="explode" modal="true" height="350px" width="700px" position="250,150">  
+		<ui:include src="/visiteTechnique/frmCreate.xhtml"/>
+	</p:dialog>
+	<p:dialog header="Paiement" widgetVar="pDialog" resizable="false" id="p" showEffect="fade" hideEffect="explode" modal="true" height="350px" width="700px" position="250,150">  
+		<ui:include src="/paiementVehicule/frmCreate.xhtml"/>
+	</p:dialog>
+	<p:dialog header="Financement" widgetVar="fDialog" resizable="false" id="f" showEffect="fade" hideEffect="explode" modal="true" height="350px" width="700px" position="250,150">  
+		<ui:include src="/financement/frmCreate.xhtml"/>
+	</p:dialog>
+	<p:dialog header="Facilité Financement" widgetVar="ffDialog" resizable="false" id="ff" showEffect="fade" hideEffect="explode" modal="true" height="350px" width="700px" position="250,150">  
+		<ui:include src="/financementFacilite/frmCreate.xhtml"/>
+	</p:dialog>
+</ui:define>
+</ui:composition>
+</html>

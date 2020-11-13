@@ -1,0 +1,122 @@
+
+<html>
+	   <!-- navbar side -->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <!-- sidebar-collapse -->
+            <div class="sidebar-collapse">
+                <!-- side-menu -->
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <!-- user image section -->
+                        <div class="user-section">
+                            <div class="user-section-inner">
+                                <img src="../assets/img/user.jpg" alt=""/>
+                            </div>
+                            <div class="user-info">
+                                <div>Bonjour <strong>#{utilisateurController.selected.login}</strong></div>
+                                <div class="user-text-online">
+                                    <span class="user-circle-online btn btn-success btn-circle "></span> #{utilisateurController.selected.societe.raison_sociale}
+                                </div>
+                            </div>
+                        </div>
+                        <!--end user image section-->
+                    </li>
+                    <li class="sidebar-search">
+                        <!-- search section
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>-->
+                        <!--end search section-->
+                    </li>
+                    <li class="selected">
+                        <a href="/glv_sp/faces/index.xhtml"><i class="fa fa-dashboard fa-fw"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table fa-fw"></i> Vehicule<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/glv_sp/faces/vehicule/List.xhtml">Vehicule</a>
+                            </li>
+                            <li>
+                                <a href="/glv_sp/faces/paiementVehicule/List.xhtml">Paiement Vehicule</a>
+                            </li>
+                            <li>
+                                <a href="/glv_sp/faces/financement/List.xhtml">Financement</a>
+                            </li>
+                            <li>
+                                <a href="/glv_sp/faces/financementFacilite/List.xhtml">Facilite Financement</a>
+                            </li>
+                            <li>
+                                <a href="/glv_sp/faces/assurance/List.xhtml">Assurance</a>
+                            </li>
+                            <li>
+                                <a href="/glv_sp/faces/visiteTechnique/List.xhtml">Visite Technique</a>
+                            </li>
+                        </ul>
+                        <!-- second-level-items -->
+                    </li>
+                     <li>
+                        <a href="#"><i class="fa fa-table fa-fw"></i>Contrat LCD<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="/glv_sp/faces/contratLcd/List.xhtml"> Contrat LCD</a></li>
+							<li><a href="/glv_sp/faces/contratLcdProlongation/List.xhtml"> Prolongation Contrat LCD</a></li>
+							<li><a href="/glv_sp/faces/offreLcd/List.xhtml"> Offre LCD</a></li>
+							<li><a href="/glv_sp/faces/reservation/List.xhtml">Reservation</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table fa-fw"></i>Contrat LLD<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+							<li><a href="/glv_sp/faces/contratLld/List.xhtml"> Contrat LLD</a></li>
+							<li><a href="/glv_sp/faces/offreLld/List.xhtml"> Offre LLD</a></li>
+						</ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table fa-fw"></i>Achat<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+							<li><a href="/glv_sp/faces/produit/List.xhtml"> Produit</a></li>
+							<li><a href="/glv_sp/faces/article/List.xhtml"> Article</a></li>
+							<li><a href="/glv_sp/faces/fournisseur/List.xhtml"> Fournisseur</a></li>
+							<li><a href="/glv_sp/faces/contactFr/List.xhtml"> Contact Fournisseur</a></li>
+							<li><a href="/glv_sp/faces/produitFr/List.xhtml"> Produit Fournisseur</a></li>
+							<li><a href="/glv_sp/faces/commandeFr/List.xhtml"> Commande</a></li>
+						</ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table fa-fw"></i>Sinistre<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                        	<li><a href="/glv_sp/faces/sinistre/List.xhtml"> Sinistre</a></li>
+							<li><a href="/glv_sp/faces/dossierSinistre/List.xhtml"> Dossier Sinistre</a></li>
+							<li><a href="/glv_sp/faces/remboursementSinistre/List.xhtml"> Remboursement Sinistre</a></li>
+							<li><a href="/glv_sp/faces/reparationSinistre/List.xhtml"> Reparation Sinistre</a></li>
+						</ul>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-wrench fa-fw"></i>Administration<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+							<li><a href="/glv_sp/faces/marque/List.xhtml"> Marque</a></li>
+							<li><a href="/glv_sp/faces/typeMarque/List.xhtml"> Type Marque</a></li>
+							<li><a href="/glv_sp/faces/termeGarantieAssurance/List.xhtml"> Terme Garantie</a></li>
+							<li><a href="/glv_sp/faces/typeGarantie/List.xhtml"> Type Garantie</a></li>
+							<li><a href="/glv_sp/faces/compagnieAssurance/List.xhtml"> Compagnie assurance</a></li>
+							<li><a href="/glv_sp/faces/contact/List.xhtml"> Contact</a></li>
+							<li><a href="/glv_sp/faces/personnel/List.xhtml"> Personnel</a></li>
+							<li><a href="/glv_sp/faces/societe/List.xhtml"> Societe</a></li>
+							<li><a href="/glv_sp/faces/utilisateur/List.xhtml"> Utilisateur</a></li>
+							<li><a href="/glv_sp/faces/paramtrage/List.xhtml"> Parametrage</a></li>
+									
+						</ul>
+                    </li>
+                    
+                </ul>
+                <!-- end side-menu -->
+            </div>
+            <!-- end sidebar-collapse -->
+        </nav>
+        <!-- end navbar side -->
+</html>

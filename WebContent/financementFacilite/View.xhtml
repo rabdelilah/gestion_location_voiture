@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+
+		<p:panelGrid columns="2">
+
+			<h:outputText value="#{myBundle.ViewFinancementFaciliteLabel_id}" />
+			<h:outputText value="#{financementFaciliteController.selected.id}"
+				title="#{myBundle.ViewFinancementFaciliteTitle_id}" />
+
+			<h:outputText
+				value="#{myBundle.ViewFinancementFaciliteLabel_montantFacilite}" />
+			<h:outputText
+				value="#{financementFaciliteController.selected.montantFacilite}"
+				title="#{myBundle.ViewFinancementFaciliteTitle_montantFacilite}" />
+
+			<h:outputText
+				value="#{myBundle.ViewFinancementFaciliteLabel_nbreEcheanceFacilite}" />
+			<h:outputText
+				value="#{financementFaciliteController.selected.nbreEcheanceFacilite}"
+				title="#{myBundle.ViewFinancementFaciliteTitle_nbreEcheanceFacilite}" />
+
+			<h:outputText
+				value="#{myBundle.ViewFinancementFaciliteLabel_date1ereEcheanceFacilite}" />
+			<h:outputText
+				value="#{financementFaciliteController.selected.date1ereEcheanceFacilite}"
+				title="#{myBundle.ViewFinancementFaciliteTitle_date1ereEcheanceFacilite}">
+				<f:convertDateTime pattern="MM/dd/yyyy" />
+			</h:outputText>
+
+			<h:outputText
+				value="#{myBundle.ViewFinancementFaciliteLabel_idVehicule}" />
+			<h:outputText
+				value="#{financementFaciliteController.selected.idVehicule.id}" />
+		</p:panelGrid>
+		<p:commandButton icon="iu-icon-trash" action="#{financementFaciliteController.remove()}"
+			value="#{myBundle.Delete}" />
+		<p:commandButton icon="iu-icon-" value="#{myBundle.Cancel}"
+			action="#{financementFaciliteController.toList()}" />
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="OffreLcdEditForm">
+
+                  <p:panel header="#{myBundle.EditOffreLcdTitle}">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{offreLcdController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditOffreLcdLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{offreLcdController.selected.id}" />
+
+                        <p:outputLabel value="#{myBundle.EditOffreLcdLabel_numeroOffre}" for="numeroOffre" />
+                        <p:inputText id="numeroOffre" value="#{offreLcdController.selected.numeroOffre}" title="#{myBundle.EditOffreLcdTitle_numeroOffre}"/>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLcdLabel_dateOffre}" for="dateOffre" />
+                        <p:calendar id="dateOffre" pattern="dd/MM/yyyy" value="#{offreLcdController.selected.dateOffre}" title="#{myBundle.EditOffreLcdTitle_dateOffre}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLcdLabel_dateRemise}" for="dateRemise" />
+                        <p:calendar id="dateRemise" pattern="dd/MM/yyyy" value="#{offreLcdController.selected.dateRemise}" title="#{myBundle.EditOffreLcdTitle_dateRemise}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLcdLabel_duree}" for="durée" />
+                        <p:inputText id="durée" value="#{offreLcdController.selected.duree}" title="#{myBundle.EditOffreLcdTitle_duree}"/>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLcdLabel_tauxJournalier}" for="tauxJournalier" />
+                        <p:inputText id="tauxJournalier" value="#{offreLcdController.selected.tauxJournalier}" title="#{myBundle.EditOffreLcdTitle_tauxJournalier}"/>
+
+                       
+                        <p:outputLabel value="#{myBundle.EditOffreLcdLabel_idTypeMarque}" for="idTypeMarque" />
+                            <p:selectOneMenu id="idTypeMarque" value="#{offreLcdController.selected.idTypeMarque}" converter="#{typeMarqueConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{typeMarqueController.all}" var="idTypeMarqueItem" itemValue="#{idTypeMarqueItem}" itemLabel="#{idTypeMarqueItem.designation}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.designation}
+					</p:column>
+				</p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLcdLabel_idPersonnel}" for="idPersonnel" />
+                      <p:selectOneMenu id="idPersonnel" value="#{offreLcdController.selected.idPersonnel}" converter="#{personnelConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{personnelController.all}" var="idPersonnelItem" itemValue="#{idPersonnelItem}" itemLabel="#{idPersonnelItem.nom}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.nom}
+					</p:column>
+				</p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.EditOffreLcdLabel_idContact}" for="idContact" />
+                            <p:selectOneMenu id="idContact" value="#{offreLcdController.selected.idContact}" converter="#{contactConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactController.all}" var="idContactItem" itemValue="#{idContactItem}" itemLabel="#{idContactItem.cin}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.cin}
+					</p:column>
+				</p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton action="#{offreLcdController.edit()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+                    <p:commandButton action="#{offreLcdController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+               </p:panel>
+            </h:form>
+
+   </ui:define>
+
+    </ui:composition>
+
+</html>

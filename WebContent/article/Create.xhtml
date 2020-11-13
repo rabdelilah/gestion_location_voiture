@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+
+		<p:panel header="Article">
+
+			<p:panelGrid columns="2" columnClasses="column">
+				<h:outputLabel value="Désignation :"
+					for="designation" />
+				<p:inputText id="designation"
+					value="#{articleController.nouveau.designation}"
+					title="Désignation" size="50"
+					maxlength="50" />
+					 <p:outputLabel value="Produit" for="idProduit" />
+                        <p:selectOneMenu id="idProduit" value="#{articleController.nouveau.produit}" converter="#{produitConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="p" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{produitController.all}" var="idProduitItem" itemValue="#{idProduitItem}" itemLabel="#{idProduitItem.designation}" />
+					<p:column>
+						#{p.id}
+					</p:column>
+					<p:column>
+						#{p.designation}
+					</p:column>
+				</p:selectOneMenu>
+				<h:outputLabel value="Prix unitaire :"
+					for="prixUnitaire" />
+				<p:inputText id="prixUnitaire"
+					value="#{articleController.nouveau.prixUnitaire}"
+					title="prixUnitaire" size="50"
+					maxlength="50" />
+					<h:outputLabel value="Taux Tva :"
+					for="tauxTva" />
+				<p:inputText id="tauxTva"
+					value="#{articleController.nouveau.tauxTva}"
+					title="taux Tva" size="50"
+					maxlength="50" />
+				<p:commandButton action="#{articleController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+				<p:commandButton action="#{articleController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+			</p:panelGrid>
+
+		</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

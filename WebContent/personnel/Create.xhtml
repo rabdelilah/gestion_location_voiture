@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+            <h:form id="PersonnelCreateForm">
+
+                <p:panel header="#{myBundle.CreatePersonnelTitle}"> 
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreatePersonnelLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{personnelController.nouveau.nom}" title="#{myBundle.CreatePersonnelTitle_nom}"   />
+
+                        <p:outputLabel value="#{myBundle.CreatePersonnelLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{personnelController.nouveau.prenom}" title="#{myBundle.CreatePersonnelTitle_prenom}"   />
+
+                        <p:outputLabel value="#{myBundle.CreatePersonnelLabel_matricule}" for="matricule" />
+                        <p:inputText id="matricule" value="#{personnelController.nouveau.matricule}" title="#{myBundle.CreatePersonnelTitle_matricule}"   />
+
+                        <p:outputLabel value="#{myBundle.CreatePersonnelLabel_fonction}" for="fonction" />
+                        <p:inputText id="fonction" value="#{personnelController.nouveau.fonction}" title="#{myBundle.CreatePersonnelTitle_fonction}"   />
+
+                        <p:outputLabel value="#{myBundle.CreatePersonnelLabel_status}" for="status" />
+                        <p:inputText id="status" value="#{personnelController.nouveau.status}" title="#{myBundle.CreatePersonnelTitle_status}"   />
+
+                    </p:panelGrid>
+                   
+                      
+               <p:commandButton action="#{personnelController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+                    <p:commandButton action="#{personnelController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                    
+                </p:panel>
+
+            </h:form>
+
+       
+	</ui:define>
+    </ui:composition>
+</html>
+

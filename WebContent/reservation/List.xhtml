@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form id="ReservationListForm">
+       <p:panel header="#{myBundle.ReservationTitle}">
+			 <br />
+						<p:commandButton id="addButton" icon="ui-icon-disk"
+							action="Create.xhtml" value="Nouveau" />
+						<br />
+						<br />
+        
+            <p:dataTable id="datalist"
+                         value="#{reservationController.all}"
+                         var="item"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         >
+
+                
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReservationTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.numeroJeton}" filterBy="#{item.numeroJeton}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReservationTitle_numeroJeton}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numeroJeton}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.typeLocation}" filterBy="#{item.typeLocation}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReservationTitle_typeLocation}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.typeLocation}"/>
+                </p:column>
+
+
+<!--                 <p:column sortBy="#{item.typeCarburant}" filterBy="#{item.typeCarburant}"> -->
+<!--                     <f:facet name="header"> -->
+<!--                         <h:outputText value="#{myBundle.ListReservationTitle_typeCarburant}"/> -->
+<!--                     </f:facet> -->
+<!--                     <h:outputText value="#{item.typeCarburant}"/> -->
+<!--                 </p:column> -->
+
+
+                <p:column sortBy="#{item.modeReservation}" filterBy="#{item.modeReservation}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReservationTitle_modeReservation}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.modeReservation}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dateDebutReservation}" filterBy="#{item.dateDebutReservation}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListReservationTitle_dateDebutReservation}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateDebutReservation}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <!--
+                                    <p:column sortBy="#{item.heureDebutReservation}" filterBy="#{item.heureDebutReservation}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_heureDebutReservation}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.heureDebutReservation}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.dateFinReservation}" filterBy="#{item.dateFinReservation}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_dateFinReservation}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dateFinReservation}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.heureFinReservation}" filterBy="#{item.heureFinReservation}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_heureFinReservation}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.heureFinReservation}"/>
+                                    </p:column>
+                -->
+                                    <p:column sortBy="#{item.duree}" filterBy="#{item.duree}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_duree}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.duree}"/>
+                                    </p:column>
+                <!--
+                                    <p:column sortBy="#{item.status}" filterBy="#{item.status}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_status}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.status}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.miseadisposition}" filterBy="#{item.miseadisposition}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_miseadisposition}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.miseadisposition}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.lieuMiseADisposition}" filterBy="#{item.lieuMiseADisposition}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_lieuMiseADisposition}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.lieuMiseADisposition}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.villeMiseADisposition}" filterBy="#{item.villeMiseADisposition}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_villeMiseADisposition}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.villeMiseADisposition}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.motif}" filterBy="#{item.motif}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_motif}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.motif}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.commentaires}" filterBy="#{item.commentaires}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_commentaires}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.commentaires}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.idSociete}" filterBy="#{item.idSociete}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_idSociete}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSociete}"/>
+                                    </p:column>
+                -->
+               <!--                                     <p:column sortBy="#{item.idTypeMarque.designation}" filterBy="#{item.idTypeMarque.designation}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListReservationTitle_idTypeMarque}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idTypeMarque.designation}"/>
+                                    </p:column>
+               
+               
+                                    <p:column sortBy="#{item.idContact.cin}" filterBy="#{item.idContact.cin}">
+                                        <f:facet name="header">
+                                            <h:outputText value="Cin"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idContact.cin}"/>
+                                    </p:column>
+                                    -->
+					<p:column>
+					<p:commandButton id="deleteButton" icon="ui-icon-search" action="#{reservationController.toShow()}" >
+                		<f:setPropertyActionListener target="#{reservationController.selected}" value="#{item}"/>
+            		</p:commandButton>
+					<p:commandButton id="editButton" icon="ui-icon-pencil" action="#{reservationController.toEdit()}" >
+                		<f:setPropertyActionListener target="#{reservationController.selected}" value="#{item}"/>
+            		</p:commandButton>
+               </p:column>
+            </p:dataTable>
+</p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

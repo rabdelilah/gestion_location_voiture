@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+            <h:form id="ContratLcdViewForm">
+
+                            <p:panelGrid columns="4" columnClasses="column" rendered="#{contratLcdController.selected != null}"  style="width:90%;">
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_id}"/>
+                                <h:outputText value="#{contratLcdController.selected.id}" title="#{myBundle.ViewContratLcdTitle_id}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_numeroContrat}"/>
+                                <h:outputText value="#{contratLcdController.selected.numeroContrat}" title="#{myBundle.ViewContratLcdTitle_numeroContrat}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_dateContrat}"/>
+                                <h:outputText value="#{contratLcdController.selected.dateContrat}" title="#{myBundle.ViewContratLcdTitle_dateContrat}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_tauxJournalier}"/>
+                                <h:outputText value="#{contratLcdController.selected.tauxJournalier}" title="#{myBundle.ViewContratLcdTitle_tauxJournalier}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_dureeLocation}"/>
+                                <h:outputText value="#{contratLcdController.selected.dureeLocation}" title="#{myBundle.ViewContratLcdTitle_dureeLocation}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_franchise}"/>
+                                <h:outputText value="#{contratLcdController.selected.franchise}" title="#{myBundle.ViewContratLcdTitle_franchise}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_avance}"/>
+                                <h:outputText value="#{contratLcdController.selected.avance}" title="#{myBundle.ViewContratLcdTitle_avance}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_dateDepart}"/>
+                                <h:outputText value="#{contratLcdController.selected.dateDepart}" title="#{myBundle.ViewContratLcdTitle_dateDepart}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_heureDepart}"/>
+                                <h:outputText value="#{contratLcdController.selected.heureDepart}" title="#{myBundle.ViewContratLcdTitle_heureDepart}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_kmDepart}"/>
+                                <h:outputText value="#{contratLcdController.selected.kmDepart}" title="#{myBundle.ViewContratLcdTitle_kmDepart}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_lieuLivraison}"/>
+                                <h:outputText value="#{contratLcdController.selected.lieuLivraison}" title="#{myBundle.ViewContratLcdTitle_lieuLivraison}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_datePrevueRetour}"/>
+                                <h:outputText value="#{contratLcdController.selected.datePrevueRetour}" title="#{myBundle.ViewContratLcdTitle_datePrevueRetour}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_dateRetour}"/>
+                                <h:outputText value="#{contratLcdController.selected.dateRetour}" title="#{myBundle.ViewContratLcdTitle_dateRetour}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_heureRetour}"/>
+                                <h:outputText value="#{contratLcdController.selected.heureRetour}" title="#{myBundle.ViewContratLcdTitle_heureRetour}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_kmRetour}"/>
+                                <h:outputText value="#{contratLcdController.selected.kmRetour}" title="#{myBundle.ViewContratLcdTitle_kmRetour}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_niveauReservoirDepart}"/>
+                                <h:outputText value="#{contratLcdController.selected.niveauReservoirDepart}" title="#{myBundle.ViewContratLcdTitle_niveauReservoirDepart}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_niveauReservoirRetour}"/>
+                                <h:outputText value="#{contratLcdController.selected.niveauReservoirRetour}" title="#{myBundle.ViewContratLcdTitle_niveauReservoirRetour}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_idVehicule}"/>
+                                <h:outputText value="#{contratLcdController.selected.idVehicule.id}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_idContact}"/>
+                                <h:outputText value="#{contratLcdController.selected.idContact.id}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_idConducteur}"/>
+                                <h:outputText value="#{contratLcdController.selected.idConducteur.id}"/>
+
+                                <h:outputText value="#{myBundle.ViewContratLcdLabel_idLocataire}"/>
+                                <h:outputText value="#{contratLcdController.selected.idLocataire.id}"/>
+                            </p:panelGrid>
+                     		<p:commandButton action="#{contratLcdController.remove()}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+                    		<p:commandButton action="#{contratLcdController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+               
+            </h:form>
+
+        </ui:define>
+        
+
+    </ui:composition>
+
+</html>

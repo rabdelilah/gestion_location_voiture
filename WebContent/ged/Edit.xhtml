@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="GedEditDlg" widgetVar="GedEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditGedTitle}" closeOnEscape="true">
+
+            <h:form id="GedEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{gedController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditGedLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{gedController.selected.id}" />
+
+                        <p:outputLabel value="#{myBundle.EditGedLabel_chemin}" for="chemin" />
+                        <p:inputText id="chemin" value="#{gedController.selected.chemin}" title="#{myBundle.EditGedTitle_chemin}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditGedLabel_type}" for="type" />
+                        <p:inputText id="type" value="#{gedController.selected.type}" title="#{myBundle.EditGedTitle_type}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditGedLabel_idCleEtrangere}" for="idCleEtrangere" />
+                        <p:inputText id="idCleEtrangere" value="#{gedController.selected.idCleEtrangere}" title="#{myBundle.EditGedTitle_idCleEtrangere}"/>
+
+                        <p:outputLabel value="#{myBundle.EditGedLabel_nomTable}" for="nomTable" />
+                        <p:inputText id="nomTable" value="#{gedController.selected.nomTable}" title="#{myBundle.EditGedTitle_nomTable}" size="50" maxlength="50"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{gedController.save}" value="#{myBundle.Save}" update="display,:GedListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('GedEditDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" onclick="PF('GedEditDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

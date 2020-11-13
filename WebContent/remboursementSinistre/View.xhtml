@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="RemboursementSinistreViewForm">
+				<p:panel header="Remboursement Sinistre">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <h:outputText value="#{myBundle.ViewRemboursementSinistreLabel_id}"/>
+                        <h:outputText value="#{remboursementSinistreController.selected.id}" title="#{myBundle.ViewRemboursementSinistreTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewRemboursementSinistreLabel_dateDepotDossierRemb}"/>
+                        <h:outputText value="#{remboursementSinistreController.selected.dateDepotDossierRemb}" title="#{myBundle.ViewRemboursementSinistreTitle_dateDepotDossierRemb}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewRemboursementSinistreLabel_montantAccorde}"/>
+                        <h:outputText value="#{remboursementSinistreController.selected.montantAccorde}" title="#{myBundle.ViewRemboursementSinistreTitle_montantAccorde}"/>
+
+                        <h:outputText value="#{myBundle.ViewRemboursementSinistreLabel_dateRemboursementSinistre}"/>
+                        <h:outputText value="#{remboursementSinistreController.selected.dateRemboursementSinistre}" title="#{myBundle.ViewRemboursementSinistreTitle_dateRemboursementSinistre}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewRemboursementSinistreLabel_montantRembourse}"/>
+                        <h:outputText value="#{remboursementSinistreController.selected.montantRembourse}" title="#{myBundle.ViewRemboursementSinistreTitle_montantRembourse}"/>
+
+                        <h:outputText value="#{myBundle.ViewRemboursementSinistreLabel_ecartFrais}"/>
+                        <h:outputText value="#{remboursementSinistreController.selected.ecartFrais}" title="#{myBundle.ViewRemboursementSinistreTitle_ecartFrais}"/>
+
+                        <h:outputText value="#{myBundle.ViewRemboursementSinistreLabel_delaiRemboursement}"/>
+                        <h:outputText value="#{remboursementSinistreController.selected.delaiRemboursement}" title="#{myBundle.ViewRemboursementSinistreTitle_delaiRemboursement}"/>
+
+                        <h:outputText value="#{myBundle.ViewRemboursementSinistreLabel_dateCloture}"/>
+                        <h:outputText value="#{remboursementSinistreController.selected.dateCloture}" title="#{myBundle.ViewRemboursementSinistreTitle_dateCloture}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewRemboursementSinistreLabel_observation}"/>
+                        <h:outputText value="#{remboursementSinistreController.selected.observation}" title="#{myBundle.ViewRemboursementSinistreTitle_observation}"/>
+
+                        <h:outputText value="#{myBundle.ViewRemboursementSinistreLabel_status}"/>
+                        <h:outputText value="#{remboursementSinistreController.selected.status}" title="#{myBundle.ViewRemboursementSinistreTitle_status}"/>
+
+                    	<p:commandButton action="#{remboursementSinistreController.remove}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+           				<p:commandButton action="#{remboursementSinistreController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+           		
+           		</p:panelGrid>
+           		</p:panel>
+            </h:form>
+
+</ui:define>
+    </ui:composition>
+
+</html>

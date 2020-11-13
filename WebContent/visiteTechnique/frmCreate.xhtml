@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <h:outputLabel value="#{myBundle.CreateVisiteTechniqueLabel_ordre}" for="ordre" />
+                        <p:inputText id="ordre" value="#{visiteTechniqueController.nouveau.ordre}" title="#{myBundle.CreateVisiteTechniqueTitle_ordre}"/>
+
+                        <h:outputLabel value="#{myBundle.CreateVisiteTechniqueLabel_dateVisite}" for="dateVisite" />
+                        <p:calendar id="dateVisite" pattern="dd/MM/yyyy" value="#{visiteTechniqueController.nouveau.dateVisite}" title="#{myBundle.CreateVisiteTechniqueTitle_dateVisite}"  showOn="button"/>
+
+                        <h:outputLabel value="#{myBundle.CreateVisiteTechniqueLabel_typeControle}" for="typeControle" />
+                        <p:inputText id="typeControle" value="#{visiteTechniqueController.nouveau.typeControle}" title="#{myBundle.CreateVisiteTechniqueTitle_typeControle}" size="50" maxlength="50"/>
+
+                        <h:outputLabel value="#{myBundle.CreateVisiteTechniqueLabel_dateProchaineVisite}" for="dateProchaineVisite" />
+                        <p:calendar id="dateProchaineVisite" pattern="dd/MM/yyyy" value="#{visiteTechniqueController.nouveau.dateProchaineVisite}" title="#{myBundle.CreateVisiteTechniqueTitle_dateProchaineVisite}"  showOn="button"/>
+
+                        <h:outputLabel value="#{myBundle.CreateVisiteTechniqueLabel_centreVisite}" for="centreVisite" />
+                        <p:inputText id="centreVisite" value="#{visiteTechniqueController.nouveau.centreVisite}" title="#{myBundle.CreateVisiteTechniqueTitle_centreVisite}" size="50" maxlength="50"/>
+
+                        <h:outputLabel value="#{myBundle.CreateVisiteTechniqueLabel_statut}" for="statut" />
+                        <p:inputText id="statut" value="#{visiteTechniqueController.nouveau.status}" title="#{myBundle.CreateVisiteTechniqueTitle_statut}" size="50" maxlength="50"/>
+
+                        <h:outputLabel value="N° Ordre" for="idVehicule" />
+                        <p:selectOneMenu id="idVehicule" value="#{visiteTechniqueController.nouveau.idVehicule}" converter="#{vehiculeConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+							<f:selectItems value="#{vehiculeController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.numeroOrdre}" />
+								<p:column>
+								#{m.numeroOrdre}
+							</p:column>
+							<p:column>
+								#{m.matricule}
+							</p:column>
+							<p:column>
+								#{m.numeroWw}
+							</p:column>
+						</p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton action="#{visiteTechniqueController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+                    <p:commandButton action="#{visiteTechniqueController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                    
+                    </h:panelGroup>
+
+            </h:form>
+</html>

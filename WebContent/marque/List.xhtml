@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+	 <p:panel header="Liste Marques">
+			<p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+			<br />
+			<br />
+			<p:dataTable id="datalist" value="#{marqueController.all}" var="m"
+				rowKey="#{m.id}" paginator="true" rows="10"
+				rowsPerPageTemplate="10,20,30,40,50">
+
+				<p:column sortBy="#{m.id}" filterBy="#{m.id}">
+					<f:facet name="header">
+						<h:outputText value="#{myBundle.ListMarqueTitle_id}" />
+					</f:facet>
+					<h:outputText value="#{m.id}" />
+				</p:column>
+
+				<p:column sortBy="#{m.designation}" filterBy="#{m.designation}">
+					<f:facet name="header">
+						<h:outputText value="#{myBundle.ListMarqueTitle_designation}" />
+					</f:facet>
+					<h:outputText value="#{m.designation}" />
+				</p:column>
+
+				<p:column>
+					<p:commandButton id="showButton"
+						icon="ui-icon-search" action="#{marqueController.toShow()}" >
+						<f:setPropertyActionListener target="#{marqueController.selected}" value="#{m}" />
+					</p:commandButton>
+					<p:commandButton id="editButton"
+						icon="ui-icon-pencil" action="#{marqueController.toEdit()}" >
+						<f:setPropertyActionListener target="#{marqueController.selected}" value="#{m}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

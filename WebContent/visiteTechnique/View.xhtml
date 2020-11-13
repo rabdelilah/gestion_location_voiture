@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <h:outputText value="#{myBundle.ViewVisiteTechniqueLabel_id}"/>
+                        <h:outputText value="#{visiteTechniqueController.selected.id}" title="#{myBundle.ViewVisiteTechniqueTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewVisiteTechniqueLabel_ordre}"/>
+                        <h:outputText value="#{visiteTechniqueController.selected.ordre}" title="#{myBundle.ViewVisiteTechniqueTitle_ordre}"/>
+
+                        <h:outputText value="#{myBundle.ViewVisiteTechniqueLabel_dateVisite}"/>
+                        <h:outputText value="#{visiteTechniqueController.selected.dateVisite}" title="#{myBundle.ViewVisiteTechniqueTitle_dateVisite}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewVisiteTechniqueLabel_typeControle}"/>
+                        <h:outputText value="#{visiteTechniqueController.selected.typeControle}" title="#{myBundle.ViewVisiteTechniqueTitle_typeControle}"/>
+
+                        <h:outputText value="#{myBundle.ViewVisiteTechniqueLabel_dateProchaineVisite}"/>
+                        <h:outputText value="#{visiteTechniqueController.selected.dateProchaineVisite}" title="#{myBundle.ViewVisiteTechniqueTitle_dateProchaineVisite}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewVisiteTechniqueLabel_centreVisite}"/>
+                        <h:outputText value="#{visiteTechniqueController.selected.centreVisite}" title="#{myBundle.ViewVisiteTechniqueTitle_centreVisite}"/>
+
+                        <h:outputText value="#{myBundle.ViewVisiteTechniqueLabel_statut}"/>
+                        <h:outputText value="#{visiteTechniqueController.selected.status}" title="#{myBundle.ViewVisiteTechniqueTitle_statut}"/>
+
+                        <h:outputText value="#{myBundle.ViewVisiteTechniqueLabel_idVehicule}"/>
+                        <h:outputText value="#{visiteTechniqueController.selected.idVehicule.id}"/>
+                    </p:panelGrid>
+                    <p:commandButton action="#{visiteTechniqueController.remove()}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+                    <p:commandButton action="#{visiteTechniqueController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                    
+                    
+                </h:panelGroup>
+
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

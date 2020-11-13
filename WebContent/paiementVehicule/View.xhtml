@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2">
+
+                        <h:outputText value="#{myBundle.ViewPaiementVehiculeLabel_id}"/>
+                        <h:outputText value="#{paiementVehiculeController.selected.id}" title="#{myBundle.ViewPaiementVehiculeTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewPaiementVehiculeLabel_naturePaiement}"/>
+                        <h:outputText value="#{paiementVehiculeController.selected.naturePaiement}" title="#{myBundle.ViewPaiementVehiculeTitle_naturePaiement}"/>
+
+                        <h:outputText value="#{myBundle.ViewPaiementVehiculeLabel_montant}"/>
+                        <h:outputText value="#{paiementVehiculeController.selected.montant}" title="#{myBundle.ViewPaiementVehiculeTitle_montant}"/>
+
+                        <h:outputText value="#{myBundle.ViewPaiementVehiculeLabel_numeroCheque}"/>
+                        <h:outputText value="#{paiementVehiculeController.selected.numeroCheque}" title="#{myBundle.ViewPaiementVehiculeTitle_numeroCheque}"/>
+
+                        <h:outputText value="#{myBundle.ViewPaiementVehiculeLabel_banque}"/>
+                        <h:outputText value="#{paiementVehiculeController.selected.banque}" title="#{myBundle.ViewPaiementVehiculeTitle_banque}"/>
+
+                        <h:outputText value="#{myBundle.ViewPaiementVehiculeLabel_dateCheque}"/>
+                        <h:outputText value="#{paiementVehiculeController.selected.dateCheque}" title="#{myBundle.ViewPaiementVehiculeTitle_dateCheque}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewPaiementVehiculeLabel_idVehicule}"/>
+                        <h:outputText value="#{paiementVehiculeController.selected.idVehicule.id}"/>
+                    </p:panelGrid>
+                    <p:commandButton action="#{paiementVehiculeController.remove()}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+                    <p:commandButton action="#{paiementVehiculeController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                     
+                </h:panelGroup>
+
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

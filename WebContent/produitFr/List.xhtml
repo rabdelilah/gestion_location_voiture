@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+	<p:panel header="Produit Fournisseur">
+			<p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+			<br />
+			<br />
+			<p:dataTable id="datalist" value="#{produitFrController.all}" var="p"
+				rowKey="#{p.id}" paginator="true" rows="10"
+				rowsPerPageTemplate="10,20,30,40,50">
+
+				<p:column sortBy="#{p.id}" filterBy="#{p.id}">
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+					<h:outputText value="#{p.id}" />
+				</p:column>
+
+				<p:column sortBy="#{p.fournisseur.raisonSocial}" filterBy="#{p.fournisseur.raisonSocial}">
+					<f:facet name="header">
+						<h:outputText value="Fournisseur" />
+					</f:facet>
+					<h:outputText value="#{p.fournisseur.raisonSocial}" />
+				</p:column>
+				
+				<p:column sortBy="#{p.produit.designation}" filterBy="#{p.produit.designation}">
+					<f:facet name="header">
+						<h:outputText value="Produit" />
+					</f:facet>
+					<h:outputText value="#{p.produit.designation}" />
+				</p:column>
+
+				<p:column>
+					<p:commandButton id="showButton"
+						icon="ui-icon-search" action="#{produitFrController.toShow()}" >
+						<f:setPropertyActionListener target="#{produitFrController.selected}" value="#{p}" />
+					</p:commandButton>
+					<p:commandButton id="editButton"
+						icon="ui-icon-pencil" action="#{produitFrController.toEdit()}" >
+						<f:setPropertyActionListener target="#{produitFrController.selected}" value="#{p}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

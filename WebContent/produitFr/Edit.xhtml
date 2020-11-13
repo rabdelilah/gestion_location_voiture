@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form >
+
+        <p:panel header="Produit Fournisseur">
+
+			<p:panelGrid columns="2" columnClasses="column">
+				 <p:outputLabel value="Fournisseur :" for="idFrs" />
+                        <p:selectOneMenu id="idFrs" value="#{produitFrController.selected.fournisseur}" converter="#{fournisseurConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="f" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{fournisseurController.all}" var="idFrsItem" itemValue="#{idFrsItem}" itemLabel="#{idFrsItem.raisonSocial}" />
+					<p:column>
+						#{f.id}
+					</p:column>
+					<p:column>
+						#{f.raisonSocial}
+					</p:column>
+					</p:selectOneMenu>
+ 				<p:outputLabel value="Produit :" for="idProduit" />
+                        <p:selectOneMenu id="idProduit" value="#{produitFrController.selected.produit}" converter="#{produitConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="p" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{produitController.all}" var="idProduitItem" itemValue="#{idProduitItem}" itemLabel="#{idProduitItem.designation}" />
+					<p:column>
+						#{p.id}
+					</p:column>
+					<p:column>
+						#{p.designation}
+					</p:column>
+					</p:selectOneMenu>
+           		<p:commandButton action="#{produitFrController.edit}" icon="ui-icon-disk" value="#{myBundle.Save}"/>
+           		<p:commandButton action="#{produitFrController.toList}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+           		
+            </p:panelGrid>
+            
+        </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

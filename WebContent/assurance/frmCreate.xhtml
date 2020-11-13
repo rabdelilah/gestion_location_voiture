@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_numeroOrdre}" for="numeroOrdre" />
+                    <p:inputText id="numeroOrdre" value="#{assuranceController.nouveau.numeroOrdre}" title="#{bundle.CreateAssuranceTitle_numeroOrdre}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_numeroPolice}" for="numeroPolice" />
+                    <p:inputText id="numeroPolice" value="#{assuranceController.nouveau.numeroPolice}" title="#{bundle.CreateAssuranceTitle_numeroPolice}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_intermediaire}" for="intermediaire" />
+                    <p:inputText id="intermediaire" value="#{assuranceController.nouveau.intermediaire}" title="#{bundle.CreateAssuranceTitle_intermediaire}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_dateDebutGarantie}" for="dateDebutGarantie" />
+                    <p:calendar id="dateDebutGarantie" value="#{assuranceController.nouveau.dateDebutGarantie}" 
+                                 title="#{bundle.CreateAssuranceTitle_dateDebutGarantie}" 
+                                 pattern="MM/dd/yyyy" showOn="button"
+                                 required="true" requiredMessage="#{bundle.CreateAssuranceRequiredMessage_dateDebutGarantie}">
+                    </p:calendar>
+                    
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_heureDebutGarantie}" for="heureDebutGarantie" />
+                    <p:inputText id="heureDebutGarantie" value="#{assuranceController.nouveau.heureDebutGarantie}" title="#{bundle.CreateAssuranceTitle_heureDebutGarantie}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_dateFinGarantie}" for="dateFinGarantie" />
+                    <p:calendar id="dateFinGarantie" value="#{assuranceController.nouveau.dateFinGarantie}" 
+                                title="#{bundle.CreateAssuranceTitle_dateFinGarantie}" 
+                                pattern="MM/dd/yyyy" showOn="button"
+                                required="true" requiredMessage="#{bundle.CreateAssuranceRequiredMessage_dateFinGarantie}">
+                    </p:calendar>
+                    
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_heureFinGarantie}" for="heureFinGarantie" />
+                    <p:inputText id="heureFinGarantie" value="#{assuranceController.nouveau.heureFinGarantie}" title="#{bundle.CreateAssuranceTitle_heureFinGarantie}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_duree}" for="duree" />
+                    <p:selectOneMenu id="duree"
+							value="#{assuranceController.nouveau.duree}" >
+							<f:selectItem itemLabel="#{myBundle.SelectOneMessage}" />
+							<f:selectItems value="#{assuranceController.duree}"
+								var="item" itemValue="#{item}" itemLabel="#{item}" />
+						</p:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_periodicite}" for="periodicite" />
+                    <p:inputText id="periodicite" value="#{assuranceController.nouveau.periodicite}" title="#{bundle.CreateAssuranceTitle_periodicite}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_idCompagnieAssurance}" for="idCompagnieAssurance" />
+                    <p:selectOneMenu id="idCompagnieAssurance" value="#{assuranceController.nouveau.idCompagnieAssurance}" converter="#{compagnieAssuranceConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+						<f:selectItems value="#{compagnieAssuranceController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.raisonsociale}" />
+						<p:column>
+							#{m.raisonsociale}
+						</p:column>
+						<p:column>
+							#{m.registreCommerce}
+						</p:column>
+					</p:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateAssuranceLabel_idVehicule}" for="idVehicule" />
+                     <p:selectOneMenu id="idVehicule" value="#{assuranceController.nouveau.idVehicule}" converter="#{vehiculeConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+						<f:selectItems value="#{vehiculeController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.numeroOrdre}" />
+							<p:column>
+								#{m.numeroOrdre}
+							</p:column>
+							<p:column>
+								#{m.matricule}
+							</p:column>
+							<p:column>
+								#{m.numeroWw}
+							</p:column>
+					</p:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <p:commandButton action="#{assuranceController.add}" icon="ui-icon-disk" value="#{bundle.CreateAssuranceSaveLink}" />
+           		<p:commandButton action="#{assuranceController.toList()}" icon="ui-icon-" value="#{bundle.Cancel}"/>
+            </h:form>
+</html>

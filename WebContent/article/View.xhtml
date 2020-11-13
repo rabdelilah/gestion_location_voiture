@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+           <p:panel header="Article">
+           <p:panelGrid columns="2" columnClasses="column">
+				<h:outputLabel value="Désignation :"
+					for="designation" />
+				<h:outputLabel id="designation"
+					value="#{articleController.selected.designation}"
+					title="Désignation" size="50"
+					maxlength="50" />
+					 <p:outputLabel value="Produit" />
+                        <h:outputLabel id="produit"
+					value="#{articleController.selected.produit.designation}"
+					title="produit" size="50"
+					maxlength="50" />
+				<h:outputLabel value="Prix unitaire :"
+					for="prixUnitaire" />
+				<h:outputLabel id="prixUnitaire"
+					value="#{articleController.selected.prixUnitaire}"
+					title="prixUnitaire" size="50"
+					maxlength="50" />
+					<h:outputLabel value="Taux Tva :"
+					for="tauxTva" />
+				<h:outputLabel id="tauxTva"
+					value="#{articleController.selected.tauxTva}"
+					title="taux Tva" size="50"
+					maxlength="50" />
+           		<p:commandButton action="#{articleController.remove}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+           		<p:commandButton action="#{articleController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+           		
+            </p:panelGrid>
+         </p:panel>   
+    </h:form>
+    
+</ui:define>
+</ui:composition>
+</html>

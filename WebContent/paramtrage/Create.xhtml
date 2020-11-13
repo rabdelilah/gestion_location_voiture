@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui" >
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form id="MarqueListForm">
+
+        <p:panel header="Parametrage">
+           
+            <p:panelGrid columns="2" columnClasses="column">
+            <p:outputLabel value="var_name" for="var_name" />
+            	<p:inputText id="var_name" value="#{parametrageController.nouveau.varName}" title="var_name" size="100" maxlength="100"/>
+           	
+                <p:outputLabel value="designation" for="designation" />
+            	<p:inputText id="designation" value="#{parametrageController.nouveau.designation}" title="designation" size="100" maxlength="100"/>
+           	
+           		<p:outputLabel value="commentaire" for="commentaire" />
+            	<p:inputText id="commentaire" value="#{parametrageController.nouveau.commantaire}" title="commentaire" size="100" maxlength="100"/>
+           	
+           		<p:commandButton action="#{parametrageController.add}" icon="ui-icon-disk" value="Enregistrer"/>
+           		<p:commandButton action="#{parametrageController.toList()}" icon="ui-icon-" value="Annuler"/>
+            
+            </p:panelGrid>
+            
+        </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

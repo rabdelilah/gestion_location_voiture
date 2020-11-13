@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="PersonnelEditForm">
+
+                <p:panel header="#{myBundle.EditPersonnelTitle}"> 
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{personnelController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditPersonnelLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{personnelController.selected.id}" />
+
+                        <p:outputLabel value="#{myBundle.EditPersonnelLabel_nom}" for="nom" />
+                        <p:inputText id="nom" value="#{personnelController.selected.nom}" title="#{myBundle.EditPersonnelTitle_nom}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditPersonnelLabel_prenom}" for="prenom" />
+                        <p:inputText id="prenom" value="#{personnelController.selected.prenom}" title="#{myBundle.EditPersonnelTitle_prenom}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditPersonnelLabel_matricule}" for="matricule" />
+                        <p:inputText id="matricule" value="#{personnelController.selected.matricule}" title="#{myBundle.EditPersonnelTitle_matricule}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditPersonnelLabel_fonction}" for="fonction" />
+                        <p:inputText id="fonction" value="#{personnelController.selected.fonction}" title="#{myBundle.EditPersonnelTitle_fonction}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditPersonnelLabel_status}" for="status" />
+                        <p:inputText id="status" value="#{personnelController.selected.status}" title="#{myBundle.EditPersonnelTitle_status}" size="50" maxlength="50"/>
+
+                        <!--  <p:outputLabel value="#{myBundle.EditPersonnelLabel_idSociete}" for="idSociete" />
+                        <p:inputText id="idSociete" value="#{personnelController.selected.idSociete}" title="#{myBundle.EditPersonnelTitle_idSociete}"/>
+                   -->
+                    </p:panelGrid>
+                     <p:commandButton action="#{personnelController.edit()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+                    <p:commandButton action="#{personnelController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                   
+               </p:panel>
+
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
+
+</html>

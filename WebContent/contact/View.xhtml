@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="ContactViewForm">
+
+                  <p:panel header="#{myBundle.ViewContactTitle}"> 
+                            <p:panelGrid columns="4" style="width:90%;">
+                                
+                                <h:outputText value="#{myBundle.ViewContactLabel_id}"/>
+                                <h:outputText value="#{contactController.selected.id}" title="#{myBundle.ViewContactTitle_id}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_etat}"/>
+                                <h:outputText value="#{contactController.selected.etat}" title="#{myBundle.ViewContactTitle_etat}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_type}"/>
+                                <h:outputText value="#{contactController.selected.type}" title="#{myBundle.ViewContactTitle_type}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_cin}"/>
+                                <h:outputText value="#{contactController.selected.cin}" title="#{myBundle.ViewContactTitle_cin}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_raisonsociale}"/>
+                                <h:outputText value="#{contactController.selected.raisonsociale}" title="#{myBundle.ViewContactTitle_raisonsociale}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_nom}"/>
+                                <h:outputText value="#{contactController.selected.nom}" title="#{myBundle.ViewContactTitle_nom}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_prenom}"/>
+                                <h:outputText value="#{contactController.selected.prenom}" title="#{myBundle.ViewContactTitle_prenom}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_numpermispasseport}"/>
+                                <h:outputText value="#{contactController.selected.numpermispasseport}" title="#{myBundle.ViewContactTitle_numpermispasseport}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_dateEmission}"/>
+                                <h:outputText value="#{contactController.selected.dateEmission}" title="#{myBundle.ViewContactTitle_dateEmission}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_lieuEmission}"/>
+                                <h:outputText value="#{contactController.selected.lieuEmission}" title="#{myBundle.ViewContactTitle_lieuEmission}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_typeContact}"/>
+                                <h:outputText value="#{contactController.selected.typeContact}" title="#{myBundle.ViewContactTitle_typeContact}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_typePiece}"/>
+                                <h:outputText value="#{contactController.selected.typePiece}" title="#{myBundle.ViewContactTitle_typePiece}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_tel}"  />
+                                <h:outputText value="#{contactController.selected.tel}" title="#{myBundle.ViewContactTitle_tel}" />
+
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_adresse}"/>
+                                <h:outputText value="#{contactController.selected.adresse}" title="#{myBundle.ViewContactTitle_adresse}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_nationalite}"/>
+                                <h:outputText value="#{contactController.selected.nationalite}" title="#{myBundle.ViewContactTitle_nationalite}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_rc}"/>
+                                <h:outputText value="#{contactController.selected.rc}" title="#{myBundle.ViewContactTitle_rc}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_ncnss}"/>
+                                <h:outputText value="#{contactController.selected.ncnss}" title="#{myBundle.ViewContactTitle_ncnss}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_patente}"/>
+                                <h:outputText value="#{contactController.selected.patente}" title="#{myBundle.ViewContactTitle_patente}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_contact}"/>
+                                <h:outputText value="#{contactController.selected.contact}" title="#{myBundle.ViewContactTitle_contact}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_email}"/>
+                                <h:outputText value="#{contactController.selected.email}" title="#{myBundle.ViewContactTitle_email}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_fax}"/>
+                                <h:outputText value="#{contactController.selected.fax}" title="#{myBundle.ViewContactTitle_fax}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_idSociete}"/>
+                                <h:outputText value="#{contactController.selected.idSociete}" title="#{myBundle.ViewContactTitle_idSociete}"/>
+
+                                <h:outputText value="#{myBundle.ViewContactLabel_idPersonnel}"/>
+                                <h:outputText value="#{contactController.selected.idPersonnel.id}"/>
+                                
+                                <h:inputHidden value="hidden" />
+                                <h:inputHidden value="hidden" />
+                            </p:panelGrid>
+                            
+		                    <p:commandButton action="#{contactController.remove()}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+		                    <p:commandButton action="#{contactController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+               </p:panel>
+
+            </h:form>
+
+       </ui:define>
+
+    </ui:composition>
+
+</html>

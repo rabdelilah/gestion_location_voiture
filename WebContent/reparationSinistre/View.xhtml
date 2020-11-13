@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	
+            <h:form id="ReparationSinistreViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{reparationSinistreController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_id}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.id}" title="#{myBundle.ViewReparationSinistreTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_dateDeportReparation}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.dateDeportReparation}" title="#{myBundle.ViewReparationSinistreTitle_dateDeportReparation}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_prestataire}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.prestataire}" title="#{myBundle.ViewReparationSinistreTitle_prestataire}"/>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_montantReparationReel}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.montantReparationReel}" title="#{myBundle.ViewReparationSinistreTitle_montantReparationReel}"/>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_descriptionTravaux}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.descriptionTravaux}" title="#{myBundle.ViewReparationSinistreTitle_descriptionTravaux}"/>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_datePrevueRecuperationVehicule}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.datePrevueRecuperationVehicule}" title="#{myBundle.ViewReparationSinistreTitle_datePrevueRecuperationVehicule}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_dateRelleRecuperationVehicule}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.dateRelleRecuperationVehicule}" title="#{myBundle.ViewReparationSinistreTitle_dateRelleRecuperationVehicule}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_nbreJoursImmobilisations}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.nbreJoursImmobilisations}" title="#{myBundle.ViewReparationSinistreTitle_nbreJoursImmobilisations}"/>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_referenceFacturePrestataire}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.referenceFacturePrestataire}" title="#{myBundle.ViewReparationSinistreTitle_referenceFacturePrestataire}"/>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_montant}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.montant}" title="#{myBundle.ViewReparationSinistreTitle_montant}"/>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_dateReglement}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.dateReglement}" title="#{myBundle.ViewReparationSinistreTitle_dateReglement}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_observation}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.observation}" title="#{myBundle.ViewReparationSinistreTitle_observation}"/>
+
+                        <h:outputText value="#{myBundle.ViewReparationSinistreLabel_idSinistre}"/>
+                        <h:outputText value="#{reparationSinistreController.selected.sinistre.id}"/>
+                    	
+                    	<p:commandButton action="#{reparationSinistreController.remove}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+           				<p:commandButton action="#{reparationSinistreController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+           		
+                    </p:panelGrid>
+                </h:panelGroup>
+
+            </h:form>
+
+	</ui:define>
+    </ui:composition>
+
+</html>

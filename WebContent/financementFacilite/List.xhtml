@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+
+		<p:panel header="#{myBundle.ListFinancementFaciliteTitle}">
+			<p:commandButton id="addButton" icon="ui-icon-disk"
+				action="Create.xhtml" value="Nouveau" />
+			<br />
+			<br />
+			<p:dataTable id="datalist"
+				value="#{financementFaciliteController.all}" var="item"
+				rowKey="#{item.id}" paginator="true" rows="10"
+				rowsPerPageTemplate="10,20,30,40,50">
+
+
+				<p:column sortBy="#{item.id}" filterBy="#{item.id}">
+					<f:facet name="header">
+						<h:outputText value="#{myBundle.ListFinancementFaciliteTitle_id}" />
+					</f:facet>
+					<h:outputText value="#{item.id}" />
+				</p:column>
+
+
+				<p:column sortBy="#{item.montantFacilite}"
+					filterBy="#{item.montantFacilite}">
+					<f:facet name="header">
+						<h:outputText
+							value="#{myBundle.ListFinancementFaciliteTitle_montantFacilite}" />
+					</f:facet>
+					<h:outputText value="#{item.montantFacilite}" />
+				</p:column>
+
+
+				<p:column sortBy="#{item.nbreEcheanceFacilite}"
+					filterBy="#{item.nbreEcheanceFacilite}">
+					<f:facet name="header">
+						<h:outputText
+							value="#{myBundle.ListFinancementFaciliteTitle_nbreEcheanceFacilite}" />
+					</f:facet>
+					<h:outputText value="#{item.nbreEcheanceFacilite}" />
+				</p:column>
+
+
+				<p:column sortBy="#{item.date1ereEcheanceFacilite}"
+					filterBy="#{item.date1ereEcheanceFacilite}">
+					<f:facet name="header">
+						<h:outputText
+							value="#{myBundle.ListFinancementFaciliteTitle_date1ereEcheanceFacilite}" />
+					</f:facet>
+					<h:outputText value="#{item.date1ereEcheanceFacilite}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+
+				<p:column sortBy="#{item.idVehicule.numeroOrdre}"
+					filterBy="#{item.idVehicule.numeroOrdre}">
+					<f:facet name="header">
+						<h:outputText
+							value="#{myBundle.ListFinancementFaciliteTitle_idVehicule}" />
+					</f:facet>
+					<h:outputText value="#{item.idVehicule.numeroOrdre}" />
+				</p:column>
+
+
+				<p:column>
+					<p:commandButton id="deleteButton"
+						icon="ui-icon-search"
+						action="#{financementFaciliteController.toShow()}"
+						>
+						<f:setPropertyActionListener
+							target="#{financementFaciliteController.selected}"
+							value="#{item}" />
+					</p:commandButton>
+					<p:commandButton id="editButton"
+						icon="ui-icon-pencil"
+						action="#{financementFaciliteController.toEdit()}"
+						>
+						<f:setPropertyActionListener
+							target="#{financementFaciliteController.selected}"
+							value="#{item}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+
+		</p:panel>
+
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

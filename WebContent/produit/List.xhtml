@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+	<h:form>
+	 <p:panel header="Liste Produits">
+			<p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+			<br />
+			<br />
+			<p:dataTable id="datalist" value="#{produitController.all}" var="p"
+				rowKey="#{p.id}" paginator="true" rows="10"
+				rowsPerPageTemplate="10,20,30,40,50">
+
+				<p:column sortBy="#{p.id}" filterBy="#{p.id}">
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+					<h:outputText value="#{p.id}" />
+				</p:column>
+
+				<p:column sortBy="#{p.designation}" filterBy="#{p.designation}">
+					<f:facet name="header">
+						<h:outputText value="Désignation" />
+					</f:facet>
+					<h:outputText value="#{p.designation}" />
+				</p:column>
+				<p:column sortBy="#{p.gamme}" filterBy="#{p.gamme}">
+					<f:facet name="header">
+						<h:outputText value="Gamme" />
+					</f:facet>
+					<h:outputText value="#{p.gamme}" />
+				</p:column>
+				<p:column sortBy="#{p.marque}" filterBy="#{p.marque}">
+					<f:facet name="header">
+						<h:outputText value="Marque" />
+					</f:facet>
+					<h:outputText value="#{p.marque}" />
+				</p:column>
+				<p:column>
+					<p:commandButton id="showButton"
+						icon="ui-icon-search" action="#{produitController.toShow()}" >
+						<f:setPropertyActionListener target="#{produitController.selected}" value="#{p}" />
+					</p:commandButton>
+					<p:commandButton id="editButton"
+						icon="ui-icon-pencil" action="#{produitController.toEdit()}" >
+						<f:setPropertyActionListener target="#{produitController.selected}" value="#{p}" />
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

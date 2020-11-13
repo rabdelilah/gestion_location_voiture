@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="glvPU" transaction-type="JTA">
+    <jta-data-source>java:jboss/datasources/glv</jta-data-source>
+    <class>entity.Assurance</class>
+    <class>entity.CompagnieAssurance</class>
+    <class>entity.Contact</class>
+    <class>entity.ContratLcd</class>
+    <class>entity.ContratLcdProlongation</class>
+    <class>entity.ContratLld</class>
+    <class>entity.Financement</class>
+    <class>entity.FinancementFacilite</class>
+    <class>entity.Ged</class>
+    <class>entity.Marque</class>
+    <class>entity.OffreLcd</class>
+    <class>entity.OffreLld</class>
+    <class>entity.PaiementVehicule</class>
+    <class>entity.Parametrage</class>
+    <class>entity.Personnel</class>
+    <class>entity.Reservation</class>
+    <class>entity.Societe</class>
+    <class>entity.TermeGarantieAssurance</class>
+    <class>entity.TypeGarantie</class>
+    <class>entity.TypeMarque</class>
+    <class>entity.Utilisateur</class>
+    <class>entity.Vehicule</class>
+    <class>entity.VisiteTechnique</class>
+    <class>entity.Article</class>
+    <class>entity.CommandeFr</class>
+    <class>entity.ContactFr</class>
+    <class>entity.DetailCmdFr</class>
+    <class>entity.Fournisseur</class>
+    <class>entity.Produit</class>
+    <class>entity.ProduitFr</class>
+    <class>entity.DossierSinistre</class>
+    <class>entity.RemboursementSinistre</class>
+    <class>entity.ReparationSinistre</class>
+    <class>entity.Sinistre</class>
+    <properties/>
+  </persistence-unit>
+</persistence>

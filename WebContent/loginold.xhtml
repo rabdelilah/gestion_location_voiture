@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl"
+ 	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>SimpleAdmin</title>
+<link rel="stylesheet" type="text/css" href="../css/login.css" media="screen" />
+</h:head>
+<body>
+<div class="wrap">
+	<div id="content">
+		<div id="main">
+			<div class="full_w">
+				<h:form>
+					<label for="login">Login :</label>
+					<h:inputText value="#{utilisateurController.selected.login}" styleClass="text" placeholder="Username"/>
+					
+					<label for="pass">Mot de passe:</label>
+					<h:inputSecret value="#{utilisateurController.selected.pwd}" styleClass="text" placeholder="Password" />
+					
+					<p:commandButton  styleClass="ok" id="loginButton" value="Authentification" icon="ui-icon-refresh" action="#{utilisateurController.connecte}" />
+				</h:form>
+			</div>
+			<div class="footer">&raquo; <a href="#">Regency Car</a> | Gestion Location Voiture</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTermeGarantieAssuranceLabel_id}"/>
+                    <h:outputText value="#{termeGarantieAssuranceController.selected.id}" title="#{bundle.ViewTermeGarantieAssuranceTitle_id}"/>
+                    
+                    <h:outputText value="#{bundle.ViewTermeGarantieAssuranceLabel_idAssurance}"/>
+                    <h:outputText value="#{termeGarantieAssuranceController.selected.idAssurance.id}" title="#{bundle.ViewTermeGarantieAssuranceTitle_idAssurance}"/>
+                    
+                    <h:outputText value="#{bundle.ViewTermeGarantieAssuranceLabel_idTypeGarantie}"/>
+                    <h:outputText value="#{termeGarantieAssuranceController.selected.idTypeGarantie.designation}" title="#{bundle.ViewTermeGarantieAssuranceTitle_idTypeGarantie}"/>
+                    
+                    <h:outputText value="#{bundle.ViewTermeGarantieAssuranceLabel_franchise}"/>
+                    <h:outputText value="#{termeGarantieAssuranceController.selected.franchise}" title="#{bundle.ViewTermeGarantieAssuranceTitle_franchise}"/>
+                    
+                    <h:outputText value="#{bundle.ViewTermeGarantieAssuranceLabel_observations}"/>
+                    <h:outputText value="#{termeGarantieAssuranceController.selected.observations}" title="#{bundle.ViewTermeGarantieAssuranceTitle_observations}"/>
+                </h:panelGrid>
+                <p:commandButton action="#{termeGarantieAssuranceController.remove()}" icon="ui-icon-trash" value="#{bundle.Delete}" />
+            	 <p:commandButton action="#{termeGarantieAssuranceController.toList()}" icon="ui-icon-" value="#{bundle.Cancel}"/>
+
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

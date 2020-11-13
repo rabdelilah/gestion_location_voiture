@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+           <h:form>
+
+                 <p:panel header="#{myBundle.CreateReservationTitle}">
+                    <p:panelGrid columns="4" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_numeroJeton}" for="numeroJeton" />
+                        <p:inputText id="numeroJeton" value="#{reservationController.nouveau.numeroJeton}" title="#{myBundle.CreateReservationTitle_numeroJeton}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_typeLocation}" for="typeLocation" />
+                        <p:inputText id="typeLocation" value="#{reservationController.nouveau.typeLocation}" title="#{myBundle.CreateReservationTitle_typeLocation}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_typeCarburant}" for="typeCarburant" />
+                        <p:inputText id="typeCarburant" value="#{reservationController.nouveau.typeCarburant}" title="#{myBundle.CreateReservationTitle_typeCarburant}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_modeReservation}" for="modeReservation" />
+                        <p:inputText id="modeReservation" value="#{reservationController.nouveau.modeReservation}" title="#{myBundle.CreateReservationTitle_modeReservation}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_dateDebutReservation}" for="dateDebutReservation" />
+                        <p:calendar id="dateDebutReservation" pattern="dd/MM/yyyy" value="#{reservationController.nouveau.dateDebutReservation}" title="#{myBundle.CreateReservationTitle_dateDebutReservation}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_heureDebutReservation}" for="heureDebutReservation" />
+                        <p:inputText id="heureDebutReservation" value="#{reservationController.nouveau.heureDebutReservation}" title="#{myBundle.CreateReservationTitle_heureDebutReservation}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_dateFinReservation}" for="dateFinReservation" />
+                        <p:calendar id="dateFinReservation" pattern="dd/MM/yyyy" value="#{reservationController.nouveau.dateFinReservation}" title="#{myBundle.CreateReservationTitle_dateFinReservation}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_heureFinReservation}" for="heureFinReservation" />
+                        <p:inputText id="heureFinReservation" value="#{reservationController.nouveau.heureFinReservation}" title="#{myBundle.CreateReservationTitle_heureFinReservation}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_duree}" for="duree" />
+                        <p:inputText id="duree" value="#{reservationController.nouveau.duree}" title="#{myBundle.CreateReservationTitle_duree}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_status}" for="status" />
+                        <p:inputText id="status" value="#{reservationController.nouveau.status}" title="#{myBundle.CreateReservationTitle_status}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_miseadisposition}" for="miseadisposition" />
+                        <p:inputText id="miseadisposition" value="#{reservationController.nouveau.miseadisposition}" title="#{myBundle.CreateReservationTitle_miseadisposition}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_lieuMiseADisposition}" for="lieuMiseADisposition" />
+                        <p:inputText id="lieuMiseADisposition" value="#{reservationController.nouveau.lieuMiseADisposition}" title="#{myBundle.CreateReservationTitle_lieuMiseADisposition}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_villeMiseADisposition}" for="villeMiseADisposition" />
+                        <p:inputText id="villeMiseADisposition" value="#{reservationController.nouveau.villeMiseADisposition}" title="#{myBundle.CreateReservationTitle_villeMiseADisposition}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_motif}" for="motif" />
+                        <p:inputText id="motif" value="#{reservationController.nouveau.motif}" title="#{myBundle.CreateReservationTitle_motif}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_commentaires}" for="commentaires" />
+                        <p:inputText id="commentaires" value="#{reservationController.nouveau.commentaires}" title="#{myBundle.CreateReservationTitle_commentaires}"   />
+
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_idTypeMarque}" for="idTypeMarque" />
+<p:selectOneMenu id="idTypeMarque" value="#{reservationController.nouveau.idTypeMarque}" converter="#{typeMarqueConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="t" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{typeMarqueController.all}" var="idTypeMarqueItem" itemValue="#{idTypeMarqueItem}" itemLabel="#{idTypeMarqueItem.designation}" />
+					<p:column>
+						#{t.id}
+					</p:column>
+					<p:column>
+						#{t.designation}
+					</p:column>
+				</p:selectOneMenu>
+				
+                        <p:outputLabel value="#{myBundle.CreateReservationLabel_idContact}" for="idContact" />
+                        <p:selectOneMenu id="idContact" value="#{reservationController.nouveau.idContact}" converter="#{contactConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactController.all}" var="idContactItem" itemValue="#{idContactItem}" itemLabel="#{idContactItem.nom} - #{idContactItem.prenom}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.nom} #{c.prenom}
+					</p:column>
+				</p:selectOneMenu>
+                        
+                    </p:panelGrid>
+                       <p:commandButton action="#{reservationController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+                    <p:commandButton action="#{reservationController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                    
+                </p:panel>
+
+            </h:form>
+
+</ui:define>
+    </ui:composition>
+    </html>
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+    <h:form id="PersonnelListForm">
+                    
+                   
+                   
+        <p:panel header="#{myBundle.ListPersonnelTitle}">
+        
+                    <br />
+						<p:commandButton id="addButton" icon="ui-icon-disk"
+							action="Create.xhtml" value="Nouveau" />
+						<br />
+						<br />
+            <p:dataTable id="datalist"
+                         value="#{personnelController.all}"
+                         var="item"
+                         rowKey="#{item.id}"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         >
+
+               
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonnelTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nom}" filterBy="#{item.nom}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonnelTitle_nom}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nom}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.prenom}" filterBy="#{item.prenom}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonnelTitle_prenom}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.prenom}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.matricule}" filterBy="#{item.matricule}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonnelTitle_matricule}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.matricule}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.fonction}" filterBy="#{item.fonction}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonnelTitle_fonction}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fonction}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.status}" filterBy="#{item.status}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListPersonnelTitle_status}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.status}"/>
+                </p:column>
+
+                <!--
+                                    <p:column sortBy="#{item.idSociete}" filterBy="#{item.idSociete}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListPersonnelTitle_idSociete}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSociete}"/>
+                                    </p:column>
+                -->
+               <p:column>
+					<p:commandButton id="deleteButton" icon="ui-icon-search" action="#{personnelController.toShow()}" >
+                		<f:setPropertyActionListener target="#{personnelController.selected}" value="#{item}"/>
+            		</p:commandButton>
+					<p:commandButton id="editButton" icon="ui-icon-pencil" action="#{personnelController.toEdit()}" >
+                		<f:setPropertyActionListener target="#{personnelController.selected}" value="#{item}"/>
+            		</p:commandButton>
+               </p:column>
+            </p:dataTable>
+
+            
+
+        </p:panel>
+        
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

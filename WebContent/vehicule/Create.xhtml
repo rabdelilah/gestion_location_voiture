@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+
+		<h:panelGroup>
+			<p:tabView>
+
+				<p:tab title="Caractéristique">
+					<p:panelGrid columns="4" columnClasses="column">
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_numeroOrdre}" for="numeroOrdre" />
+						<p:inputText id="numeroOrdre" value="#{vehiculeController.nouveau.numeroOrdre}" title="#{myBundle.CreateVehiculeTitle_numeroOrdre}" />
+
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_numeroSerie}" for="numeroSerie" />
+						<p:inputText id="numeroSerie"
+							value="#{vehiculeController.nouveau.numeroSerie}"
+							title="#{myBundle.CreateVehiculeTitle_numeroSerie}" />
+						
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_matricule}"
+							for="matricule" />
+						<p:inputText id="matricule"
+							value="#{vehiculeController.nouveau.matricule}"
+							title="#{myBundle.CreateVehiculeTitle_matricule}" />
+						
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_couleur}"
+							for="couleur" />
+						<p:colorPicker id="couleur"
+							value="#{vehiculeController.nouveau.couleur}"
+							title="#{myBundle.CreateVehiculeTitle_couleur}" />
+
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_numeroWw}" for="numeroWw" />
+						<p:inputText id="numeroWw"
+							value="#{vehiculeController.nouveau.numeroWw}"
+							title="#{myBundle.CreateVehiculeTitle_numeroWw}" />
+							
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_dimension}"
+							for="dimension" />
+						<p:inputText id="dimension"
+							value="#{vehiculeController.nouveau.dimension}"
+							title="#{myBundle.CreateVehiculeTitle_dimension}" />
+
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_chargeMax}"
+							for="chargeMax" />
+						<p:inputText id="chargeMax"
+							value="#{vehiculeController.nouveau.chargeMax}"
+							title="#{myBundle.CreateVehiculeTitle_chargeMax}" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_consommationMixte}"
+							for="consommationMixte" />
+						<p:inputText id="consommationMixte"
+							value="#{vehiculeController.nouveau.consommationMixte}"
+							title="#{myBundle.CreateVehiculeTitle_consommationMixte}" />
+						
+						<h:outputLabel
+							value="Nombre Cylindre"
+							for="nbre_cylindre" />
+						<p:inputText id="nbre_cylindre"
+							value="#{vehiculeController.nouveau.nbre_cylindre}"
+							title="Nombre Cylindre" />
+						
+						<h:outputLabel
+							value="Puissance Fiscale"
+							for="puissance_fiscale" />
+						<p:inputText id="puissance_fiscale"
+							value="#{vehiculeController.nouveau.puissance_fiscale}"
+							title="Puissance Fiscale" />
+						
+						<h:outputLabel
+							value="Boite Automatique"
+							for="boite_automatique" />
+						<p:selectOneMenu id="boite_automatique"
+							value="#{vehiculeController.nouveau.boite_automatique}" >
+							<f:selectItem itemLabel="#{myBundle.SelectOneMessage}" />
+							<f:selectItems value="#{vehiculeController.boite_automatique}"
+								var="boite" itemValue="#{boite}" itemLabel="#{boite}" />
+						</p:selectOneMenu>
+						
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_carburantUtilise}"
+							for="carburantUtilise" />
+						<p:inputText id="carburantUtilise"
+							value="#{vehiculeController.nouveau.carburantUtilise}"
+							title="#{myBundle.CreateVehiculeTitle_carburantUtilise}" />
+							
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_idTypeMarque}"
+							for="idTypeMarque" />
+						 <p:selectOneMenu id="idTypeMarque" value="#{vehiculeController.nouveau.idTypeMarque}" converter="#{typeMarqueConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+							<f:selectItems value="#{typeMarqueController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.designation}" />
+								<p:column>
+									#{m.designation}
+								</p:column>
+						</p:selectOneMenu>
+						
+						<h:outputLabel value="#{myBundle.CreateVehiculeLabel_status}"
+							for="status" />
+						<p:selectOneMenu id="status"
+							value="#{vehiculeController.nouveau.status}"
+							title="#{myBundle.CreateVehiculeTitle_status}" >
+							<f:selectItem itemLabel="#{myBundle.SelectOneMessage}" />
+							<f:selectItems value="#{vehiculeController.status}"
+								var="statut" itemValue="#{statut}"
+								itemLabel="#{statut}" />
+						</p:selectOneMenu>
+							
+			</p:panelGrid>
+			</p:tab>
+			<p:tab title="Acquisition">
+				<p:panelGrid columns="2" columnClasses="column">
+						
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateMiseEnCirculation}"
+							for="dateMiseEnCirculation" />
+						<p:calendar id="dateMiseEnCirculation" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.nouveau.dateMiseEnCirculation}"
+							title="#{myBundle.CreateVehiculeTitle_dateMiseEnCirculation}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateAcquisition}"
+							for="dateAcquisition" />
+						<p:calendar id="dateAcquisition" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.nouveau.dateAcquisition}"
+							title="#{myBundle.CreateVehiculeTitle_dateAcquisition}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateReception}"
+							for="dateReception" />
+						<p:calendar id="dateReception" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.nouveau.dateReception}"
+							title="#{myBundle.CreateVehiculeTitle_dateReception}"
+							showOn="button" />
+							
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_montantVignette}"
+							for="montantVignette" />
+						<p:inputText id="montantVignette"
+							value="#{vehiculeController.nouveau.montantVignette}"
+							title="#{myBundle.CreateVehiculeTitle_montantVignette}" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateDebutAutorisationCirculation}"
+							for="dateDebutAutorisationCirculation" />
+						<p:calendar id="dateDebutAutorisationCirculation"
+							pattern="dd/MM/yyyy"
+							value="#{vehiculeController.nouveau.dateDebutAutorisationCirculation}"
+							title="#{myBundle.CreateVehiculeTitle_dateDebutAutorisationCirculation}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateFinAutorisationCirculation}"
+							for="dateFinAutorisationCirculation" />
+						<p:calendar id="dateFinAutorisationCirculation"
+							pattern="dd/MM/yyyy"
+							value="#{vehiculeController.nouveau.dateFinAutorisationCirculation}"
+							title="#{myBundle.CreateVehiculeTitle_dateFinAutorisationCirculation}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_idPersonnelReception}"
+							for="idPersonnelReception" />
+						<p:selectOneMenu id="idPersonnelReception"
+							value="#{vehiculeController.nouveau.idPersonnelReception}"
+							converter="#{personnelConverter}">
+							<f:selectItem itemLabel="#{myBundle.SelectOneMessage}" />
+							<f:selectItems value="#{personnelController.all}"
+								var="idPersonnelReceptionItem"
+								itemValue="#{idPersonnelReceptionItem}"
+								itemLabel="#{idPersonnelReceptionItem.nom.toString()}" />
+						</p:selectOneMenu>
+						
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateDepotDossierImmatriculation}"
+							for="dateDepotDossierImmatriculation" />
+						<p:calendar id="dateDepotDossierImmatriculation"
+							pattern="dd/MM/yyyy"
+							value="#{vehiculeController.nouveau.dateDepotDossierImmatriculation}"
+							title="#{myBundle.CreateVehiculeTitle_dateDepotDossierImmatriculation}"
+							showOn="button" />
+
+						
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateCarteGriseProvisoire}"
+							for="dateCarteGriseProvisoire" />
+						<p:calendar id="dateCarteGriseProvisoire" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.nouveau.dateCarteGriseProvisoire}"
+							title="#{myBundle.CreateVehiculeTitle_dateCarteGriseProvisoire}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateCarteGriseDefinitive}"
+							for="dateCarteGriseDefinitive" />
+						<p:calendar id="dateCarteGriseDefinitive" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.nouveau.dateCarteGriseDefinitive}"
+							title="#{myBundle.CreateVehiculeTitle_dateCarteGriseDefinitive}"
+							showOn="button" />
+			</p:panelGrid>
+			</p:tab>
+			<p:tab title="scession">
+				<p:panelGrid columns="2" columnClasses="column">
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_dateScession}"
+							for="dateScession" />
+						<p:calendar id="dateScession" pattern="dd/MM/yyyy"
+							value="#{vehiculeController.nouveau.dateScession}"
+							title="#{myBundle.CreateVehiculeTitle_dateScession}"
+							showOn="button" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_montantScession}"
+							for="montantScession" />
+						<p:inputText id="montantScession"
+							value="#{vehiculeController.nouveau.montantScession}"
+							title="#{myBundle.CreateVehiculeTitle_montantScession}" />
+
+						<h:outputLabel
+							value="#{myBundle.CreateVehiculeLabel_cinBenificaireScession}"
+							for="cinBenificaireScession" />
+						<p:inputText id="cinBenificaireScession"
+							value="#{vehiculeController.nouveau.cinBenificaireScession}"
+							title="#{myBundle.CreateVehiculeTitle_cinBenificaireScession}" />
+
+						
+						
+					</p:panelGrid>
+				</p:tab>
+			</p:tabView>
+
+			<p:commandButton action="#{vehiculeController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+			<p:commandButton action="#{vehiculeController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+		</h:panelGroup>
+
+	</h:form>
+	
+</ui:define>
+</ui:composition>
+</html>
+

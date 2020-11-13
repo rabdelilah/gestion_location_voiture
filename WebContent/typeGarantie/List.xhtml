@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+			<p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+			<br/><br/>
+			<p:dataTable value="#{typeGarantieController.all}"
+				         var="item" paginator="true" rows="10" 
+				         id="datalist" rowsPerPageTemplate="10,20,30,40,50">
+
+				<p:column sortBy="#{item.id}" filterBy="#{item.id}" >
+					<f:facet name="header">
+						<h:outputText value="#{bundle.ListTypeGarantieTitle_id}" />
+					</f:facet>
+					<h:outputText value="#{item.id}" />
+				</p:column>
+				<p:column sortBy="#{item.designation}" filterBy="#{item.designation}">
+					<f:facet name="header">
+						<h:outputText value="#{bundle.ListTypeGarantieTitle_designation}" />
+					</f:facet>
+					<h:outputText value="#{item.designation}" />
+				</p:column>
+				<p:column>
+					<p:commandButton id="deleteButton"
+						icon="ui-icon-search"
+						action="#{typeGarantieController.toShow()}">
+						<f:setPropertyActionListener target="#{typeGarantieController.selected}" value="#{item}" />
+					</p:commandButton>
+					<p:commandButton id="editButton"
+						icon="ui-icon-pencil"
+						action="#{typeGarantieController.toEdit()}">
+						<f:setPropertyActionListener target="#{typeGarantieController.selected}" value="#{item}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+</ui:define>
+</ui:composition>
+</html>

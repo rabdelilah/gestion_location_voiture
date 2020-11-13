@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="ContratLldEditForm">
+
+                 <p:panel header="#{myBundle.EditContratLldTitle}"> 
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{contratLldController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditContratLldLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{contratLldController.selected.id}" />
+
+                        <p:outputLabel value="#{myBundle.EditContratLldLabel_numeroContrat}" for="numeroContrat" />
+                        <p:inputText id="numeroContrat" value="#{contratLldController.selected.numeroContrat}" title="#{myBundle.EditContratLldTitle_numeroContrat}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditContratLldLabel_dateContrat}" for="dateContrat" />
+                        <p:calendar id="dateContrat" pattern="dd/MM/yyyy" value="#{contratLldController.selected.dateContrat}" title="#{myBundle.EditContratLldTitle_dateContrat}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditContratLldLabel_lieuLivraison}" for="lieuLivraison" />
+                        <p:inputText id="lieuLivraison" value="#{contratLldController.selected.lieuLivraison}" title="#{myBundle.EditContratLldTitle_lieuLivraison}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.EditContratLldLabel_date1ereMensualite}" for="date1ereMensualite" />
+                        <p:calendar id="date1ereMensualite" pattern="dd/MM/yyyy" value="#{contratLldController.selected.date1ereMensualite}" title="#{myBundle.EditContratLldTitle_date1ereMensualite}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.EditContratLldLabel_nbreMensualite}" for="nbreMensualite" />
+                        <p:inputText id="nbreMensualite" value="#{contratLldController.selected.nbreMensualite}" title="#{myBundle.EditContratLldTitle_nbreMensualite}"/>
+
+                        <p:outputLabel value="#{myBundle.EditContratLldLabel_mntMensualite}" for="mntMensualite" />
+                        <p:inputText id="mntMensualite" value="#{contratLldController.selected.mntMensualite}" title="#{myBundle.EditContratLldTitle_mntMensualite}"/>
+
+                         <p:outputLabel value="#{myBundle.CreateContratLldLabel_idLocataire}" for="idLocataire" />
+                         <p:selectOneMenu id="idLocataire" value="#{contratLldController.selected.idLocataire}" converter="#{contactConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="l" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactController.all}" var="idLocataireItem" itemValue="#{idLocataireItem}" itemLabel="#{idLocataireItem.cin}" />
+					<p:column>
+						#{l.id}
+					</p:column>
+					<p:column>
+						#{l.cin}
+					</p:column>
+				</p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateContratLldLabel_idVehicule}" for="idVehicule" />
+                         <p:selectOneMenu id="idVehicule" value="#{contratLldController.selected.idVehicule}" converter="#{vehiculeConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="v" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{vehiculeController.all}" var="idVehiculeItem" itemValue="#{idVehiculeItem}" itemLabel="#{idVehiculeItem.numeroOrdre}" />
+					<p:column>
+						#{v.id}
+					</p:column>
+					<p:column>
+						#{v.numeroOrdre}
+					</p:column>
+				</p:selectOneMenu>
+                   
+                        
+                        <h:outputLabel
+							value="#{myBundle.CreateContratLldLabel_idContact}" for="idContact" />
+						<p:selectOneMenu id="idContact" value="#{contratLcdController.selected.idContact}" converter="#{contactConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactController.all}" var="idContactItem" itemValue="#{idContactItem}" itemLabel="#{idContactItem.cin}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.cin}
+					</p:column>
+				</p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton action="#{contratLldController.edit()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+                    <p:commandButton action="#{contratLldController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                   
+                    </p:panel>
+
+            </h:form>
+
+       </ui:define>
+       </ui:composition>
+</html>

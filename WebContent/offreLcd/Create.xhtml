@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+       
+            <h:form id="OffreLcdCreateForm">
+
+               <p:panel header="#{myBundle.CreateOffreLcdTitle}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateOffreLcdLabel_numeroOffre}" for="numeroOffre" />
+                        <p:inputText id="numeroOffre" value="#{offreLcdController.nouveau.numeroOffre}" title="#{myBundle.CreateOffreLcdTitle_numeroOffre}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateOffreLcdLabel_dateOffre}" for="dateOffre" />
+                        <p:calendar id="dateOffre" pattern="dd/MM/yyyy" value="#{offreLcdController.nouveau.dateOffre}" title="#{myBundle.CreateOffreLcdTitle_dateOffre}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateOffreLcdLabel_dateRemise}" for="dateRemise" />
+                        <p:calendar id="dateRemise" pattern="dd/MM/yyyy" value="#{offreLcdController.nouveau.dateRemise}" title="#{myBundle.CreateOffreLcdTitle_dateRemise}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateOffreLcdLabel_duree}" for="duree" />
+                        <p:inputText id="duree" value="#{offreLcdController.nouveau.duree}" title="#{myBundle.CreateOffreLcdTitle_duree}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateOffreLcdLabel_tauxJournalier}" for="tauxJournalier" />
+                        <p:inputText id="tauxJournalier" value="#{offreLcdController.nouveau.tauxJournalier}" title="#{myBundle.CreateOffreLcdTitle_tauxJournalier}"/>
+
+
+                        <p:outputLabel value="#{myBundle.CreateOffreLcdLabel_idTypeMarque}" for="idTypeMarque" />
+                        <p:selectOneMenu id="idTypeMarque" value="#{offreLcdController.nouveau.idTypeMarque}" converter="#{typeMarqueConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{typeMarqueController.all}" var="idTypeMarqueItem" itemValue="#{idTypeMarqueItem}" itemLabel="#{idTypeMarqueItem.designation}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.designation}
+					</p:column>
+				</p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateOffreLcdLabel_idPersonnel}" for="idPersonnel" />
+ <p:selectOneMenu id="idPersonnel" value="#{offreLcdController.nouveau.idPersonnel}" converter="#{personnelConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{personnelController.all}" var="idPersonnelItem" itemValue="#{idPersonnelItem}" itemLabel="#{idPersonnelItem.nom}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.nom}
+					</p:column>
+				</p:selectOneMenu>
+                        <p:outputLabel value="#{myBundle.CreateOffreLcdLabel_idContact}" for="idContact" />
+                         <p:selectOneMenu id="idContact" value="#{offreLcdController.nouveau.idContact}" converter="#{contactConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="c" style="width:160px" filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{contactController.all}" var="idContactItem" itemValue="#{idContactItem}" itemLabel="#{idContactItem.cin}" />
+					<p:column>
+						#{c.id}
+					</p:column>
+					<p:column>
+						#{c.cin}
+					</p:column>
+				</p:selectOneMenu>
+                    </p:panelGrid>
+                    
+
+                   <p:commandButton action="#{offreLcdController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+                    <p:commandButton action="#{offreLcdController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                  
+               
+</p:panel>
+
+            </h:form>
+
+        
+</ui:define>
+    </ui:composition>
+
+</html>

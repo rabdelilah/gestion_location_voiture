@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+
+<h:head>
+	<ui:include src="assets/head.xhtml" />
+	
+</h:head>
+<h:body>
+ <!--  wrapper -->
+    <div id="wrapper">
+    
+	<ui:include src="assets/header.xhtml" />
+	<ui:include src="assets/menu.xhtml" />
+		<!--  page-wrapper -->
+		<div id="page-wrapper">
+			<div class="row">
+				<!-- Page header-->
+				<div class="col-lg-12">
+					<h1 class="page-header"></h1>
+				</div>
+				<!--End Page header-->
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+				<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+				<ui:insert name="body"></ui:insert>
+				</div>
+			</div>
+		</div>
+		<!-- end page-wrapper -->
+	</div>
+</h:body>
+
+</html>

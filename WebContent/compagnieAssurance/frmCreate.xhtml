@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+		<h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCompagnieAssuranceLabel_raisonsociale}" for="raisonsociale" />
+                    <p:inputText id="raisonsociale" value="#{compagnieAssuranceController.nouveau.raisonsociale}" title="#{bundle.CreateCompagnieAssuranceTitle_raisonsociale}" />
+                    <h:outputLabel value="#{bundle.CreateCompagnieAssuranceLabel_adresse}" for="adresse" />
+                    <p:inputText id="adresse" value="#{compagnieAssuranceController.nouveau.adresse}" title="#{bundle.CreateCompagnieAssuranceTitle_adresse}" />
+                    <h:outputLabel value="#{bundle.CreateCompagnieAssuranceLabel_tel}" for="tel" />
+                    <p:inputText id="tel" value="#{compagnieAssuranceController.nouveau.tel}" title="#{bundle.CreateCompagnieAssuranceTitle_tel}" />
+                    <h:outputLabel value="#{bundle.CreateCompagnieAssuranceLabel_fax}" for="fax" />
+                    <p:inputText id="fax" value="#{compagnieAssuranceController.nouveau.fax}" title="#{bundle.CreateCompagnieAssuranceTitle_fax}" />
+                    <h:outputLabel value="#{bundle.CreateCompagnieAssuranceLabel_email}" for="email" />
+                    <p:inputText id="email" value="#{compagnieAssuranceController.nouveau.email}" title="#{bundle.CreateCompagnieAssuranceTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateCompagnieAssuranceLabel_identifiantFiscal}" for="identifiantFiscal" />
+                    <p:inputText id="identifiantFiscal" value="#{compagnieAssuranceController.nouveau.identifiantFiscal}" title="#{bundle.CreateCompagnieAssuranceTitle_identifiantFiscal}" />
+                    <h:outputLabel value="#{bundle.CreateCompagnieAssuranceLabel_registreCommerce}" for="registreCommerce" />
+                    <p:inputText id="registreCommerce" value="#{compagnieAssuranceController.nouveau.registreCommerce}" title="#{bundle.CreateCompagnieAssuranceTitle_registreCommerce}" />
+                    <h:outputLabel value="#{bundle.CreateCompagnieAssuranceLabel_ncnss}" for="ncnss" />
+                    <p:inputText id="ncnss" value="#{compagnieAssuranceController.nouveau.ncnss}" title="#{bundle.CreateCompagnieAssuranceTitle_ncnss}" />
+                    <h:outputLabel value="#{bundle.CreateCompagnieAssuranceLabel_patente}" for="patente" />
+                    <p:inputText id="patente" value="#{compagnieAssuranceController.nouveau.patente}" title="#{bundle.CreateCompagnieAssuranceTitle_patente}" />
+                    <h:outputLabel value="#{bundle.CreateCompagnieAssuranceLabel_contact}" for="contact" />
+                    <p:inputText id="contact" value="#{compagnieAssuranceController.nouveau.contact}" title="#{bundle.CreateCompagnieAssuranceTitle_contact}" />
+                </h:panelGrid>
+                <br />
+                <p:commandButton action="#{compagnieAssuranceController.add}" icon="ui-icon-disk" value="#{bundle.CreateCompagnieAssuranceSaveLink}" />
+           		<p:commandButton action="#{compagnieAssuranceController.toList()}" icon="ui-icon-" value="#{bundle.Cancel}" />
+           		
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

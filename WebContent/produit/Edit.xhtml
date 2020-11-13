@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form >
+
+        <p:panel header="Produit">
+
+			<p:panelGrid columns="2" columnClasses="column">
+				<h:outputLabel value="Désignation :"
+					for="designation" />
+				<p:inputText id="designation"
+					value="#{produitController.selected.designation}"
+					title="désignation" size="50"
+					maxlength="50" />
+				<h:outputLabel value="Gamme :"
+					for="gamme" />
+				<p:inputText id="gamme"
+					value="#{produitController.selected.gamme}"
+					title="gamme" size="50"
+					maxlength="50" />	
+					<h:outputLabel value="Marque :"
+					for="marque" />
+				<p:inputText id="marque"
+					value="#{produitController.selected.marque}"
+					title="marque" size="50"
+					maxlength="50" />
+           		<p:commandButton action="#{produitController.edit}" icon="ui-icon-disk" value="#{myBundle.Save}"/>
+           		<p:commandButton action="#{produitController.toList}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+           		
+            </p:panelGrid>
+            
+        </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

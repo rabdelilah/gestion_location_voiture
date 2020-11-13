@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="ReservationViewForm">
+
+                <p:panel header="#{myBundle.ViewReservationTitle}">
+                    <p:panelGrid columns="4" columnClasses="column" rendered="#{reservationController.selected != null}" style="width:90%;">
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_id}"/>
+                        <h:outputText value="#{reservationController.selected.id}" title="#{myBundle.ViewReservationTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_numeroJeton}"/>
+                        <h:outputText value="#{reservationController.selected.numeroJeton}" title="#{myBundle.ViewReservationTitle_numeroJeton}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_typeLocation}"/>
+                        <h:outputText value="#{reservationController.selected.typeLocation}" title="#{myBundle.ViewReservationTitle_typeLocation}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_typeCarburant}"/>
+                        <h:outputText value="#{reservationController.selected.typeCarburant}" title="#{myBundle.ViewReservationTitle_typeCarburant}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_modeReservation}"/>
+                        <h:outputText value="#{reservationController.selected.modeReservation}" title="#{myBundle.ViewReservationTitle_modeReservation}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_dateDebutReservation}"/>
+                        <h:outputText value="#{reservationController.selected.dateDebutReservation}" title="#{myBundle.ViewReservationTitle_dateDebutReservation}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_heureDebutReservation}"/>
+                        <h:outputText value="#{reservationController.selected.heureDebutReservation}" title="#{myBundle.ViewReservationTitle_heureDebutReservation}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_dateFinReservation}"/>
+                        <h:outputText value="#{reservationController.selected.dateFinReservation}" title="#{myBundle.ViewReservationTitle_dateFinReservation}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_heureFinReservation}"/>
+                        <h:outputText value="#{reservationController.selected.heureFinReservation}" title="#{myBundle.ViewReservationTitle_heureFinReservation}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_duree}"/>
+                        <h:outputText value="#{reservationController.selected.duree}" title="#{myBundle.ViewReservationTitle_duree}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_status}"/>
+                        <h:outputText value="#{reservationController.selected.status}" title="#{myBundle.ViewReservationTitle_status}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_miseadisposition}"/>
+                        <h:outputText value="#{reservationController.selected.miseadisposition}" title="#{myBundle.ViewReservationTitle_miseadisposition}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_lieuMiseADisposition}"/>
+                        <h:outputText value="#{reservationController.selected.lieuMiseADisposition}" title="#{myBundle.ViewReservationTitle_lieuMiseADisposition}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_villeMiseADisposition}"/>
+                        <h:outputText value="#{reservationController.selected.villeMiseADisposition}" title="#{myBundle.ViewReservationTitle_villeMiseADisposition}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_motif}"/>
+                        <h:outputText value="#{reservationController.selected.motif}" title="#{myBundle.ViewReservationTitle_motif}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_commentaires}"/>
+                        <h:outputText value="#{reservationController.selected.commentaires}" title="#{myBundle.ViewReservationTitle_commentaires}"/>
+
+                         <h:outputText value="#{myBundle.ViewReservationLabel_idTypeMarque}"/>
+                        <h:outputText value="#{reservationController.selected.idTypeMarque.id}"/>
+
+                        <h:outputText value="#{myBundle.ViewReservationLabel_idContact}"/>
+                        <h:outputText value="#{reservationController.selected.idContact.id}"/>
+                    </p:panelGrid>
+                     <p:commandButton action="#{reservationController.remove()}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+                    <p:commandButton action="#{reservationController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                    
+                </p:panel>
+
+
+            </h:form>
+
+      </ui:define>
+
+    </ui:composition>
+
+</html>

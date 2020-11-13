@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+  <ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form id="DossierSinistreListForm">
+
+        <p:panel header="#{myBundle.ListDossierSinistreTitle}">
+        	<p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+			<br />
+			<br />
+            <p:dataTable id="datalist"
+                         value="#{dossierSinistreController.all}"
+                         lazy="false"
+                         rowKey="#{item.id}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{dossierSinistreController.selected}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{dossierSinistreController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.id}"  <<< Remove this line
+                -->
+
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDossierSinistreTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.referenceDossier}" filterBy="#{item.referenceDossier}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDossierSinistreTitle_referenceDossier}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.referenceDossier}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dateDepot}" filterBy="#{item.dateDepot}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDossierSinistreTitle_dateDepot}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateDepot}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.designationExpert1}" filterBy="#{item.designationExpert1}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDossierSinistreTitle_designationExpert1}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.designationExpert1}"/>
+                </p:column>
+
+				<!-- 
+                <p:column sortBy="#{item.dateVisiteExpert1}" filterBy="#{item.dateVisiteExpert1}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDossierSinistreTitle_dateVisiteExpert1}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateVisiteExpert1}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dateRemiseRapportExpert1}" filterBy="#{item.dateRemiseRapportExpert1}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListDossierSinistreTitle_dateRemiseRapportExpert1}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateRemiseRapportExpert1}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+ 				-->
+                
+                                    <p:column sortBy="#{item.designationExpert2}" filterBy="#{item.designationExpert2}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_designationExpert2}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.designationExpert2}"/>
+                                    </p:column>
+                
+                <!--
+                                    <p:column sortBy="#{item.dateVisiteExpert2}" filterBy="#{item.dateVisiteExpert2}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_dateVisiteExpert2}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dateVisiteExpert2}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.dateRemiseRapportExpert2}" filterBy="#{item.dateRemiseRapportExpert2}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_dateRemiseRapportExpert2}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dateRemiseRapportExpert2}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.referenceDevisReparation}" filterBy="#{item.referenceDevisReparation}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_referenceDevisReparation}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.referenceDevisReparation}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.prestataire}" filterBy="#{item.prestataire}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_prestataire}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.prestataire}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.montantFraisReparation}" filterBy="#{item.montantFraisReparation}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_montantFraisReparation}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.montantFraisReparation}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.dateAccordDevis}" filterBy="#{item.dateAccordDevis}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_dateAccordDevis}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dateAccordDevis}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.referenceCourrierAccord}" filterBy="#{item.referenceCourrierAccord}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_referenceCourrierAccord}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.referenceCourrierAccord}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.montantAccorde}" filterBy="#{item.montantAccorde}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_montantAccorde}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.montantAccorde}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.montantFranchiseDeduite}" filterBy="#{item.montantFranchiseDeduite}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_montantFranchiseDeduite}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.montantFranchiseDeduite}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.valeurVenale}" filterBy="#{item.valeurVenale}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_valeurVenale}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.valeurVenale}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.observation}" filterBy="#{item.observation}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_observation}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.observation}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.status}" filterBy="#{item.status}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_status}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.status}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.idSociete}" filterBy="#{item.idSociete}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_idSociete}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSociete}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.idSinistre.id}" filterBy="#{item.idSinistre.id}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListDossierSinistreTitle_idSinistre}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSinistre.id}"/>
+                                    </p:column>
+                -->
+				<p:column>
+					<p:commandButton id="showButton"
+						icon="ui-icon-search" action="#{dossierSinistreController.toShow()}" >
+						<f:setPropertyActionListener target="#{dossierSinistreController.selected}" value="#{item}" />
+					</p:commandButton>
+					<p:commandButton id="editButton"
+						icon="ui-icon-pencil" action="#{dossierSinistreController.toEdit()}" >
+						<f:setPropertyActionListener target="#{dossierSinistreController.selected}" value="#{item}" />
+					</p:commandButton>
+				</p:column>
+            </p:dataTable>
+
+            
+
+
+        </p:panel>
+        
+    </h:form>
+
+</ui:define>
+</ui:composition>
+</html>

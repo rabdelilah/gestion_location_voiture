@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="SinistreCreateForm">
+
+               <p:panel header="Sinistre">
+
+                    <p:panelGrid columns="2" columnClasses="column">
+						
+						<p:outputLabel value="#{myBundle.CreateSinistreLabel_typeContrat}" for="typeContrat" />
+                        <p:selectOneMenu id="typeContrat" value="#{sinistreController.nouveau.typeContrat}" title="#{myBundle.CreateSinistreTitle_typeContrat}" >
+                        	<f:selectItem itemLabel="---" itemValue="---"/>
+                        	<f:selectItem itemLabel="LCD" itemValue="LCD"/>
+                        	<f:selectItem itemLabel="LLD" itemValue="LLD"/>
+                        	<p:ajax update="idContrat" event="valueChange" listener="#{sinistreController.getContrat}" />
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_idContrat}" for="idContrat" />
+                        <p:selectOneMenu id="idContrat" value="#{sinistreController.nouveau.idContrat}" title="#{myBundle.CreateSinistreTitle_idContrat}">
+                        	<f:selectItems value="#{sinistreController.listContrat}" var="o" itemLabel="#{o.numeroContrat}" itemValue="#{o.id}"/>
+                        </p:selectOneMenu>
+						
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_dateSinistre}" for="dateSinistre" />
+                        <p:calendar id="dateSinistre" pattern="dd/MM/yyyy" value="#{sinistreController.nouveau.dateSinistre}" title="#{myBundle.CreateSinistreTitle_dateSinistre}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_heureSinistre}" for="heureSinistre" />
+                        <p:inputText id="heureSinistre" value="#{sinistreController.nouveau.heureSinistre}" title="#{myBundle.CreateSinistreTitle_heureSinistre}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_lieuSinistre}" for="lieuSinistre" />
+                        <p:inputText id="lieuSinistre" value="#{sinistreController.nouveau.lieuSinistre}" title="#{myBundle.CreateSinistreTitle_lieuSinistre}" size="50" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_degats}" for="degats" />
+                        <p:inputTextarea rows="4" cols="30" id="degats" value="#{sinistreController.nouveau.degats}" title="#{myBundle.CreateSinistreTitle_degats}" />
+
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_vehiculeFautif}" for="vehiculeFautif" />
+                        <p:inputTextarea rows="4" cols="30" id="vehiculeFautif" value="#{sinistreController.nouveau.vehiculeFautif}" title="#{myBundle.CreateSinistreTitle_vehiculeFautif}" />
+
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_declarationSinistre}" for="declarationSinistre" />
+                        <p:inputText id="declarationSinistre" value="#{sinistreController.nouveau.declarationSinistre}" title="#{myBundle.CreateSinistreTitle_declarationSinistre}" size="50" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_repercussionFraisClient}" for="repercussionFraisClient" />
+                        <p:inputText id="repercussionFraisClient" value="#{sinistreController.nouveau.repercussionFraisClient}" title="#{myBundle.CreateSinistreTitle_repercussionFraisClient}" size="50" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_repercussionFraisAdverse}" for="repercussionFraisAdverse" />
+                        <p:inputText id="repercussionFraisAdverse" value="#{sinistreController.nouveau.repercussionFraisAdverse}" title="#{myBundle.CreateSinistreTitle_repercussionFraisAdverse}" size="50" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_priseEnChargeAdverse}" for="priseEnChargeAdverse" />
+                        <p:inputText id="priseEnChargeAdverse" value="#{sinistreController.nouveau.priseEnChargeAdverse}" title="#{myBundle.CreateSinistreTitle_priseEnChargeAdverse}" size="50" maxlength="100"/>
+
+                        <p:outputLabel value="#{myBundle.CreateSinistreLabel_observation}" for="observation" />
+                        <p:inputTextarea rows="4" cols="30" id="observation" value="#{sinistreController.nouveau.observation}" title="#{myBundle.CreateSinistreTitle_observation}" />
+
+                     </p:panelGrid>
+                    <p:commandButton action="#{sinistreController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+				<p:commandButton action="#{sinistreController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+				</p:panel>
+
+            </h:form>
+
+     </ui:define>
+    </ui:composition>
+
+</html>

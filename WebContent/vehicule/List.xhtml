@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+				
+				<h:form>
+					<p:growl id="messages" showDetail="true" />
+
+					<p:panel header="#{myBundle.ListVehiculeTitle}">
+						<br />
+						<p:commandButton id="addButton" icon="ui-icon-disk"
+							action="Create.xhtml" value="Nouveau" />
+						<br />
+						<br />
+						<p:dataTable id="datalist" value="#{vehiculeController.all}"
+							var="item" rowKey="#{item.id}" paginator="true" rows="10"
+							rowsPerPageTemplate="10,20,30,40,50">
+
+
+							<p:column sortBy="#{item.id}" filterBy="#{item.id}">
+								<f:facet name="header">
+									<h:outputText value="#{myBundle.ListVehiculeTitle_id}" />
+								</f:facet>
+								<h:outputText value="#{item.id}" />
+							</p:column>
+
+
+							<p:column sortBy="#{item.numeroOrdre}"
+								filterBy="#{item.numeroOrdre}">
+								<f:facet name="header">
+									<h:outputText value="#{myBundle.ListVehiculeTitle_numeroOrdre}" />
+								</f:facet>
+								<h:outputText value="#{item.numeroOrdre}" />
+							</p:column>
+
+
+							<p:column sortBy="#{item.numeroSerie}"
+								filterBy="#{item.numeroSerie}">
+								<f:facet name="header">
+									<h:outputText value="#{myBundle.ListVehiculeTitle_numeroSerie}" />
+								</f:facet>
+								<h:outputText value="#{item.numeroSerie}" />
+							</p:column>
+
+
+							<p:column sortBy="#{item.couleur}" filterBy="#{item.couleur}">
+								<f:facet name="header">
+									<h:outputText value="#{myBundle.ListVehiculeTitle_couleur}" />
+								</f:facet>
+								<h:outputText value="#{item.couleur}"
+									style="background-color: ##{item.couleur}" />
+							</p:column>
+
+
+							<p:column sortBy="#{item.dateMiseEnCirculation}"
+								filterBy="#{item.dateMiseEnCirculation}">
+								<f:facet name="header">
+									<h:outputText
+										value="#{myBundle.ListVehiculeTitle_dateMiseEnCirculation}" />
+								</f:facet>
+								<h:outputText value="#{item.dateMiseEnCirculation}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputText>
+							</p:column>
+
+
+							<p:column sortBy="#{item.numeroWw}" filterBy="#{item.numeroWw}">
+								<f:facet name="header">
+									<h:outputText value="#{myBundle.ListVehiculeTitle_numeroWw}" />
+								</f:facet>
+								<h:outputText value="#{item.numeroWw}" />
+							</p:column>
+
+
+							<p:column>
+								<p:commandButton id="deleteButton" icon="ui-icon-search"
+									action="#{vehiculeController.toShow()}">
+									<f:setPropertyActionListener target="#{vehiculeController.selected}" value="#{item}" />
+									<f:setPropertyActionListener target="#{visiteTechniqueController.nouveau.idVehicule}" value="#{vehiculeController.selected}"/>
+									<f:setPropertyActionListener target="#{assuranceController.nouveau.idVehicule}" value="#{vehiculeController.selected}"/>
+									<f:setPropertyActionListener target="#{financementController.nouveau.idVehicule}" value="#{vehiculeController.selected}"/>
+									<f:setPropertyActionListener target="#{financementFaciliteController.nouveau.idVehicule}" value="#{vehiculeController.selected}"/>
+									<f:setPropertyActionListener target="#{paiementVehiculeController.nouveau.idVehicule}" value="#{vehiculeController.selected}"/>
+								</p:commandButton>
+								<p:commandButton id="editButton" icon="ui-icon-pencil" action="#{vehiculeController.toEdit()}">
+									<f:setPropertyActionListener target="#{vehiculeController.selected}" value="#{item}" />
+								</p:commandButton>
+								
+							</p:column>
+
+						</p:dataTable>
+
+					</p:panel>
+
+				</h:form>
+</ui:define>
+</ui:composition>
+</html>

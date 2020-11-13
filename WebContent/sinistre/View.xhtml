@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+            <h:form id="SinistreCreateForm">
+
+               <p:panel header="Sinistre">
+
+                    <p:panelGrid columns="2" columnClasses="column" >
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_id}"/>
+                        <h:outputText value="#{sinistreController.selected.id}" title="#{myBundle.ViewSinistreTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_idContrat}"/>
+                        <h:outputText value="#{sinistreController.selected.idContrat}" title="#{myBundle.ViewSinistreTitle_idContrat}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_dateSinistre}"/>
+                        <h:outputText value="#{sinistreController.selected.dateSinistre}" title="#{myBundle.ViewSinistreTitle_dateSinistre}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_heureSinistre}"/>
+                        <h:outputText value="#{sinistreController.selected.heureSinistre}" title="#{myBundle.ViewSinistreTitle_heureSinistre}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_lieuSinistre}"/>
+                        <h:outputText value="#{sinistreController.selected.lieuSinistre}" title="#{myBundle.ViewSinistreTitle_lieuSinistre}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_degats}"/>
+                        <h:outputText value="#{sinistreController.selected.degats}" title="#{myBundle.ViewSinistreTitle_degats}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_vehiculeFautif}"/>
+                        <h:outputText value="#{sinistreController.selected.vehiculeFautif}" title="#{myBundle.ViewSinistreTitle_vehiculeFautif}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_declarationSinistre}"/>
+                        <h:outputText value="#{sinistreController.selected.declarationSinistre}" title="#{myBundle.ViewSinistreTitle_declarationSinistre}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_repercussionFraisClient}"/>
+                        <h:outputText value="#{sinistreController.selected.repercussionFraisClient}" title="#{myBundle.ViewSinistreTitle_repercussionFraisClient}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_repercussionFraisAdverse}"/>
+                        <h:outputText value="#{sinistreController.selected.repercussionFraisAdverse}" title="#{myBundle.ViewSinistreTitle_repercussionFraisAdverse}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_priseEnChargeAdverse}"/>
+                        <h:outputText value="#{sinistreController.selected.priseEnChargeAdverse}" title="#{myBundle.ViewSinistreTitle_priseEnChargeAdverse}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_observation}"/>
+                        <h:outputText value="#{sinistreController.selected.observation}" title="#{myBundle.ViewSinistreTitle_observation}"/>
+
+                        <h:outputText value="#{myBundle.ViewSinistreLabel_typeContrat}"/>
+                        <h:outputText value="#{sinistreController.selected.typeContrat}" title="#{myBundle.ViewSinistreTitle_typeContrat}"/>
+
+				<p:commandButton action="#{sinistreController.remove}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+           		<p:commandButton action="#{sinistreController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                       </p:panelGrid>
+                   </p:panel>
+              
+
+            </h:form>
+
+     </ui:define>
+
+    </ui:composition>
+
+</html>

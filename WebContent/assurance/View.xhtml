@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_id}"/>
+                    <h:outputText value="#{assuranceController.selected.id}" title="#{bundle.ViewAssuranceTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_numeroOrdre}"/>
+                    <h:outputText value="#{assuranceController.selected.numeroOrdre}" title="#{bundle.ViewAssuranceTitle_numeroOrdre}"/>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_numeroPolice}"/>
+                    <h:outputText value="#{assuranceController.selected.numeroPolice}" title="#{bundle.ViewAssuranceTitle_numeroPolice}"/>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_intermediaire}"/>
+                    <h:outputText value="#{assuranceController.selected.intermediaire}" title="#{bundle.ViewAssuranceTitle_intermediaire}"/>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_dateDebutGarantie}"/>
+                    <h:outputText value="#{assuranceController.selected.dateDebutGarantie}" title="#{bundle.ViewAssuranceTitle_dateDebutGarantie}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_heureDebutGarantie}"/>
+                    <h:outputText value="#{assuranceController.selected.heureDebutGarantie}" title="#{bundle.ViewAssuranceTitle_heureDebutGarantie}"/>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_dateFinGarantie}"/>
+                    <h:outputText value="#{assuranceController.selected.dateFinGarantie}" title="#{bundle.ViewAssuranceTitle_dateFinGarantie}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_heureFinGarantie}"/>
+                    <h:outputText value="#{assuranceController.selected.heureFinGarantie}" title="#{bundle.ViewAssuranceTitle_heureFinGarantie}"/>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_duree}"/>
+                    <h:outputText value="#{assuranceController.selected.duree}" title="#{bundle.ViewAssuranceTitle_duree}"/>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_periodicite}"/>
+                    <h:outputText value="#{assuranceController.selected.periodicite}" title="#{bundle.ViewAssuranceTitle_periodicite}"/>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_idSociete}"/>
+                    <h:outputText value="#{assuranceController.selected.idSociete}" title="#{bundle.ViewAssuranceTitle_idSociete}"/>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_idCompagnieAssurance}"/>
+                    <h:outputText value="#{assuranceController.selected.idCompagnieAssurance}" title="#{bundle.ViewAssuranceTitle_idCompagnieAssurance}"/>
+                    <h:outputText value="#{bundle.ViewAssuranceLabel_idVehicule}"/>
+                    <h:outputText value="#{assuranceController.selected.idVehicule}" title="#{bundle.ViewAssuranceTitle_idVehicule}"/>
+                </h:panelGrid>
+				<p:commandButton action="#{assuranceController.remove()}" icon="ui-icon-trash" value="Supprimer"/>
+                <p:commandButton action="#{assuranceController.toList()}" icon="ui-icon-" value="#{bundle.Cancel}"/>
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+  <ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+            <h:form id="DossierSinistreCreateForm">
+				<p:panel header="Dossier Sinistre">
+                            <p:panelGrid columns="2" columnClasses="column">
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_referenceDossier}" for="referenceDossier" />
+                                <p:outputLabel id="referenceDossier" value="#{dossierSinistreController.selected.referenceDossier}" title="#{myBundle.CreateDossierSinistreTitle_referenceDossier}" size="50" maxlength="50"/>
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_dateDepot}" for="dateDepot" />
+                                <p:outputLabel id="dateDepot" pattern="dd/MM/yyyy" value="#{dossierSinistreController.selected.dateDepot}" title="#{myBundle.CreateDossierSinistreTitle_dateDepot}"  />
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_designationExpert1}" for="designationExpert1" />
+                                <p:outputLabel id="designationExpert1" value="#{dossierSinistreController.selected.designationExpert1}" title="#{myBundle.CreateDossierSinistreTitle_designationExpert1}" size="50" maxlength="100"/>
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_dateVisiteExpert1}" for="dateVisiteExpert1" />
+                                <p:outputLabel id="dateVisiteExpert1" pattern="dd/MM/yyyy" value="#{dossierSinistreController.selected.dateVisiteExpert1}" title="#{myBundle.CreateDossierSinistreTitle_dateVisiteExpert1}"  />
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_dateRemiseRapportExpert1}" for="dateRemiseRapportExpert1" />
+                                <p:outputLabel id="dateRemiseRapportExpert1" pattern="dd/MM/yyyy" value="#{dossierSinistreController.selected.dateRemiseRapportExpert1}" title="#{myBundle.CreateDossierSinistreTitle_dateRemiseRapportExpert1}"  />
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_designationExpert2}" for="designationExpert2" />
+                                <p:outputLabel id="designationExpert2" value="#{dossierSinistreController.selected.designationExpert2}" title="#{myBundle.CreateDossierSinistreTitle_designationExpert2}" size="50" maxlength="100"/>
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_dateVisiteExpert2}" for="dateVisiteExpert2" />
+                                <p:outputLabel id="dateVisiteExpert2" pattern="dd/MM/yyyy" value="#{dossierSinistreController.selected.dateVisiteExpert2}" title="#{myBundle.CreateDossierSinistreTitle_dateVisiteExpert2}"  />
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_dateRemiseRapportExpert2}" for="dateRemiseRapportExpert2" />
+                                <p:outputLabel id="dateRemiseRapportExpert2" pattern="dd/MM/yyyy" value="#{dossierSinistreController.selected.dateRemiseRapportExpert2}" title="#{myBundle.CreateDossierSinistreTitle_dateRemiseRapportExpert2}" />
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_referenceDevisReparation}" for="referenceDevisReparation" />
+                                <p:outputLabel id="referenceDevisReparation" value="#{dossierSinistreController.selected.referenceDevisReparation}" title="#{myBundle.CreateDossierSinistreTitle_referenceDevisReparation}" size="50" maxlength="50"/>
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_prestataire}" for="prestataire" />
+                                <p:outputLabel id="prestataire" value="#{dossierSinistreController.selected.prestataire}" title="#{myBundle.CreateDossierSinistreTitle_prestataire}" size="50" maxlength="50"/>
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_montantFraisReparation}" for="montantFraisReparation" />
+                                <p:outputLabel id="montantFraisReparation" value="#{dossierSinistreController.selected.montantFraisReparation}" title="#{myBundle.CreateDossierSinistreTitle_montantFraisReparation}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_dateAccordDevis}" for="dateAccordDevis" />
+                                <p:outputLabel id="dateAccordDevis" pattern="dd/MM/yyyy" value="#{dossierSinistreController.selected.dateAccordDevis}" title="#{myBundle.CreateDossierSinistreTitle_dateAccordDevis}" />
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_referenceCourrierAccord}" for="referenceCourrierAccord" />
+                                <p:outputLabel id="referenceCourrierAccord" value="#{dossierSinistreController.selected.referenceCourrierAccord}" title="#{myBundle.CreateDossierSinistreTitle_referenceCourrierAccord}" size="50" maxlength="50"/>
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_montantAccorde}" for="montantAccorde" />
+                                <p:outputLabel id="montantAccorde" value="#{dossierSinistreController.selected.montantAccorde}" title="#{myBundle.CreateDossierSinistreTitle_montantAccorde}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_montantFranchiseDeduite}" for="montantFranchiseDeduite" />
+                                <p:outputLabel id="montantFranchiseDeduite" value="#{dossierSinistreController.selected.montantFranchiseDeduite}" title="#{myBundle.CreateDossierSinistreTitle_montantFranchiseDeduite}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_valeurVenale}" for="valeurVenale" />
+                                <p:outputLabel id="valeurVenale" value="#{dossierSinistreController.selected.valeurVenale}" title="#{myBundle.CreateDossierSinistreTitle_valeurVenale}"/>
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_observation}" for="observation" />
+                                <p:outputLabel  id="observation" value="#{dossierSinistreController.selected.observation}" title="#{myBundle.CreateDossierSinistreTitle_observation}" />
+
+                                <p:outputLabel value="#{myBundle.CreateDossierSinistreLabel_idSinistre}" for="idSinistre" />
+                                <p:outputLabel id="idSinistre" value="#{dossierSinistreController.selected.sinistre.id}"  />
+
+                            </p:panelGrid>
+                    <p:commandButton action="#{dossierSinistreController.edit}" icon="ui-icon-disk" value="#{myBundle.Save}"/>
+           			<p:commandButton action="#{dossierSinistreController.toList}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+           		</p:panel>
+            </h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+
+                <h:panelGroup>
+                    <p:panelGrid columns="2" >
+
+                        <h:outputText value="#{myBundle.ViewFinancementLabel_id}"/>
+                        <h:outputText value="#{financementController.selected.id}" title="#{myBundle.ViewFinancementTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewFinancementLabel_organismeLeasing}"/>
+                        <h:outputText value="#{financementController.selected.organismeLeasing}" title="#{myBundle.ViewFinancementTitle_organismeLeasing}"/>
+
+                        <h:outputText value="#{myBundle.ViewFinancementLabel_date1ereMensualite}"/>
+                        <h:outputText value="#{financementController.selected.date1ereMensualite}" title="#{myBundle.ViewFinancementTitle_date1ereMensualite}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewFinancementLabel_nbreMensualite}"/>
+                        <h:outputText value="#{financementController.selected.nbreMensualite}" title="#{myBundle.ViewFinancementTitle_nbreMensualite}"/>
+
+                        <h:outputText value="#{myBundle.ViewFinancementLabel_mntMensualite}"/>
+                        <h:outputText value="#{financementController.selected.mntMensualite}" title="#{myBundle.ViewFinancementTitle_mntMensualite}"/>
+
+                        <h:outputText value="#{myBundle.ViewFinancementLabel_valeurResiduelle}"/>
+                        <h:outputText value="#{financementController.selected.valeurResiduelle}" title="#{myBundle.ViewFinancementTitle_valeurResiduelle}"/>
+
+                        <h:outputText value="#{myBundle.ViewFinancementLabel_idVehicule}"/>
+                        <h:outputText value="#{financementController.selected.idVehicule.numeroOrdre}"/>
+                    </p:panelGrid>
+                    
+                </h:panelGroup>
+				<p:commandButton action="#{financementController.remove()}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+				<p:commandButton value="#{myBundle.Cancel}" icon="ui-icon-" action="#{financementController.toList}" />
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

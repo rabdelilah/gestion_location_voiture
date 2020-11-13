@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+	<h:form>
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" >
+
+
+                        <h:outputLabel value="#{myBundle.EditPaiementVehiculeLabel_id}" for="id" />
+                        <h:outputText id="id" value="#{paiementVehiculeController.selected.id}" />
+
+                        <h:outputLabel value="#{myBundle.EditPaiementVehiculeLabel_naturePaiement}" for="naturePaiement" />
+                        <p:selectOneMenu id="naturePaiement"
+							value="#{paiementVehiculeController.selected.naturePaiement}" >
+							<f:selectItem itemLabel="#{myBundle.SelectOneMessage}" />
+							<f:selectItems value="#{paiementVehiculeController.naturePaiement}"
+								var="nature" itemValue="#{nature}" itemLabel="#{nature}" />
+						</p:selectOneMenu>
+						
+                        <h:outputLabel value="#{myBundle.EditPaiementVehiculeLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{paiementVehiculeController.selected.montant}" title="#{myBundle.EditPaiementVehiculeTitle_montant}"/>
+
+                        <h:outputLabel value="#{myBundle.EditPaiementVehiculeLabel_numeroCheque}" for="numeroCheque" />
+                        <p:inputText id="numeroCheque" value="#{paiementVehiculeController.selected.numeroCheque}" title="#{myBundle.EditPaiementVehiculeTitle_numeroCheque}" size="50" maxlength="50"/>
+
+                        <h:outputLabel value="#{myBundle.EditPaiementVehiculeLabel_banque}" for="banque" />
+                        <p:inputText id="banque" value="#{paiementVehiculeController.selected.banque}" title="#{myBundle.EditPaiementVehiculeTitle_banque}" size="50" maxlength="50"/>
+
+                        <h:outputLabel value="#{myBundle.EditPaiementVehiculeLabel_dateCheque}" for="dateCheque" />
+                        <p:calendar id="dateCheque" pattern="MM/dd/yyyy" value="#{paiementVehiculeController.selected.dateCheque}" title="#{myBundle.EditPaiementVehiculeTitle_dateCheque}"  showOn="button"/>
+
+                        <h:outputLabel value="#{myBundle.EditPaiementVehiculeLabel_idVehicule}" for="idVehicule" />
+                        <p:selectOneMenu id="idVehicule" value="#{paiementVehiculeController.selected.idVehicule}" converter="#{vehiculeConverter}" 
+				                 panelStyle="width:180px" effect="fade" var="m" style="width:160px" filter="true" filterMatchMode="startsWith">
+							<f:selectItems value="#{vehiculeController.all}" var="Item" itemValue="#{Item}" itemLabel="#{Item.numeroOrdre}" />
+								<p:column>
+									#{m.numeroOrdre}
+								</p:column>
+								<p:column>
+									#{m.matricule}
+								</p:column>
+								<p:column>
+									#{m.numeroWw}
+								</p:column>
+						</p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton action="#{paiementVehiculeController.edit()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+                    <p:commandButton action="#{paiementVehiculeController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                </h:panelGroup>
+
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

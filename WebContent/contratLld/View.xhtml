@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+            <h:form id="ContratLldViewForm">
+
+                <p:panel header="#{myBundle.ViewContratLldTitle}"> 
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{contratLldController.selected != null}">
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_id}"/>
+                        <h:outputText value="#{contratLldController.selected.id}" title="#{myBundle.ViewContratLldTitle_id}"/>
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_numeroContrat}"/>
+                        <h:outputText value="#{contratLldController.selected.numeroContrat}" title="#{myBundle.ViewContratLldTitle_numeroContrat}"/>
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_dateContrat}"/>
+                        <h:outputText value="#{contratLldController.selected.dateContrat}" title="#{myBundle.ViewContratLldTitle_dateContrat}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_lieuLivraison}"/>
+                        <h:outputText value="#{contratLldController.selected.lieuLivraison}" title="#{myBundle.ViewContratLldTitle_lieuLivraison}"/>
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_date1ereMensualite}"/>
+                        <h:outputText value="#{contratLldController.selected.date1ereMensualite}" title="#{myBundle.ViewContratLldTitle_date1ereMensualite}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_nbreMensualite}"/>
+                        <h:outputText value="#{contratLldController.selected.nbreMensualite}" title="#{myBundle.ViewContratLldTitle_nbreMensualite}"/>
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_mntMensualite}"/>
+                        <h:outputText value="#{contratLldController.selected.mntMensualite}" title="#{myBundle.ViewContratLldTitle_mntMensualite}"/>
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_idSociete}"/>
+                        <h:outputText value="#{contratLldController.selected.idSociete}" title="#{myBundle.ViewContratLldTitle_idSociete}"/>
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_idLocataire}"/>
+                        <h:outputText value="#{contratLldController.selected.idLocataire.id}"/>
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_idVehicule}"/>
+                        <h:outputText value="#{contratLldController.selected.idVehicule.id}"/>
+
+                        <h:outputText value="#{myBundle.ViewContratLldLabel_idContact}"/>
+                        <h:outputText value="#{contratLldController.selected.idContact.id}"/>
+                    </p:panelGrid>
+                    <p:commandButton action="#{contratLldController.remove()}" icon="ui-icon-trash" value="#{myBundle.Delete}" />
+                    <p:commandButton action="#{contratLldController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                    
+                </p:panel>
+
+            </h:form>
+</ui:define>
+</ui:composition>
+</html>

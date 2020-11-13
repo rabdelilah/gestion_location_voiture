@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+    <h:form id="RemboursementSinistreListForm">
+
+        <p:panel header="#{myBundle.ListRemboursementSinistreTitle}">
+        	<p:commandButton id="addButton" icon="ui-icon-disk" action="Create.xhtml" value="Nouveau"/>
+			<br />
+			<br />
+            <p:dataTable id="datalist"
+                         value="#{remboursementSinistreController.all}"
+                         lazy="false"
+                         rowKey="#{item.id}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{remboursementSinistreController.selected}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{remboursementSinistreController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.id}"  <<< Remove this line
+                -->
+
+
+                
+                <p:column sortBy="#{item.id}" filterBy="#{item.id}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_id}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.id}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dateDepotDossierRemb}" filterBy="#{item.dateDepotDossierRemb}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_dateDepotDossierRemb}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateDepotDossierRemb}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.montantAccorde}" filterBy="#{item.montantAccorde}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_montantAccorde}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.montantAccorde}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dateRemboursementSinistre}" filterBy="#{item.dateRemboursementSinistre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_dateRemboursementSinistre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dateRemboursementSinistre}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.montantRembourse}" filterBy="#{item.montantRembourse}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_montantRembourse}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.montantRembourse}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.ecartFrais}" filterBy="#{item.ecartFrais}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_ecartFrais}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ecartFrais}"/>
+                </p:column>
+
+                <!--
+                                    <p:column sortBy="#{item.delaiRemboursement}" filterBy="#{item.delaiRemboursement}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_delaiRemboursement}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.delaiRemboursement}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.dateCloture}" filterBy="#{item.dateCloture}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_dateCloture}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dateCloture}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.observation}" filterBy="#{item.observation}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_observation}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.observation}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.status}" filterBy="#{item.status}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_status}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.status}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.idSociete}" filterBy="#{item.idSociete}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_idSociete}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSociete}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.idSinistre.id}" filterBy="#{item.idSinistre.id}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{myBundle.ListRemboursementSinistreTitle_idSinistre}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.idSinistre.id}"/>
+                                    </p:column>
+                -->
+				<p:column>
+					<p:commandButton id="showButton"
+						icon="ui-icon-search" action="#{remboursementSinistreController.toShow()}" >
+						<f:setPropertyActionListener target="#{remboursementSinistreController.selected}" value="#{item}" />
+					</p:commandButton>
+					<p:commandButton id="editButton"
+						icon="ui-icon-pencil" action="#{remboursementSinistreController.toEdit()}" >
+						<f:setPropertyActionListener target="#{remboursementSinistreController.selected}" value="#{item}" />
+					</p:commandButton>
+				</p:column>
+            </p:dataTable>
+        </p:panel>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>

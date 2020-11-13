@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition template="/template.xhtml">
+	<ui:define name="body">
+
+            <h:form id="ReparationSinistreCreateForm">
+				<p:panel header="Reparation Sinistre">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_dateDeportReparation}" for="dateDeportReparation" />
+                        <p:calendar id="dateDeportReparation" pattern="dd/MM/yyyy" value="#{reparationSinistreController.selected.dateDeportReparation}" title="#{myBundle.CreateReparationSinistreTitle_dateDeportReparation}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_prestataire}" for="prestataire" />
+                        <p:inputText id="prestataire" value="#{reparationSinistreController.selected.prestataire}" title="#{myBundle.CreateReparationSinistreTitle_prestataire}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_montantReparationReel}" for="montantReparationReel" />
+                        <p:inputText id="montantReparationReel" value="#{reparationSinistreController.selected.montantReparationReel}" title="#{myBundle.CreateReparationSinistreTitle_montantReparationReel}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_descriptionTravaux}" for="descriptionTravaux" />
+                        <p:inputTextarea rows="4" cols="30" id="descriptionTravaux" value="#{reparationSinistreController.selected.descriptionTravaux}" title="#{myBundle.CreateReparationSinistreTitle_descriptionTravaux}" />
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_datePrevueRecuperationVehicule}" for="datePrevueRecuperationVehicule" />
+                        <p:calendar id="datePrevueRecuperationVehicule" pattern="dd/MM/yyyy" value="#{reparationSinistreController.selected.datePrevueRecuperationVehicule}" title="#{myBundle.CreateReparationSinistreTitle_datePrevueRecuperationVehicule}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_dateRelleRecuperationVehicule}" for="dateRelleRecuperationVehicule" />
+                        <p:calendar id="dateRelleRecuperationVehicule" pattern="dd/MM/yyyy" value="#{reparationSinistreController.selected.dateRelleRecuperationVehicule}" title="#{myBundle.CreateReparationSinistreTitle_dateRelleRecuperationVehicule}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_nbreJoursImmobilisations}" for="nbreJoursImmobilisations" />
+                        <p:inputText id="nbreJoursImmobilisations" value="#{reparationSinistreController.selected.nbreJoursImmobilisations}" title="#{myBundle.CreateReparationSinistreTitle_nbreJoursImmobilisations}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_referenceFacturePrestataire}" for="referenceFacturePrestataire" />
+                        <p:inputText id="referenceFacturePrestataire" value="#{reparationSinistreController.selected.referenceFacturePrestataire}" title="#{myBundle.CreateReparationSinistreTitle_referenceFacturePrestataire}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_montant}" for="montant" />
+                        <p:inputText id="montant" value="#{reparationSinistreController.selected.montant}" title="#{myBundle.CreateReparationSinistreTitle_montant}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_dateReglement}" for="dateReglement" />
+                        <p:calendar id="dateReglement" pattern="dd/MM/yyyy" value="#{reparationSinistreController.selected.dateReglement}" title="#{myBundle.CreateReparationSinistreTitle_dateReglement}"  showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_observation}" for="observation" />
+                        <p:inputTextarea rows="4" cols="30" id="observation" value="#{reparationSinistreController.selected.observation}" title="#{myBundle.CreateReparationSinistreTitle_observation}" />
+
+                        <p:outputLabel value="#{myBundle.CreateReparationSinistreLabel_idSinistre}" for="idSinistre" />
+                        <p:selectOneMenu id="idSinistre" value="#{reparationSinistreController.selected.sinistre}"  converter="sinistreConverter">
+                            <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{sinistreController.all}"
+                                           var="idSinistreItem"
+                                           itemValue="#{idSinistreItem}"
+                                           itemLabel="#{idSinistreItem.id}"
+                                           />
+
+                        </p:selectOneMenu>
+                        
+                        <p:commandButton action="#{reparationSinistreController.add()}" icon="ui-icon-disk" value="#{myBundle.Save}" />
+						<p:commandButton action="#{reparationSinistreController.toList()}" icon="ui-icon-" value="#{myBundle.Cancel}" />
+                    </p:panelGrid>
+				</p:panel>
+            </h:form>
+
+	</ui:define>
+    </ui:composition>
+
+</html>
