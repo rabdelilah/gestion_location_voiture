@@ -82,7 +82,6 @@ public class CommandeFrController implements Serializable{
 	}
 
 	public void add(){
-		System.out.println("nouveau "+nouveau);
 		nouveau.setIdSociete(((Utilisateur)session.getAttribute("user")).getSociete().getId());
 		ejb.create(nouveau);
 		try{entete=(CommandeFr) nouveau.clone();}catch(Exception e){e.printStackTrace();}
@@ -91,13 +90,11 @@ public class CommandeFrController implements Serializable{
 	}
 	
 	public String edit(){
-		System.out.println("edit "+selected);
 		ejb.edit(selected);
 		return "List.xhtml";
 	}
 	
 	public String remove(){
-		System.out.println("remove "+selected);
 		selected.setStatus("deleted");
 		ejb.edit(selected);
 		return "List.xhtml";
@@ -140,7 +137,6 @@ public class CommandeFrController implements Serializable{
 		return "Create.xhtml";
 	}
 	public String editLigne(){
-		System.out.println("edit "+nouveauLigne);
 		ejbLignes.edit(nouveauLigne);
 		nouveauLigne=new DetailCmdFr();
 		return "Create.xhtml";
@@ -153,7 +149,6 @@ public class CommandeFrController implements Serializable{
 		return "Edit.xhtml";
 	}
 	public String editLigneEdit(){
-		System.out.println("edit "+nouveauLigne);
 		ejbLignes.edit(nouveauLigne);
 		nouveauLigne=new DetailCmdFr();
 		return "Edit.xhtml";
