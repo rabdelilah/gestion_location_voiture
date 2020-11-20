@@ -49,13 +49,11 @@ public class PaiementVehiculeController implements Serializable{
 	}
 	
 	public String edit(){
-		System.out.println("edit "+selected);
 		ejb.edit(selected);
 		return "List.xhtml";
 	}
 	
 	public String remove(){
-		System.out.println("delete "+selected);
 		selected.setStatus("deleted");
 		ejb.edit(selected);
 		return "List.xhtml";

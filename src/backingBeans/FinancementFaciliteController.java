@@ -42,7 +42,6 @@ public class FinancementFaciliteController implements Serializable{
 	}
 
 	public String add(){
-		System.out.println("nouveau "+nouveau);
 		nouveau.setIdSociete(((Utilisateur)session.getAttribute("user")).getSociete().getId());
 		ejb.create(nouveau);
 		nouveau=new FinancementFacilite();
@@ -50,14 +49,12 @@ public class FinancementFaciliteController implements Serializable{
 	}
 	
 	public String edit(){
-		System.out.println("edit "+selected);
 		selected.setStatus("deleted");
 		ejb.edit(selected);
 		return "List.xhtml";
 	}
 	
 	public String remove(){
-		System.out.println("remove "+selected);
 		ejb.remove(selected);
 		return "List.xhtml";
 	}

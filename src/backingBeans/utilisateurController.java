@@ -42,20 +42,17 @@ public class utilisateurController  implements Serializable{
 	}
 
 	public String add(){
-		System.out.println("nouveau "+nouveau);
 		ejb.create(nouveau);
 		nouveau=new Utilisateur();
 		return "#";
 	}
 	
 	public String edit(){
-		System.out.println("edit "+selected);
 		ejb.edit(selected);
 		return "List.xhtml";
 	}
 	
 	public String remove(){
-		System.out.println("remove "+selected);
 		selected.setStatus("deleted");
 		ejb.edit(selected);
 		return "List.xhtml";
@@ -70,7 +67,6 @@ public class utilisateurController  implements Serializable{
 		if(u!=null && u.getPwd().equalsIgnoreCase(selected.getPwd())){
 			session.setAttribute("user", u);
 			selected.setSociete(u.getSociete());
-			System.out.println("session user :"+selected);
 			return "index.xhtml";
 		}
 		return "login";
@@ -83,11 +79,10 @@ public class utilisateurController  implements Serializable{
 	public void verif(ComponentSystemEvent event) {
 		if (session.getAttribute("user") == null) {
 			try {
-				System.out.println("deconnecter");
 				FacesContext
 						.getCurrentInstance()
 						.getExternalContext()
-						.redirect("http://localhost:8085/glv_sp/faces/login.xhtml");
+						.redirect("/glv_sp/faces/login.xhtml");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -41,7 +41,6 @@ public class ContratLldController implements Serializable {
 	}
 
 	public String add(){
-		System.out.println("nouveau "+nouveau);
 		nouveau.setIdSociete(((Utilisateur)session.getAttribute("user")).getSociete().getId());
 		ejb.create(nouveau);
 		nouveau=new ContratLld();

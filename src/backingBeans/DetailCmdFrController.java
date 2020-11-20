@@ -42,7 +42,6 @@ public class DetailCmdFrController implements Serializable{
 	}
 
 	public String add(){
-		System.out.println("nouveau "+nouveau);
 		nouveau.setIdSociete(((Utilisateur)session.getAttribute("user")).getSociete().getId());
 		ejb.create(nouveau);
 		nouveau=new DetailCmdFr();
@@ -50,27 +49,23 @@ public class DetailCmdFrController implements Serializable{
 	}
 	
 	public String edit(){
-		System.out.println("edit "+selected);
 		ejb.edit(selected);
 		return "List.xhtml";
 	}
 	
 	public String remove(){
-		System.out.println("remove "+selected);
 		selected.setStatus("deleted");
 		ejb.edit(selected);
 		return "List.xhtml";
 	}
 	
 	public String removeLigne(){
-		System.out.println("remove "+selected);
 		selected.setStatus("deleted");
 		ejb.edit(selected);
 		selected=new DetailCmdFr();
 		return "Create.xhtml";
 	}
 	public String removeLigneEdit(){
-		System.out.println("remove "+selected);
 		selected.setStatus("deleted");
 		ejb.edit(selected);
 		selected=new DetailCmdFr();

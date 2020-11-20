@@ -49,13 +49,11 @@ public class VehiculeController implements Serializable {
 	}
 	
 	public String edit(){
-		System.out.println("edit voiture : "+selected);
 		ejb.edit(selected);
 		return "List.xhtml";
 	}
 	
 	public String remove(){
-		System.out.println("supprimer "+selected);
 		selected.setStatus("deleted");
 		ejb.edit(selected);
 		return "List.xhtml";
@@ -77,7 +75,6 @@ public class VehiculeController implements Serializable {
 		return "Create.xhtml";
 	}
 	public String toEdit(){
-		System.out.println("to edit :"+selected);
 		return "Edit.xhtml";
 	}
 	public String toList(){
